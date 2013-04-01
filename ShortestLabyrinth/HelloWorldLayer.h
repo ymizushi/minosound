@@ -8,6 +8,7 @@
 
 
 #import <GameKit/GameKit.h>
+#import "CCTouchDispatcher.h"
 
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
@@ -15,6 +16,8 @@
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 {
+    CCSprite *seeker1;
+    CCSprite *cocosGuy;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
