@@ -140,6 +140,7 @@
 		D14693171709F27B005968FC /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693161709F27B005968FC /* HelloWorldLayer.m */; };
 		D146931A1709F27B005968FC /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693191709F27B005968FC /* IntroLayer.m */; };
 		D1469321170A0208005968FC /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = D1469320170A0208005968FC /* tile.png */; };
+		D1469324170A02D9005968FC /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1469323170A02D9005968FC /* Tile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -422,6 +423,8 @@
 		D14693181709F27B005968FC /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		D14693191709F27B005968FC /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		D1469320170A0208005968FC /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
+		D1469322170A02D9005968FC /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		D1469323170A02D9005968FC /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +487,8 @@
 				D14693131709F27B005968FC /* AppDelegate.m */,
 				D14693151709F27B005968FC /* HelloWorldLayer.h */,
 				D14693161709F27B005968FC /* HelloWorldLayer.m */,
+				D1469322170A02D9005968FC /* Tile.h */,
+				D1469323170A02D9005968FC /* Tile.m */,
 				D14693181709F27B005968FC /* IntroLayer.h */,
 				D14693191709F27B005968FC /* IntroLayer.m */,
 				D14691851709F277005968FC /* Resources */,
@@ -1058,6 +1063,7 @@
 				D14693141709F27B005968FC /* AppDelegate.m in Sources */,
 				D14693171709F27B005968FC /* HelloWorldLayer.m in Sources */,
 				D146931A1709F27B005968FC /* IntroLayer.m in Sources */,
+				D1469324170A02D9005968FC /* Tile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

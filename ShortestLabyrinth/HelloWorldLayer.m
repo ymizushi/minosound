@@ -12,6 +12,7 @@
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
+#import "CCSprite.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -44,6 +45,11 @@
 
 	if( (self=[super init]) ) {
         // create and initialize our seeker sprite, and add it to this layer
+        CCSprite *e1 = [CCSprite spriteWithFile: @"Icon.png"];
+//        tileArray = [NSArray arrayWithObjects:[CCSprite spriteWithFile: @"Icon.png"],[CCSprite spriteWithFile: @"Icon.png"]];
+
+
+
         seeker1 = [CCSprite spriteWithFile: @"Icon.png"];
         seeker1.position = ccp( 50, 100 );
         [self addChild:seeker1];

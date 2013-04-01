@@ -18,6 +18,9 @@
 {
     CCSprite *seeker1;
     CCSprite *cocosGuy;
+
+
+    NSArray *tileArray;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
