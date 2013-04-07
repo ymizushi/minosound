@@ -16,14 +16,13 @@
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 {
-    CCSprite *seeker1;
-    CCSprite *cocosGuy;
-
-
-    NSArray *tileArray;
+    NSMutableArray *tileArray;
 }
+@property (nonatomic, retain) NSMutableArray *tileArray;
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
+
+-(void) addTileWithFileName:(NSString *)fileName Size:(int)x :(int)y;
 
 @end

@@ -13,11 +13,14 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 #import "CCSprite.h"
+#import "Tile.h"
+#import "Tiles.h"
 
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
+@synthesize tileArray;
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
@@ -35,6 +38,20 @@
 	return scene;
 }
 
+-(void) addTileWithFileName:(NSString *)fileName Size:(int)x :(int)y{
+    Tile *tile = [CCSprite spriteWithFile: fileName];
+    tile.position = ccp(x, y);
+    [self addChild:tile];
+    NSLog(@"tile:%@",tile);
+
+    if(self.tileArray == nil){
+        self.tileArray = [NSMutableArray array];
+    }
+    [self.tileArray addObject:tile];
+    NSLog(@"tileArray:%@",self.tileArray);
+
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -45,22 +62,11 @@
 
 	if( (self=[super init]) ) {
         // create and initialize our seeker sprite, and add it to this layer
-        CCSprite *e1 = [CCSprite spriteWithFile: @"Icon.png"];
-//        tileArray = [NSArray arrayWithObjects:[CCSprite spriteWithFile: @"Icon.png"],[CCSprite spriteWithFile: @"Icon.png"]];
+        [self addTileWithFileName:@"Icon.png" Size:50:100];
+        [self addTileWithFileName:@"tile.png" Size:100:100];
 
-
-
-        seeker1 = [CCSprite spriteWithFile: @"Icon.png"];
-        seeker1.position = ccp( 50, 100 );
-        [self addChild:seeker1];
-
-        // do the same for our cocos2d guy, reusing the app icon as its image
-        cocosGuy = [CCSprite spriteWithFile: @"Icon.png"];
-        cocosGuy.position = ccp( 200, 300 );
-        [self addChild:cocosGuy];
-
+//        NSLog(@"tileArray:%@",self.tileArray);
         [self schedule:@selector(nextFrame:)];
-
 
 //
 //		// create and initialize a Label
@@ -128,11 +134,13 @@
 	return self;
 }
 
-
 - (void) nextFrame:(ccTime)dt {
-    seeker1.position = ccp( seeker1.position.x + 100*dt, seeker1.position.y );
-    if (seeker1.position.x > 480+32) {
-        seeker1.position = ccp( -32, seeker1.position.y );
+//    NSLog(@"tileArray:%@",self.tileArray);
+    for(CCSprite* sprite in self.tileArray){
+        sprite.position = ccp( sprite.position.x + 100*dt, sprite.position.y );
+        if (sprite.position.x > 480+32) {
+            sprite.position = ccp( -32, sprite.position.y );
+        }
     }
 }
 
@@ -147,9 +155,10 @@
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
 	CGPoint location = [self convertTouchToNodeSpace: touch];
-
-	[cocosGuy stopAllActions];
-	[cocosGuy runAction: [CCMoveTo actionWithDuration:1 position:location]];
+    for(CCSprite* sprite in self.tileArray){
+        [sprite stopAllActions];
+        [sprite runAction: [CCMoveTo actionWithDuration:1 position:location]];
+    }
 }
 
 

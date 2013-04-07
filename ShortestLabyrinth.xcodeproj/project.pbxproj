@@ -141,6 +141,7 @@
 		D146931A1709F27B005968FC /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693191709F27B005968FC /* IntroLayer.m */; };
 		D1469321170A0208005968FC /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = D1469320170A0208005968FC /* tile.png */; };
 		D1469324170A02D9005968FC /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1469323170A02D9005968FC /* Tile.m */; };
+		D1733B211711694D00FAADC5 /* Tiles.m in Sources */ = {isa = PBXBuildFile; fileRef = D1733B201711694D00FAADC5 /* Tiles.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -425,6 +426,8 @@
 		D1469320170A0208005968FC /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
 		D1469322170A02D9005968FC /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		D1469323170A02D9005968FC /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		D1733B1F1711694C00FAADC5 /* Tiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tiles.h; sourceTree = "<group>"; };
+		D1733B201711694D00FAADC5 /* Tiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tiles.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +491,8 @@
 				D14693151709F27B005968FC /* HelloWorldLayer.h */,
 				D14693161709F27B005968FC /* HelloWorldLayer.m */,
 				D1469322170A02D9005968FC /* Tile.h */,
+				D1733B1F1711694C00FAADC5 /* Tiles.h */,
+				D1733B201711694D00FAADC5 /* Tiles.m */,
 				D1469323170A02D9005968FC /* Tile.m */,
 				D14693181709F27B005968FC /* IntroLayer.h */,
 				D14693191709F27B005968FC /* IntroLayer.m */,
@@ -1064,6 +1069,7 @@
 				D14693171709F27B005968FC /* HelloWorldLayer.m in Sources */,
 				D146931A1709F27B005968FC /* IntroLayer.m in Sources */,
 				D1469324170A02D9005968FC /* Tile.m in Sources */,
+				D1733B211711694D00FAADC5 /* Tiles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1169,6 +1175,7 @@
 				D146931F1709F27B005968FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
