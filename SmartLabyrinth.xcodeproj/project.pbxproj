@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1265A401711C1CF0062F2CB /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = D1265A3F1711C1CF0062F2CB /* tile.png */; };
 		D14691731709F277005968FC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691721709F277005968FC /* QuartzCore.framework */; };
 		D14691751709F277005968FC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691741709F277005968FC /* OpenGLES.framework */; };
 		D14691771709F277005968FC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691761709F277005968FC /* OpenAL.framework */; };
@@ -137,14 +138,13 @@
 		D146930C1709F27B005968FC /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D146930B1709F27B005968FC /* vec4.c */; };
 		D14693111709F27B005968FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693101709F27B005968FC /* main.m */; };
 		D14693141709F27B005968FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693131709F27B005968FC /* AppDelegate.m */; };
-		D14693171709F27B005968FC /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693161709F27B005968FC /* HelloWorldLayer.m */; };
+		D14693171709F27B005968FC /* TilesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693161709F27B005968FC /* TilesLayer.m */; };
 		D146931A1709F27B005968FC /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693191709F27B005968FC /* IntroLayer.m */; };
-		D1469321170A0208005968FC /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = D1469320170A0208005968FC /* tile.png */; };
 		D1469324170A02D9005968FC /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1469323170A02D9005968FC /* Tile.m */; };
-		D1733B211711694D00FAADC5 /* Tiles.m in Sources */ = {isa = PBXBuildFile; fileRef = D1733B201711694D00FAADC5 /* Tiles.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D1265A3F1711C1CF0062F2CB /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile.png; path = Resources/tile.png; sourceTree = "<group>"; };
 		D146916F1709F277005968FC /* SmartLabyrinth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLabyrinth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14691721709F277005968FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D14691741709F277005968FC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -419,15 +419,12 @@
 		D14693101709F27B005968FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D14693121709F27B005968FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D14693131709F27B005968FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D14693151709F27B005968FC /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		D14693161709F27B005968FC /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
-		D14693181709F27B005968FC /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		D14693191709F27B005968FC /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
-		D1469320170A0208005968FC /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
+		D14693151709F27B005968FC /* TilesLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TilesLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		D14693161709F27B005968FC /* TilesLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TilesLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D14693181709F27B005968FC /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IntroLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		D14693191709F27B005968FC /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IntroLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D1469322170A02D9005968FC /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		D1469323170A02D9005968FC /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
-		D1733B1F1711694C00FAADC5 /* Tiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tiles.h; sourceTree = "<group>"; };
-		D1733B201711694D00FAADC5 /* Tiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tiles.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,11 +485,9 @@
 			children = (
 				D14693121709F27B005968FC /* AppDelegate.h */,
 				D14693131709F27B005968FC /* AppDelegate.m */,
-				D14693151709F27B005968FC /* HelloWorldLayer.h */,
-				D14693161709F27B005968FC /* HelloWorldLayer.m */,
+				D14693151709F27B005968FC /* TilesLayer.h */,
+				D14693161709F27B005968FC /* TilesLayer.m */,
 				D1469322170A02D9005968FC /* Tile.h */,
-				D1733B1F1711694C00FAADC5 /* Tiles.h */,
-				D1733B201711694D00FAADC5 /* Tiles.m */,
 				D1469323170A02D9005968FC /* Tile.m */,
 				D14693181709F27B005968FC /* IntroLayer.h */,
 				D14693191709F27B005968FC /* IntroLayer.m */,
@@ -506,7 +501,7 @@
 		D14691851709F277005968FC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D1469320170A0208005968FC /* tile.png */,
+				D1265A3F1711C1CF0062F2CB /* tile.png */,
 				D14691861709F277005968FC /* Default.png */,
 				D14691881709F277005968FC /* Default@2x.png */,
 				D146918A1709F277005968FC /* Default-568h@2x.png */,
@@ -946,7 +941,7 @@
 				D14691991709F278005968FC /* Icon@2x.png in Resources */,
 				D146919C1709F278005968FC /* iTunesArtwork in Resources */,
 				D14692F21709F27B005968FC /* ChangeLog in Resources */,
-				D1469321170A0208005968FC /* tile.png in Resources */,
+				D1265A401711C1CF0062F2CB /* tile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1066,10 +1061,9 @@
 				D146930C1709F27B005968FC /* vec4.c in Sources */,
 				D14693111709F27B005968FC /* main.m in Sources */,
 				D14693141709F27B005968FC /* AppDelegate.m in Sources */,
-				D14693171709F27B005968FC /* HelloWorldLayer.m in Sources */,
+				D14693171709F27B005968FC /* TilesLayer.m in Sources */,
 				D146931A1709F27B005968FC /* IntroLayer.m in Sources */,
 				D1469324170A02D9005968FC /* Tile.m in Sources */,
-				D1733B211711694D00FAADC5 /* Tiles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
