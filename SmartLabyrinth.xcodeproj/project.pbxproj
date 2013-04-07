@@ -145,7 +145,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D146916F1709F277005968FC /* ShortestLabyrinth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortestLabyrinth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D146916F1709F277005968FC /* SmartLabyrinth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLabyrinth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14691721709F277005968FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D14691741709F277005968FC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		D14691761709F277005968FC /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -462,7 +462,7 @@
 		D14691701709F277005968FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D146916F1709F277005968FC /* ShortestLabyrinth.app */,
+				D146916F1709F277005968FC /* SmartLabyrinth.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -886,9 +886,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D146916E1709F277005968FC /* ShortestLabyrinth */ = {
+		D146916E1709F277005968FC /* SmartLabyrinth */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D146931D1709F27B005968FC /* Build configuration list for PBXNativeTarget "ShortestLabyrinth" */;
+			buildConfigurationList = D146931D1709F27B005968FC /* Build configuration list for PBXNativeTarget "SmartLabyrinth" */;
 			buildPhases = (
 				D146916B1709F277005968FC /* Sources */,
 				D146916C1709F277005968FC /* Frameworks */,
@@ -898,9 +898,9 @@
 			);
 			dependencies = (
 			);
-			name = ShortestLabyrinth;
+			name = SmartLabyrinth;
 			productName = ShortestLabyrinth;
-			productReference = D146916F1709F277005968FC /* ShortestLabyrinth.app */;
+			productReference = D146916F1709F277005968FC /* SmartLabyrinth.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -912,7 +912,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "水島 雄太";
 			};
-			buildConfigurationList = D146916A1709F277005968FC /* Build configuration list for PBXProject "ShortestLabyrinth" */;
+			buildConfigurationList = D146916A1709F277005968FC /* Build configuration list for PBXProject "SmartLabyrinth" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -924,7 +924,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D146916E1709F277005968FC /* ShortestLabyrinth */,
+				D146916E1709F277005968FC /* SmartLabyrinth */,
 			);
 		};
 /* End PBXProject section */
@@ -1131,7 +1131,7 @@
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SmartLabyrinth;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1150,7 +1150,7 @@
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SmartLabyrinth;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1159,7 +1159,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D146916A1709F277005968FC /* Build configuration list for PBXProject "ShortestLabyrinth" */ = {
+		D146916A1709F277005968FC /* Build configuration list for PBXProject "SmartLabyrinth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D146931B1709F27B005968FC /* Debug */,
@@ -1168,7 +1168,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D146931D1709F27B005968FC /* Build configuration list for PBXNativeTarget "ShortestLabyrinth" */ = {
+		D146931D1709F27B005968FC /* Build configuration list for PBXNativeTarget "SmartLabyrinth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D146931E1709F27B005968FC /* Debug */,
