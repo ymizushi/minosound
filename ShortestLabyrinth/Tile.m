@@ -9,5 +9,9 @@
 #import "Tile.h"
 
 @implementation Tile
+@synthesize beforeTile;
 
+-(Tile*) getBeforeTile:(Tile *)currentTile{
+    return self.beforeTile;
+}
 @end

@@ -13,7 +13,6 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 #import "CCSprite.h"
-#import "Tile.h"
 
 #pragma mark - TilesLayer
 
@@ -38,23 +37,44 @@
 }
 
 -(void) initTiles{
-    int row    = 10;
-    int column = 10;
-    int cell_width  = 25;
-    int cell_height = 25;
-    int init_x = 125;
-    int init_y = 50;
-    int x = init_x;
-    int y = init_y;
-    for(int i=0;i<row*column;i++){
+    int x = INIT_X;
+    int y = INIT_Y;
+    for(int i=0;i<ROW*COLUMN;i++){
         [self addTileWithFileName:@"tile.png" Size:x :y];
-        if(i%row == row-1){
-            y = y+cell_height;
-            x = init_x;
+        if(i%ROW == ROW-1){
+            y = y+CELL_HEIGHT;
+            x = INIT_X;
         }else{
-            x = x+cell_width;
+            x = x+CELL_WIDTH;
         }
     }
+}
+
+-(void) genTile:(Tile *)beforeTile{
+    Tile* currentTile = [self choiceTile:beforeTile];
+    [self addTileTable:currentTile];
+
+    if([self.tileTable count] >= ROW*COLUMN){
+        return;
+    } else{
+        return [self genTile:[currentTile getBeforeTile:currentTile]];
+    }
+}
+
+-(NSArray*)surroudTile:(Tile *)currentTile{
+
+}
+
+-(Tile*)choiceTile:(Tile *)currentTile{
+    NSArray* tiles = [self surroudTile:currentTile];
+    if( tiles == nil) {
+        // 初めのタイル返す
+    } else {
+        //random choiceして返す
+    }
+}
+
+-(void)addTileTable:(Tile *)currentTile{
 
 }
 
