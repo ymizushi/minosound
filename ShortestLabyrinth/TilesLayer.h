@@ -25,10 +25,8 @@
 @interface TilesLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 {
     NSMutableArray *tileArray;
-    NSMutableArray* tileTable;
 }
 @property (nonatomic, retain) NSMutableArray *tileArray;
-@property (nonatomic, retain) NSMutableArray *tileTable;
 
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;
@@ -41,5 +39,9 @@
 -(NSArray*) surroudTile:(Tile *)currentTile;
 -(Tile*) choiceTile:(Tile *)currentTile;
 -(void) addTileTable:(Tile *)currentTile;
+
+-(NSInteger) getIndexByX:(NSInteger)x Y:(NSInteger)y;
+
+-(NSInteger) searchedTileCount:(NSMutableArray *)tileArray;
 
 @end

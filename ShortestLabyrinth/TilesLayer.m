@@ -50,32 +50,60 @@
     }
 }
 
+-(NSInteger) searchedTileCount:(NSMutableArray *)tiles{
+    NSInteger counter = 0;
+    for(Tile* tile in tiles){
+        if(tile.isSearched){
+            counter++;
+        }
+    }
+    return counter;
+}
+
 -(void) genTile:(Tile *)beforeTile{
     Tile* currentTile = [self choiceTile:beforeTile];
     [self addTileTable:currentTile];
 
-    if([self.tileTable count] >= ROW*COLUMN){
+    if([self searchedTileCount:self.tileArray] >= ROW*COLUMN){
         return;
     } else{
         return [self genTile:[currentTile getBeforeTile:currentTile]];
     }
 }
 
--(NSArray*)surroudTile:(Tile *)currentTile{
-
-}
-
 -(Tile*)choiceTile:(Tile *)currentTile{
-    NSArray* tiles = [self surroudTile:currentTile];
+    NSMutableArray* tiles = [self surroudTile:currentTile];
     if( tiles == nil) {
-        // 初めのタイル返す
+        return self.tileArray[[self getIndexByX:0 Y:0]];
     } else {
         //random choiceして返す
+        return tiles[0];
     }
 }
 
--(void)addTileTable:(Tile *)currentTile{
+-(NSInteger) getIndexByX:(NSInteger)x Y:(NSInteger)y{
+    return COLUMN*y + x;
+}
 
+-(NSArray*)surroudTile:(Tile *)currentTile{
+    NSMutableArray *array = [NSMutableArray array];
+    if(![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]] isSearched]){
+        [array addObject:self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]]];
+    }
+    if(![self.tileArray[[self getIndexByX:currentTile.x+1 Y:currentTile.y]] isSearched]){
+        [array addObject:self.tileArray[[self getIndexByX:currentTile.x+1 Y:currentTile.y]]];
+    }
+    if(![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y+1]] isSearched]){
+        [array addObject:self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y+1]]];
+    }
+    if(![self.tileArray[[self getIndexByX:currentTile.x-1 Y:currentTile.y]] isSearched]){
+        [array addObject:self.tileArray[[self getIndexByX:currentTile.x-1 Y:currentTile.y]]];
+    }
+    return array;
+}
+
+-(void)addTileTable:(Tile *)currentTile{
+    currentTile.isSearched = YES;
 }
 
 -(void) addTileWithFileName:(NSString *)fileName Size:(int)x :(int)y{

@@ -10,6 +10,9 @@
 
 @implementation Tile
 @synthesize beforeTile;
+@synthesize x;
+@synthesize y;
+@synthesize isSearched;
 
 -(Tile*) getBeforeTile:(Tile *)currentTile{
     return self.beforeTile;
