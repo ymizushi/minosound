@@ -40,7 +40,7 @@
     int x = INIT_X;
     int y = INIT_Y;
     for(int i=0;i<ROW*COLUMN;i++){
-        [self addTileWithFileName:@"tile.png" Size:x :y];
+        [self addTileWithFileName:@"tile.png" Size:x :y IndexX:i%ROW Y:i/ROW];
         if(i%ROW == ROW-1){
             y = y+CELL_HEIGHT;
             x = INIT_X;
@@ -62,11 +62,16 @@
 
 -(void) genTile:(Tile *)beforeTile{
     Tile* currentTile = [self choiceTile:beforeTile];
+    currentTile.beforeTile = beforeTile;
     [self addTileTable:currentTile];
 
     if([self searchedTileCount:self.tileArray] >= ROW*COLUMN){
+        NSLog(@"hoge");
         return;
     } else{
+        NSLog(@"%d",[self searchedTileCount:self.tileArray]);
+        NSLog(@"%@",currentTile.beforeTile);
+        NSLog(@"piyo");
         return [self genTile:[currentTile getBeforeTile:currentTile]];
     }
 }
@@ -85,7 +90,10 @@
     return COLUMN*y + x;
 }
 
--(NSArray*)surroudTile:(Tile *)currentTile{
+-(NSMutableArray*)surroudTile:(Tile *)currentTile{
+    if(currentTile == nil){
+        return nil;
+    }
     NSMutableArray *array = [NSMutableArray array];
     if(![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]] isSearched]){
         [array addObject:self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]]];
@@ -106,12 +114,14 @@
     currentTile.isSearched = YES;
 }
 
--(void) addTileWithFileName:(NSString *)fileName Size:(int)x :(int)y{
+-(void) addTileWithFileName:(NSString *)fileName Size:(NSInteger)x :(NSInteger)y IndexX:(NSInteger)i_x Y:(NSInteger)i_y{
     if(self.tileArray == nil){
         self.tileArray = [NSMutableArray array];
     }
-    Tile *tile = [CCSprite spriteWithFile: fileName];
+    Tile *tile = [Tile spriteWithFile: fileName];
     tile.position = ccp(x, y);
+    tile.x = i_x;
+    tile.y = i_y;
     [self addChild:tile];
 
     [self.tileArray addObject:tile];
@@ -126,6 +136,7 @@
 
 	if( (self=[super init]) ) {
         [self initTiles];
+        [self genTile:nil];
 	}
 	return self;
 }

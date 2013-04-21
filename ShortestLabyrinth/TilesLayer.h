@@ -31,12 +31,12 @@
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;
 
--(void) addTileWithFileName:(NSString *)fileName Size:(int)x :(int)y;
+-(void) addTileWithFileName:(NSString *)fileName Size:(NSInteger)x :(NSInteger)y IndexX:(NSInteger)i_x Y:(NSInteger)i_y;
 -(void) initTiles;
 
 -(void) genTile:(Tile *)beforeTile;
 
--(NSArray*) surroudTile:(Tile *)currentTile;
+-(NSMutableArray*) surroudTile:(Tile *)currentTile;
 -(Tile*) choiceTile:(Tile *)currentTile;
 -(void) addTileTable:(Tile *)currentTile;
 
