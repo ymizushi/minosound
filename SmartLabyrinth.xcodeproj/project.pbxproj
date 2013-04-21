@@ -147,8 +147,6 @@
 		D1FA2B121723A3ED007F8211 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1FA2B101723A3ED007F8211 /* InfoPlist.strings */; };
 		D1FA2B151723A3ED007F8211 /* SmartLabyrinthLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B141723A3ED007F8211 /* SmartLabyrinthLogicTests.m */; };
 		D1FA2B1C1723B91F007F8211 /* TestTile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B1B1723B91F007F8211 /* TestTile.m */; };
-		D1FA2B1D1723BDBB007F8211 /* SmartLabyrinthLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B141723A3ED007F8211 /* SmartLabyrinthLogicTests.m */; };
-		D1FA2B1E1723BDC6007F8211 /* TestTile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B1B1723B91F007F8211 /* TestTile.m */; };
 		D1FA2B211723C0D0007F8211 /* TestTilesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B201723C0D0007F8211 /* TestTilesLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -1164,8 +1162,6 @@
 				D14693171709F27B005968FC /* TilesLayer.m in Sources */,
 				D146931A1709F27B005968FC /* IntroLayer.m in Sources */,
 				D1469324170A02D9005968FC /* Tile.m in Sources */,
-				D1FA2B1D1723BDBB007F8211 /* SmartLabyrinthLogicTests.m in Sources */,
-				D1FA2B1E1723BDC6007F8211 /* TestTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,6 +1360,7 @@
 				D1FA2B181723A3ED007F8211 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
