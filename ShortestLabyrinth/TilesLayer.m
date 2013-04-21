@@ -62,52 +62,60 @@
 
 -(void) genTile:(Tile *)beforeTile{
     Tile* currentTile = [self choiceTile:beforeTile];
-    currentTile.beforeTile = beforeTile;
-    [self addTileTable:currentTile];
-
-    if([self searchedTileCount:self.tileArray] >= ROW*COLUMN){
-        NSLog(@"hoge");
+    if(currentTile == nil){
         return;
-    } else{
-        NSLog(@"%d",[self searchedTileCount:self.tileArray]);
-        NSLog(@"%@",currentTile.beforeTile);
-        NSLog(@"piyo");
+    }else {
+        [self addTileTable:currentTile];
+
+        NSLog(@"currentTile:%@",currentTile);
+
         return [self genTile:[currentTile getBeforeTile:currentTile]];
     }
 }
 
--(Tile*)choiceTile:(Tile *)currentTile{
-    NSMutableArray* tiles = [self surroudTile:currentTile];
-    if( tiles == nil) {
-        return self.tileArray[[self getIndexByX:0 Y:0]];
+-(Tile*)choiceTile:(Tile *)beforeTile{
+    NSMutableArray* tiles = [self surroudTile:beforeTile];
+    if ([self searchedTileCount:self.tileArray] >= ROW*COLUMN){
+        return nil;
+    }
+    if( [tiles count] == 0 ) {
+        return [self choiceTile:beforeTile.beforeTile];
     } else {
         //random choiceして返す
-        return tiles[0];
+        Tile* tile = (Tile*)(tiles[0]);
+        tile.beforeTile = beforeTile;
+        NSLog(@"tile.x:%d",tile.x);
+        NSLog(@"tile.y:%d",tile.y);
+        return tile;
     }
-}
-
--(NSInteger) getIndexByX:(NSInteger)x Y:(NSInteger)y{
-    return COLUMN*y + x;
 }
 
 -(NSMutableArray*)surroudTile:(Tile *)currentTile{
-    if(currentTile == nil){
-        return nil;
-    }
     NSMutableArray *array = [NSMutableArray array];
-    if(![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]] isSearched]){
+
+    if([self getIndexByX:currentTile.x Y:currentTile.y-1] != -1 && ![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]] isSearched]){
         [array addObject:self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]]];
     }
-    if(![self.tileArray[[self getIndexByX:currentTile.x+1 Y:currentTile.y]] isSearched]){
+    if([self getIndexByX:currentTile.x+1 Y:currentTile.y] != -1 && ![self.tileArray[[self getIndexByX:currentTile.x+1 Y:currentTile.y]] isSearched]){
         [array addObject:self.tileArray[[self getIndexByX:currentTile.x+1 Y:currentTile.y]]];
     }
-    if(![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y+1]] isSearched]){
+    if([self getIndexByX:currentTile.x Y:currentTile.y+1] != -1 && ![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y+1]] isSearched]){
         [array addObject:self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y+1]]];
     }
-    if(![self.tileArray[[self getIndexByX:currentTile.x-1 Y:currentTile.y]] isSearched]){
+    if([self getIndexByX:currentTile.x-1 Y:currentTile.y] != -1 && ![self.tileArray[[self getIndexByX:currentTile.x-1 Y:currentTile.y]] isSearched]){
         [array addObject:self.tileArray[[self getIndexByX:currentTile.x-1 Y:currentTile.y]]];
     }
+
+    NSLog(@"array:%@",array);
+
     return array;
+}
+
+-(NSInteger) getIndexByX:(NSInteger)x Y:(NSInteger)y{
+    if(x<0 || y <0){
+        return -1;
+    }
+    return COLUMN*y + x;
 }
 
 -(void)addTileTable:(Tile *)currentTile{
