@@ -12,15 +12,18 @@
 @interface Tile : CCSprite
 {
     Tile* beforeTile;
+    BOOL isSearched;
     NSInteger x;
     NSInteger y;
-    BOOL isSearched;
+    NSInteger display_x;
+    NSInteger display_y;
 }
 @property (nonatomic, retain)Tile* beforeTile;
+@property (nonatomic)BOOL isSearched;
 @property (nonatomic)NSInteger x;
 @property (nonatomic)NSInteger y;
-@property (nonatomic)BOOL isSearched;
+@property (nonatomic)NSInteger display_x;
+@property (nonatomic)NSInteger display_y;
 
--(Tile*) getBeforeTile:(Tile *)currentTile;
 
 @end

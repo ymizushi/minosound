@@ -39,16 +39,16 @@
 -(void) initTiles{
     int x = INIT_X;
     int y = INIT_Y;
-    for(int i=0;i<ROW*COLUMN;i++){
-        [self addTileWithFileName:@"tile.png" Size:x :y IndexX:i%ROW Y:i/ROW];
-        if(i%ROW == ROW-1){
-            y = y+CELL_HEIGHT;
-            x = INIT_X;
-        }else{
-            x = x+CELL_WIDTH;
+    for(int y=0;y<COLUMN;y++){
+        for(int x=0;x<ROW;x++){
+            [self addTileWithFileName:@"tile.png" Size:x*ROW :y*COLUMN IndexX:x Y:y];
         }
     }
 }
+
+}
+
+
 
 -(NSInteger) searchedTileCount:(NSMutableArray *)tiles{
     NSInteger counter = 0;
@@ -70,23 +70,6 @@
         NSLog(@"currentTile:%@",currentTile);
 
         return [self genTile:[currentTile getBeforeTile:currentTile]];
-    }
-}
-
--(Tile*)choiceTile:(Tile *)beforeTile{
-    NSMutableArray* tiles = [self surroudTile:beforeTile];
-    if ([self searchedTileCount:self.tileArray] >= ROW*COLUMN){
-        return nil;
-    }
-    if( [tiles count] == 0 ) {
-        return [self choiceTile:beforeTile.beforeTile];
-    } else {
-        //random choiceして返す
-        Tile* tile = (Tile*)(tiles[0]);
-        tile.beforeTile = beforeTile;
-        NSLog(@"tile.x:%d",tile.x);
-        NSLog(@"tile.y:%d",tile.y);
-        return tile;
     }
 }
 
@@ -118,6 +101,82 @@
     return COLUMN*y + x;
 }
 
+
+
+
+
+-(Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y{
+    if(x<0 || y <0 ){
+        return nil;
+    }
+    if(x>= ROW || y >= COLUMN){
+        return nil;
+    }
+    return self.tileArray[y*ROW + x];
+}
+-(BOOL) checkX:(NSInteger)x Y:(NSInteger)y{
+    if(x<0 || y<0){
+        return NO;
+    }
+    if(x>=ROW || y >= COLUMN){
+        return NO;
+    }
+    Tile* tile = [self getTileByX:x Y:y];
+    if(tile.isSearched){
+        return NO;
+    }
+    return YES;
+}
+
+-(NSMutableArray*)surroundTiles:(Tile *)tile{
+    NSMutableArray* mArray = [NSMutableArray array];
+    if([self checkX:tile.x Y:tile.y-1]){
+        [mArray addObject:[self getTileByX:tile.x Y:tile.y-1]];
+    }
+    if([self checkX:tile.x+1 Y:tile.y]){
+        [mArray addObject:[self getTileByX:tile.x+1 Y:tile.y]];
+    }
+    if([self checkX:tile.x Y:tile.y+1]){
+        [mArray addObject:[self getTileByX:tile.x Y:tile.y+1]];
+    }
+    if([self checkX:tile.x-1 Y:tile.y]){
+        [mArray addObject:[self getTileByX:tile.x-1 Y:tile.y]];
+    }
+    return mArray;
+}
+
++(NSInteger)random:(NSMutableArray*)array{
+    if([array count] == 0){
+        return -1;
+    }
+    return rand() % [array count];
+
+}
+
+-(Tile*)choiceTile:(Tile *)tile{
+    NSMutableArray* tiles = [self surroudTile:tile];
+    if(tiles){
+        choice = self.tileArray[[self random:tiles]];
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -(void)addTileTable:(Tile *)currentTile{
     currentTile.isSearched = YES;
 }
@@ -144,7 +203,7 @@
 
 	if( (self=[super init]) ) {
         [self initTiles];
-        [self genTile:nil];
+//        [self genTile:nil];
 	}
 	return self;
 }
@@ -200,4 +259,21 @@
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
+
+-(void) visit
+
+{
+
+    [super visit];
+
+    glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+
+    CGPoint lpt1 = CGPointMake(100, 180);
+
+    CGPoint lpt2 = CGPointMake(200, 120);
+
+    ccDrawLine(lpt1, lpt2);
+
+}
+
 @end

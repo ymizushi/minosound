@@ -17,4 +17,5 @@
 -(Tile*) getBeforeTile:(Tile *)currentTile{
     return self.beforeTile;
 }
+
 @end

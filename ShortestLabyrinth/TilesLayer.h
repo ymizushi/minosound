@@ -44,4 +44,14 @@
 
 -(NSInteger) searchedTileCount:(NSMutableArray *)tileArray;
 
+
+
+-(Tile*) getTileByX:(NSInteger)x Y:(NSInteger)y;
+-(BOOL) checkX:(NSInteger)x Y:(NSInteger)y;
+-(Tile*) getBeforeTile:(Tile *)currentTile;
+-(NSMutableArray*) surroundTiles:(Tile *)currentTile;
+-(Tile*) choiceTile:(Tile *)currentTile;
+-(NSInteger) random:(NSMutableArray *)array;
+
+
 @end
