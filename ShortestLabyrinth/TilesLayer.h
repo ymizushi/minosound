@@ -14,8 +14,8 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
-#define ROW 10
-#define COLUMN 10
+#define ROW 3
+#define COLUMN 3
 #define CELL_WIDTH 25
 #define CELL_HEIGHT 25
 #define INIT_X 125
@@ -36,8 +36,7 @@
 
 -(void) genTile:(Tile *)beforeTile;
 
--(NSMutableArray*) surroudTile:(Tile *)currentTile;
--(Tile*) choiceTile:(Tile *)currentTile;
+-(NSMutableArray*) surroudTiles:(Tile *)currentTile;
 -(void) addTileTable:(Tile *)currentTile;
 
 -(NSInteger) getIndexByX:(NSInteger)x Y:(NSInteger)y;
@@ -52,6 +51,8 @@
 -(NSMutableArray*) surroundTiles:(Tile *)currentTile;
 -(Tile*) choiceTile:(Tile *)currentTile;
 -(NSInteger) random:(NSMutableArray *)array;
+
+-(void) scan:(Tile*)tile;
 
 
 @end

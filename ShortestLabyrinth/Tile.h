@@ -25,5 +25,4 @@
 @property (nonatomic)NSInteger display_x;
 @property (nonatomic)NSInteger display_y;
 
-
 @end

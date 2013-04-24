@@ -18,7 +18,6 @@
 
 // TilesLayer implementation
 @implementation TilesLayer
-@synthesize tileArray;
 
 // Helper class method that creates a Scene with the TilesLayer as the only child.
 +(CCScene *) scene
@@ -37,27 +36,11 @@
 }
 
 -(void) initTiles{
-    int x = INIT_X;
-    int y = INIT_Y;
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
-            [self addTileWithFileName:@"tile.png" Size:x*ROW :y*COLUMN IndexX:x Y:y];
+            [self addTileWithFileName:@"tile.png" Size:CELL_WIDTH :CELL_HEIGHT IndexX:x Y:y];
         }
     }
-}
-
-}
-
-
-
--(NSInteger) searchedTileCount:(NSMutableArray *)tiles{
-    NSInteger counter = 0;
-    for(Tile* tile in tiles){
-        if(tile.isSearched){
-            counter++;
-        }
-    }
-    return counter;
 }
 
 -(void) genTile:(Tile *)beforeTile{
@@ -69,41 +52,9 @@
 
         NSLog(@"currentTile:%@",currentTile);
 
-        return [self genTile:[currentTile getBeforeTile:currentTile]];
+        return [self genTile:currentTile.beforeTile];
     }
 }
-
--(NSMutableArray*)surroudTile:(Tile *)currentTile{
-    NSMutableArray *array = [NSMutableArray array];
-
-    if([self getIndexByX:currentTile.x Y:currentTile.y-1] != -1 && ![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]] isSearched]){
-        [array addObject:self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y-1]]];
-    }
-    if([self getIndexByX:currentTile.x+1 Y:currentTile.y] != -1 && ![self.tileArray[[self getIndexByX:currentTile.x+1 Y:currentTile.y]] isSearched]){
-        [array addObject:self.tileArray[[self getIndexByX:currentTile.x+1 Y:currentTile.y]]];
-    }
-    if([self getIndexByX:currentTile.x Y:currentTile.y+1] != -1 && ![self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y+1]] isSearched]){
-        [array addObject:self.tileArray[[self getIndexByX:currentTile.x Y:currentTile.y+1]]];
-    }
-    if([self getIndexByX:currentTile.x-1 Y:currentTile.y] != -1 && ![self.tileArray[[self getIndexByX:currentTile.x-1 Y:currentTile.y]] isSearched]){
-        [array addObject:self.tileArray[[self getIndexByX:currentTile.x-1 Y:currentTile.y]]];
-    }
-
-    NSLog(@"array:%@",array);
-
-    return array;
-}
-
--(NSInteger) getIndexByX:(NSInteger)x Y:(NSInteger)y{
-    if(x<0 || y <0){
-        return -1;
-    }
-    return COLUMN*y + x;
-}
-
-
-
-
 
 -(Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y{
     if(x<0 || y <0 ){
@@ -150,35 +101,33 @@
         return -1;
     }
     return rand() % [array count];
-
 }
 
 -(Tile*)choiceTile:(Tile *)tile{
-    NSMutableArray* tiles = [self surroudTile:tile];
-    if(tiles){
-        choice = self.tileArray[[self random:tiles]];
+    NSMutableArray* tiles = [self surroundTiles:tile];
+    if([tiles count] > 0){
+//        int index = [self random:tiles];
+        Tile* choice = tiles[0];
+        choice.beforeTile = tile;
+        choice.isSearched = YES;
+        return choice;
     }
-
-
+    return [self choiceTile:tile.beforeTile];
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--(void)addTileTable:(Tile *)currentTile{
-    currentTile.isSearched = YES;
+-(void) scan:(Tile*)tile{
+    NSInteger count = 0;
+    for(int i=0;i<[self.tileArray count];i++){
+        Tile* tile = self.tileArray[i];
+        if(tile.isSearched){
+            count++;
+        }
+    }
+    if(count >= ROW*COLUMN){
+        return;
+    }else{
+        return [self scan:[self choiceTile:tile]];
+    }
 }
 
 -(void) addTileWithFileName:(NSString *)fileName Size:(NSInteger)x :(NSInteger)y IndexX:(NSInteger)i_x Y:(NSInteger)i_y{
@@ -186,11 +135,8 @@
         self.tileArray = [NSMutableArray array];
     }
     Tile *tile = [Tile spriteWithFile: fileName];
-    tile.position = ccp(x, y);
     tile.x = i_x;
     tile.y = i_y;
-    [self addChild:tile];
-
     [self.tileArray addObject:tile];
 }
 
@@ -203,7 +149,18 @@
 
 	if( (self=[super init]) ) {
         [self initTiles];
-//        [self genTile:nil];
+
+        Tile* tile = self.tileArray[0];
+        tile.beforeTile = nil;
+        tile.isSearched = YES;
+        [self scan:tile];
+        for(Tile* tile in self.tileArray){
+            if(tile.beforeTile == nil){
+                NSLog(@"current:%d:%d",tile.x,tile.y);
+            } else {
+                NSLog(@"before:%d:%d current:%d:%d",tile.beforeTile.x,tile.beforeTile.y,tile.x,tile.y);
+            }
+        }
 	}
 	return self;
 }
@@ -228,10 +185,10 @@
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
 	CGPoint location = [self convertTouchToNodeSpace: touch];
-    for(CCSprite* sprite in self.tileArray){
-        [sprite stopAllActions];
-        [sprite runAction: [CCMoveTo actionWithDuration:1 position:location]];
-    }
+//    for(CCSprite* sprite in self.tileArray){
+//        [sprite stopAllActions];
+//        [sprite runAction: [CCMoveTo actionWithDuration:1 position:location]];
+//    }
 }
 
 
