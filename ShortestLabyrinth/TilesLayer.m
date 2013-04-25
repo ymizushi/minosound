@@ -143,6 +143,9 @@
         tile.beforeTile = nil;
         tile.isSearched = YES;
         [self scan:tile];
+        self.pathStack = [NSMutableArray array];
+        [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
+
         for(Tile* tile in self.tileArray){
             if(tile.beforeTile == nil){
                 NSLog(@"current:%d:%d",tile.x,tile.y);
@@ -150,6 +153,7 @@
                 NSLog(@"before:%d:%d current:%d:%d",tile.beforeTile.x,tile.beforeTile.y,tile.x,tile.y);
             }
         }
+
 	}
 	return self;
 }
@@ -206,6 +210,16 @@
 {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
+}
+
+-(NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack{
+    if(tile.beforeTile){
+        [stack addObject:tile];
+        tile.isShortcut = YES;
+        return [self path:tile.beforeTile:stack];
+    }else{
+        return stack;
+    }
 }
 
 @end

@@ -15,14 +15,21 @@
 @synthesize display_x;
 @synthesize display_y;
 @synthesize isSearched;
+@synthesize isShortcut;
 
 -(void)draw{
+    [super draw];
     if(self.beforeTile){
-        glColor4f(1.0, 0.0, 0.0, 1.0);
-        glLineWidth(10.0f);
         CGPoint p1,p2;
         p1=CGPointMake((float)self.beforeTile.x*WIDTH+OFFSET_X,(float)self.beforeTile.y*HEIGHT+OFFSET_Y);
         p2=CGPointMake((float)self.x*WIDTH+OFFSET_X,(float)self.y*HEIGHT+OFFSET_Y);
+        if(self.isShortcut){
+            ;
+        }else{
+            ;
+        }
+        ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
+        glLineWidth(10.0f);
         ccDrawLine(p1, p2);
     }
 }

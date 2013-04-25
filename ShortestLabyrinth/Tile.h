@@ -8,8 +8,8 @@
 
 #import "CCSprite.h"
 
-#define OFFSET_X  50
-#define OFFSET_Y  50
+#define OFFSET_X  30
+#define OFFSET_Y  30
 #define WIDTH  20
 #define HEIGHT  20
 
@@ -17,6 +17,7 @@
 {
     Tile* beforeTile;
     BOOL isSearched;
+    BOOL isShortcut;
     NSInteger x;
     NSInteger y;
     NSInteger display_x;
@@ -24,6 +25,7 @@
 }
 @property (nonatomic, retain)Tile* beforeTile;
 @property (nonatomic)BOOL isSearched;
+@property (nonatomic)BOOL isShortcut;
 @property (nonatomic)NSInteger x;
 @property (nonatomic)NSInteger y;
 @property (nonatomic)NSInteger display_x;

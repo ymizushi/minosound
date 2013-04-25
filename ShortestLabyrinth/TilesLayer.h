@@ -23,8 +23,10 @@
 @interface TilesLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 {
     NSMutableArray *tileArray;
+    NSMutableArray *pathStack;
 }
 @property (nonatomic, retain) NSMutableArray *tileArray;
+@property (nonatomic, retain) NSMutableArray *pathStack;
 
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;
@@ -54,5 +56,6 @@
 
 -(void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile;
 
+-(NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack;
 
 @end
