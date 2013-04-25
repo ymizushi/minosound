@@ -38,7 +38,7 @@
 -(void) initTiles{
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
-            [self addTileWithFileName:@"tile.png" Size:CELL_WIDTH :CELL_HEIGHT IndexX:x Y:y];
+            [self initTile:@"tile.png" Size:CELL_WIDTH :CELL_HEIGHT X:x Y:y];
         }
     }
 }
@@ -152,12 +152,12 @@
 }
 
 
--(void) addTileWithFileName:(NSString *)fileName Size:(NSInteger)width :(NSInteger)height IndexX:(NSInteger)x Y:(NSInteger)y{
+-(void) initTile:(NSString *)fileName Size:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y{
     if(self.tileArray == nil){
         self.tileArray = [NSMutableArray array];
     }
     Tile *tile = [Tile spriteWithFile: fileName];
-    tile.position = ccp(width*x,height*y);
+    tile.position = ccp(x,y);
     tile.x = x;
     tile.y = y;
     [self.tileArray addObject:tile];

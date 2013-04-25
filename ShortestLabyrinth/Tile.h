@@ -23,4 +23,7 @@
 @property (nonatomic)NSInteger y;
 @property (nonatomic)NSInteger display_x;
 @property (nonatomic)NSInteger display_y;
+
+-(void)drawToDestTile:(Tile*)tile;
+
 @end

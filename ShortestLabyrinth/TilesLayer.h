@@ -14,12 +14,10 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
-#define ROW 3
-#define COLUMN 3
-#define CELL_WIDTH 25
-#define CELL_HEIGHT 25
-#define INIT_X 125
-#define INIT_Y 50
+#define ROW 4
+#define COLUMN 4
+#define CELL_WIDTH 50
+#define CELL_HEIGHT 50
 
 // TilesLayer
 @interface TilesLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
@@ -31,7 +29,7 @@
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;
 
--(void) addTileWithFileName:(NSString *)fileName Size:(NSInteger)x :(NSInteger)y IndexX:(NSInteger)i_x Y:(NSInteger)i_y;
+-(void) initTile:(NSString *)fileName Size:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;
 -(void) initTiles;
 
 -(void) genTile:(Tile *)beforeTile;
