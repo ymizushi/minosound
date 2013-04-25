@@ -14,8 +14,8 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
-#define ROW 4
-#define COLUMN 4
+#define ROW 22
+#define COLUMN 14
 #define CELL_WIDTH 20
 #define CELL_HEIGHT 20
 
@@ -40,8 +40,6 @@
 -(NSInteger) getIndexByX:(NSInteger)x Y:(NSInteger)y;
 
 -(NSInteger) searchedTileCount:(NSMutableArray *)tileArray;
-
-
 
 -(Tile*) getTileByX:(NSInteger)x Y:(NSInteger)y;
 -(BOOL) checkX:(NSInteger)x Y:(NSInteger)y;
