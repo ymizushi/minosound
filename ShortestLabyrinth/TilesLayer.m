@@ -43,19 +43,6 @@
     }
 }
 
--(void) genTile:(Tile *)beforeTile{
-    Tile* currentTile = [self choiceTile:beforeTile];
-    if(currentTile == nil){
-        return;
-    }else {
-        [self addTileTable:currentTile];
-
-        NSLog(@"currentTile:%@",currentTile);
-
-        return [self genTile:currentTile.beforeTile];
-    }
-}
-
 -(Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y{
     if(x<0 || y <0 ){
         return nil;
@@ -96,18 +83,18 @@
     return mArray;
 }
 
-+(NSInteger)random:(NSMutableArray*)array{
-    if([array count] == 0){
+-(NSInteger)randomGet:(NSMutableArray*)array{
+    if(array ==nil || [array count] == 0){
         return -1;
     }
-    return rand() % [array count];
+    return arc4random() % [array count];
 }
 
 -(Tile*)choiceTile:(Tile *)tile{
     NSMutableArray* tiles = [self surroundTiles:tile];
     if([tiles count] > 0){
-//        int index = [self random:tiles];
-        Tile* choice = tiles[0];
+        int index = [self randomGet:tiles];
+        Tile* choice = tiles[index];
         choice.beforeTile = tile;
         choice.isSearched = YES;
         return choice;
@@ -129,28 +116,6 @@
         return [self scan:[self choiceTile:tile]];
     }
 }
-
--(void) draw:(NSMutableArray*)tileArray{
-    for(Tile* tile in tileArray){
-        if([self getTileByX:tile.x-1 Y:tile.y] == tile.beforeTile && tile.beforeTile != nil){
-            [self drawTileToTile:tile.beforeTile :tile];
-        }
-        if([self getTileByX:tile.x Y:tile.y+1] == tile.beforeTile && tile.beforeTile != nil){
-            [self drawTileToTile:tile.beforeTile :tile];
-        }
-        if([self getTileByX:tile.x+1 Y:tile.y] == tile.beforeTile && tile.beforeTile != nil){
-            [self drawTileToTile:tile.beforeTile :tile];
-        }
-        if([self getTileByX:tile.x Y:tile.y-1] == tile.beforeTile && tile.beforeTile != nil){
-            [self drawTileToTile:tile.beforeTile :tile];
-        }
-    }
-}
-
--(void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile{
-    return;
-}
-
 
 -(void) initTile:(NSString *)fileName Size:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y{
     if(self.tileArray == nil){
@@ -178,7 +143,6 @@
         tile.beforeTile = nil;
         tile.isSearched = YES;
         [self scan:tile];
-        [self draw];
         for(Tile* tile in self.tileArray){
             if(tile.beforeTile == nil){
                 NSLog(@"current:%d:%d",tile.x,tile.y);
@@ -201,7 +165,8 @@
 
 -(void) registerWithTouchDispatcher
 {
-	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+    CCDirector *director = [CCDirector sharedDirector];
+    [[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -214,6 +179,7 @@
         [sprite stopAllActions];
         [sprite runAction: [CCMoveTo actionWithDuration:1 position:location]];
     }
+    NSLog(@"タッチを開始したよ");
 }
 
 
@@ -240,22 +206,6 @@
 {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
-}
-
--(void) visit
-
-{
-
-    [super visit];
-
-//    glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-//
-//    CGPoint lpt1 = CGPointMake(100, 180);
-//
-//    CGPoint lpt2 = CGPointMake(200, 120);
-//
-//    ccDrawLine(lpt1, lpt2);
-
 }
 
 @end

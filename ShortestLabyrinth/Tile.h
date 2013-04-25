@@ -8,6 +8,11 @@
 
 #import "CCSprite.h"
 
+#define OFFSET_X  50
+#define OFFSET_Y  50
+#define WIDTH  20
+#define HEIGHT  20
+
 @interface Tile : CCSprite
 {
     Tile* beforeTile;

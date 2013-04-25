@@ -16,8 +16,8 @@
 
 #define ROW 4
 #define COLUMN 4
-#define CELL_WIDTH 50
-#define CELL_HEIGHT 50
+#define CELL_WIDTH 20
+#define CELL_HEIGHT 20
 
 // TilesLayer
 @interface TilesLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
@@ -48,7 +48,7 @@
 -(Tile*) getBeforeTile:(Tile *)currentTile;
 -(NSMutableArray*) surroundTiles:(Tile *)currentTile;
 -(Tile*) choiceTile:(Tile *)currentTile;
--(NSInteger) random:(NSMutableArray *)array;
+-(NSInteger) randomGet:(NSMutableArray *)array;
 
 -(void) scan:(Tile*)tile;
 
