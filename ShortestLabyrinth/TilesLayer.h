@@ -54,5 +54,9 @@
 
 -(void) scan:(Tile*)tile;
 
+-(void) draw:(NSMutableArray*)tileArray;
+
+-(void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile;
+
 
 @end

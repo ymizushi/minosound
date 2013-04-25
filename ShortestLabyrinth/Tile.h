@@ -8,7 +8,6 @@
 
 #import "CCSprite.h"
 
-
 @interface Tile : CCSprite
 {
     Tile* beforeTile;
@@ -24,5 +23,4 @@
 @property (nonatomic)NSInteger y;
 @property (nonatomic)NSInteger display_x;
 @property (nonatomic)NSInteger display_y;
-
 @end

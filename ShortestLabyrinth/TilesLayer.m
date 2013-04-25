@@ -130,14 +130,38 @@
     }
 }
 
--(void) addTileWithFileName:(NSString *)fileName Size:(NSInteger)x :(NSInteger)y IndexX:(NSInteger)i_x Y:(NSInteger)i_y{
+-(void) draw:(NSMutableArray*)tileArray{
+    for(Tile* tile in tileArray){
+        if([self getTileByX:tile.x-1 Y:tile.y] == tile.beforeTile && tile.beforeTile != nil){
+            [self drawTileToTile:tile.beforeTile :tile];
+        }
+        if([self getTileByX:tile.x Y:tile.y+1] == tile.beforeTile && tile.beforeTile != nil){
+            [self drawTileToTile:tile.beforeTile :tile];
+        }
+        if([self getTileByX:tile.x+1 Y:tile.y] == tile.beforeTile && tile.beforeTile != nil){
+            [self drawTileToTile:tile.beforeTile :tile];
+        }
+        if([self getTileByX:tile.x Y:tile.y-1] == tile.beforeTile && tile.beforeTile != nil){
+            [self drawTileToTile:tile.beforeTile :tile];
+        }
+    }
+}
+
+-(void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile{
+    return;
+}
+
+
+-(void) addTileWithFileName:(NSString *)fileName Size:(NSInteger)width :(NSInteger)height IndexX:(NSInteger)x Y:(NSInteger)y{
     if(self.tileArray == nil){
         self.tileArray = [NSMutableArray array];
     }
     Tile *tile = [Tile spriteWithFile: fileName];
-    tile.x = i_x;
-    tile.y = i_y;
+    tile.position = ccp(width*x,height*y);
+    tile.x = x;
+    tile.y = y;
     [self.tileArray addObject:tile];
+    [self addChild:tile];
 }
 
 // on "init" you need to initialize your instance
@@ -154,6 +178,7 @@
         tile.beforeTile = nil;
         tile.isSearched = YES;
         [self scan:tile];
+        [self draw];
         for(Tile* tile in self.tileArray){
             if(tile.beforeTile == nil){
                 NSLog(@"current:%d:%d",tile.x,tile.y);
@@ -185,10 +210,10 @@
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
 	CGPoint location = [self convertTouchToNodeSpace: touch];
-//    for(CCSprite* sprite in self.tileArray){
-//        [sprite stopAllActions];
-//        [sprite runAction: [CCMoveTo actionWithDuration:1 position:location]];
-//    }
+    for(CCSprite* sprite in self.tileArray){
+        [sprite stopAllActions];
+        [sprite runAction: [CCMoveTo actionWithDuration:1 position:location]];
+    }
 }
 
 
@@ -223,13 +248,13 @@
 
     [super visit];
 
-    glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-
-    CGPoint lpt1 = CGPointMake(100, 180);
-
-    CGPoint lpt2 = CGPointMake(200, 120);
-
-    ccDrawLine(lpt1, lpt2);
+//    glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//
+//    CGPoint lpt1 = CGPointMake(100, 180);
+//
+//    CGPoint lpt2 = CGPointMake(200, 120);
+//
+//    ccDrawLine(lpt1, lpt2);
 
 }
 
