@@ -145,14 +145,14 @@
 		D1FA2B0B1723A3ED007F8211 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917C1709F277005968FC /* UIKit.framework */; };
 		D1FA2B0C1723A3ED007F8211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917E1709F277005968FC /* Foundation.framework */; };
 		D1FA2B121723A3ED007F8211 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1FA2B101723A3ED007F8211 /* InfoPlist.strings */; };
-		D1FA2B151723A3ED007F8211 /* SmartLabyrinthLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B141723A3ED007F8211 /* SmartLabyrinthLogicTests.m */; };
+		D1FA2B151723A3ED007F8211 /* minosoundLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B141723A3ED007F8211 /* minosoundLogicTests.m */; };
 		D1FA2B1C1723B91F007F8211 /* TestTile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B1B1723B91F007F8211 /* TestTile.m */; };
 		D1FA2B211723C0D0007F8211 /* TestTilesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B201723C0D0007F8211 /* TestTilesLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D1265A3F1711C1CF0062F2CB /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile.png; path = Resources/tile.png; sourceTree = "<group>"; };
-		D146916F1709F277005968FC /* SmartLabyrinth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLabyrinth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D146916F1709F277005968FC /* minosound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minosound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14691721709F277005968FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D14691741709F277005968FC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		D14691761709F277005968FC /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -432,13 +432,13 @@
 		D14693191709F27B005968FC /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IntroLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D1469322170A02D9005968FC /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		D1469323170A02D9005968FC /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
-		D1FA2B081723A3EC007F8211 /* SmartLabyrinthLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartLabyrinthLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = minosoundLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D1FA2B0F1723A3ED007F8211 /* SmartLabyrinthLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartLabyrinthLogicTests-Info.plist"; sourceTree = "<group>"; };
+		D1FA2B0F1723A3ED007F8211 /* minosoundLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "minosoundLogicTests-Info.plist"; sourceTree = "<group>"; };
 		D1FA2B111723A3ED007F8211 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D1FA2B131723A3ED007F8211 /* SmartLabyrinthLogicTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartLabyrinthLogicTests.h; sourceTree = "<group>"; };
-		D1FA2B141723A3ED007F8211 /* SmartLabyrinthLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartLabyrinthLogicTests.m; sourceTree = "<group>"; };
-		D1FA2B161723A3ED007F8211 /* SmartLabyrinthLogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartLabyrinthLogicTests-Prefix.pch"; sourceTree = "<group>"; };
+		D1FA2B131723A3ED007F8211 /* minosoundLogicTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = minosoundLogicTests.h; sourceTree = "<group>"; };
+		D1FA2B141723A3ED007F8211 /* minosoundLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = minosoundLogicTests.m; sourceTree = "<group>"; };
+		D1FA2B161723A3ED007F8211 /* minosoundLogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "minosoundLogicTests-Prefix.pch"; sourceTree = "<group>"; };
 		D1FA2B1A1723B91F007F8211 /* TestTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTile.h; sourceTree = "<group>"; };
 		D1FA2B1B1723B91F007F8211 /* TestTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTile.m; sourceTree = "<group>"; };
 		D1FA2B1F1723C0D0007F8211 /* TestTilesLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTilesLayer.h; sourceTree = "<group>"; };
@@ -478,8 +478,8 @@
 		D14691661709F277005968FC = {
 			isa = PBXGroup;
 			children = (
-				D14691841709F277005968FC /* ShortestLabyrinth */,
-				D1FA2B0D1723A3ED007F8211 /* SmartLabyrinthLogicTests */,
+				D14691841709F277005968FC /* minosound */,
+				D1FA2B0D1723A3ED007F8211 /* minosoundLogicTests */,
 				D14691711709F277005968FC /* Frameworks */,
 				D14691701709F277005968FC /* Products */,
 			);
@@ -488,8 +488,8 @@
 		D14691701709F277005968FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D146916F1709F277005968FC /* SmartLabyrinth.app */,
-				D1FA2B081723A3EC007F8211 /* SmartLabyrinthLogicTests.octest */,
+				D146916F1709F277005968FC /* minosound.app */,
+				D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -511,7 +511,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D14691841709F277005968FC /* ShortestLabyrinth */ = {
+		D14691841709F277005968FC /* minosound */ = {
 			isa = PBXGroup;
 			children = (
 				D14693121709F27B005968FC /* AppDelegate.h */,
@@ -526,6 +526,7 @@
 				D146919D1709F278005968FC /* libs */,
 				D146930E1709F27B005968FC /* Supporting Files */,
 			);
+			name = minosound;
 			path = ShortestLabyrinth;
 			sourceTree = "<group>";
 		};
@@ -909,26 +910,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D1FA2B0D1723A3ED007F8211 /* SmartLabyrinthLogicTests */ = {
+		D1FA2B0D1723A3ED007F8211 /* minosoundLogicTests */ = {
 			isa = PBXGroup;
 			children = (
-				D1FA2B131723A3ED007F8211 /* SmartLabyrinthLogicTests.h */,
-				D1FA2B141723A3ED007F8211 /* SmartLabyrinthLogicTests.m */,
+				D1FA2B131723A3ED007F8211 /* minosoundLogicTests.h */,
+				D1FA2B141723A3ED007F8211 /* minosoundLogicTests.m */,
 				D1FA2B0E1723A3ED007F8211 /* Supporting Files */,
 				D1FA2B1A1723B91F007F8211 /* TestTile.h */,
 				D1FA2B1B1723B91F007F8211 /* TestTile.m */,
 				D1FA2B1F1723C0D0007F8211 /* TestTilesLayer.h */,
 				D1FA2B201723C0D0007F8211 /* TestTilesLayer.m */,
 			);
+			name = minosoundLogicTests;
 			path = SmartLabyrinthLogicTests;
 			sourceTree = "<group>";
 		};
 		D1FA2B0E1723A3ED007F8211 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D1FA2B0F1723A3ED007F8211 /* SmartLabyrinthLogicTests-Info.plist */,
+				D1FA2B0F1723A3ED007F8211 /* minosoundLogicTests-Info.plist */,
 				D1FA2B101723A3ED007F8211 /* InfoPlist.strings */,
-				D1FA2B161723A3ED007F8211 /* SmartLabyrinthLogicTests-Prefix.pch */,
+				D1FA2B161723A3ED007F8211 /* minosoundLogicTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -936,9 +938,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D146916E1709F277005968FC /* SmartLabyrinth */ = {
+		D146916E1709F277005968FC /* minosound */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D146931D1709F27B005968FC /* Build configuration list for PBXNativeTarget "SmartLabyrinth" */;
+			buildConfigurationList = D146931D1709F27B005968FC /* Build configuration list for PBXNativeTarget "minosound" */;
 			buildPhases = (
 				D146916B1709F277005968FC /* Sources */,
 				D146916C1709F277005968FC /* Frameworks */,
@@ -948,14 +950,14 @@
 			);
 			dependencies = (
 			);
-			name = SmartLabyrinth;
+			name = minosound;
 			productName = ShortestLabyrinth;
-			productReference = D146916F1709F277005968FC /* SmartLabyrinth.app */;
+			productReference = D146916F1709F277005968FC /* minosound.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D1FA2B071723A3EC007F8211 /* SmartLabyrinthLogicTests */ = {
+		D1FA2B071723A3EC007F8211 /* minosoundLogicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1FA2B191723A3ED007F8211 /* Build configuration list for PBXNativeTarget "SmartLabyrinthLogicTests" */;
+			buildConfigurationList = D1FA2B191723A3ED007F8211 /* Build configuration list for PBXNativeTarget "minosoundLogicTests" */;
 			buildPhases = (
 				D1FA2B031723A3EC007F8211 /* Sources */,
 				D1FA2B041723A3EC007F8211 /* Frameworks */,
@@ -966,9 +968,9 @@
 			);
 			dependencies = (
 			);
-			name = SmartLabyrinthLogicTests;
+			name = minosoundLogicTests;
 			productName = SmartLabyrinthLogicTests;
-			productReference = D1FA2B081723A3EC007F8211 /* SmartLabyrinthLogicTests.octest */;
+			productReference = D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -980,7 +982,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "水島 雄太";
 			};
-			buildConfigurationList = D146916A1709F277005968FC /* Build configuration list for PBXProject "SmartLabyrinth" */;
+			buildConfigurationList = D146916A1709F277005968FC /* Build configuration list for PBXProject "minosound" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -992,8 +994,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D146916E1709F277005968FC /* SmartLabyrinth */,
-				D1FA2B071723A3EC007F8211 /* SmartLabyrinthLogicTests */,
+				D146916E1709F277005968FC /* minosound */,
+				D1FA2B071723A3EC007F8211 /* minosoundLogicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1169,7 +1171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1FA2B151723A3ED007F8211 /* SmartLabyrinthLogicTests.m in Sources */,
+				D1FA2B151723A3ED007F8211 /* minosoundLogicTests.m in Sources */,
 				D1FA2B1C1723B91F007F8211 /* TestTile.m in Sources */,
 				D1FA2B211723C0D0007F8211 /* TestTilesLayer.m in Sources */,
 			);
@@ -1244,7 +1246,7 @@
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_NAME = SmartLabyrinth;
+				PRODUCT_NAME = minosound;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1263,7 +1265,7 @@
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_NAME = SmartLabyrinth;
+				PRODUCT_NAME = minosound;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1288,17 +1290,17 @@
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmartLabyrinthLogicTests/SmartLabyrinthLogicTests-Prefix.pch";
+				GCC_PREFIX_HEADER = "SmartLabyrinthLogicTests/minosoundLogicTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				HEADER_SEARCH_PATHS = "\"ShortestLabyrinth/libs/kazmath/include\"";
-				INFOPLIST_FILE = "SmartLabyrinthLogicTests/SmartLabyrinthLogicTests-Info.plist";
+				INFOPLIST_FILE = "SmartLabyrinthLogicTests/minosoundLogicTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = minosoundLogicTests;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1321,12 +1323,12 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmartLabyrinthLogicTests/SmartLabyrinthLogicTests-Prefix.pch";
+				GCC_PREFIX_HEADER = "SmartLabyrinthLogicTests/minosoundLogicTests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				HEADER_SEARCH_PATHS = "\"ShortestLabyrinth/libs/kazmath/include\"";
-				INFOPLIST_FILE = "SmartLabyrinthLogicTests/SmartLabyrinthLogicTests-Info.plist";
+				INFOPLIST_FILE = "SmartLabyrinthLogicTests/minosoundLogicTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = minosoundLogicTests;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1335,7 +1337,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D146916A1709F277005968FC /* Build configuration list for PBXProject "SmartLabyrinth" */ = {
+		D146916A1709F277005968FC /* Build configuration list for PBXProject "minosound" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D146931B1709F27B005968FC /* Debug */,
@@ -1344,7 +1346,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D146931D1709F27B005968FC /* Build configuration list for PBXNativeTarget "SmartLabyrinth" */ = {
+		D146931D1709F27B005968FC /* Build configuration list for PBXNativeTarget "minosound" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D146931E1709F27B005968FC /* Debug */,
@@ -1353,7 +1355,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1FA2B191723A3ED007F8211 /* Build configuration list for PBXNativeTarget "SmartLabyrinthLogicTests" */ = {
+		D1FA2B191723A3ED007F8211 /* Build configuration list for PBXNativeTarget "minosoundLogicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1FA2B171723A3ED007F8211 /* Debug */,
