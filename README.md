@@ -4,7 +4,7 @@ SmartLabyrinth
 This repository is under construction.
 
 ## Purpose
-This project is neccesary to generate labyrinth and synthesize sound automatically.
+This program is neccesary to generate labyrinth and synthesize sound automatically.
 
 ## Requirements
 - Xcode.
@@ -33,3 +33,12 @@ $empty
 
 以上の機能を満たしたそれなりに使えたり、遊べるアプリを
 ストアでリリースするのが当面の目標です。
+
+# 実装済
+迷路自動生成
+最短経路探索
+
+# 未実装
+なぞると探索済みマークをつける
+最短経路で耳障りの良い音を自動生成してならす
+インターフェースとかも格好いい感じに描画してみたい。
