@@ -151,6 +151,8 @@
                 NSLog(@"before:%d:%d current:%d:%d",tile.beforeTile.x,tile.beforeTile.y,tile.x,tile.y);
             }
         }
+        [self SetButton1];
+
 
 	}
 	return self;
@@ -235,9 +237,48 @@
                 }
                 glLineWidth(10.0f);
                 ccDrawLine(p1, p2);
+
+//                ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
+//
+//                CGPoint center = p2;
+//
+//                glLineWidth(2);
+//                for(int i=0;i<50;i++){
+//                    ccDrawCircle(center, 10,0, 50, NO);
+//                }
+
             }
         }
     }
 }
+
+-(void)SetButton1{
+    //まずはそれぞれの画像を貼付けたスプライトを用意します。
+    CCSprite *spriteDeff = [CCSprite spriteWithFile:@"gen_btn.png"];
+    CCSprite *spritePush = [CCSprite spriteWithFile:@"gen_btn.png"];
+    CCSprite *spriteDis = [CCSprite spriteWithFile:@"gen_btn.png"];
+
+    //通常状態、ボタン押下時、ボタン使用不可の画像と呼出し処理の設定
+    //※ボタンが押されたらself = Layerクラスの funcButtonPushという処理を実行する。
+    CCMenuItemSprite *item = [CCMenuItemSprite itemFromNormalSprite:spriteDeff selectedSprite: spritePush disabledSprite: spriteDis target: self selector:@selector(funcButtonPush:)];
+    //MenuItem (上で設定したボタン）をメニューとしてまとめて設定する。
+    //※nil　っていうのはお決まりのアイテムで、必ず最後に付け加えておく。
+    CCMenu *menu = [CCMenu menuWithItems: item , nil];
+    //設定したボタンを含むMenuをself = Layerに設置して完了。
+    [self addChild: menu];
+}
+
+-(void) funcButtonPush: (id) sender
+{
+//    [self initTiles];
+//
+//    Tile* tile = self.tileArray[0];
+//    tile.beforeTile = nil;
+//    tile.isSearched = YES;
+//    [self scan:tile];
+//    self.pathStack = [NSMutableArray array];
+//    [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
+}
+
 
 @end

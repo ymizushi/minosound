@@ -26,9 +26,11 @@
 {
     NSMutableArray *tileArray;
     NSMutableArray *pathStack;
+    CCLabelAtlas* gen_label;
 }
 @property (nonatomic, retain) NSMutableArray *tileArray;
 @property (nonatomic, retain) NSMutableArray *pathStack;
+@property (nonatomic, retain) CCLabelAtlas* gen_label;
 
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;

@@ -141,6 +141,7 @@
 		D14693171709F27B005968FC /* TilesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693161709F27B005968FC /* TilesLayer.m */; };
 		D146931A1709F27B005968FC /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693191709F27B005968FC /* IntroLayer.m */; };
 		D1469324170A02D9005968FC /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1469323170A02D9005968FC /* Tile.m */; };
+		D1AD870917302E31004D7F71 /* gen_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = D1AD870817302E31004D7F71 /* gen_btn.png */; };
 		D1FA2B0A1723A3ED007F8211 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */; };
 		D1FA2B0B1723A3ED007F8211 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917C1709F277005968FC /* UIKit.framework */; };
 		D1FA2B0C1723A3ED007F8211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917E1709F277005968FC /* Foundation.framework */; };
@@ -432,6 +433,7 @@
 		D14693191709F27B005968FC /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IntroLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D1469322170A02D9005968FC /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		D1469323170A02D9005968FC /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		D1AD870817302E31004D7F71 /* gen_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gen_btn.png; path = Resources/gen_btn.png; sourceTree = "<group>"; };
 		D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = minosoundLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D1FA2B0F1723A3ED007F8211 /* minosoundLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "minosoundLogicTests-Info.plist"; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 		D14691851709F277005968FC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D1AD870817302E31004D7F71 /* gen_btn.png */,
 				D1265A3F1711C1CF0062F2CB /* tile.png */,
 				D14691861709F277005968FC /* Default.png */,
 				D14691881709F277005968FC /* Default@2x.png */,
@@ -1018,6 +1021,7 @@
 				D146919C1709F278005968FC /* iTunesArtwork in Resources */,
 				D14692F21709F27B005968FC /* ChangeLog in Resources */,
 				D1265A401711C1CF0062F2CB /* tile.png in Resources */,
+				D1AD870917302E31004D7F71 /* gen_btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
