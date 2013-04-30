@@ -6,14 +6,8 @@
 //  Copyright (c) 2013年 水島 雄太. All rights reserved.
 //
 
-#import "CCSprite.h"
 
-#define OFFSET_X  30
-#define OFFSET_Y  30
-#define WIDTH  20
-#define HEIGHT  20
-
-@interface Tile : CCSprite
+@interface Tile :NSObject
 {
     Tile* beforeTile;
     BOOL isSearched;
@@ -30,7 +24,5 @@
 @property (nonatomic)NSInteger y;
 @property (nonatomic)NSInteger display_x;
 @property (nonatomic)NSInteger display_y;
-
--(void)drawToDestTile:(Tile*)tile;
 
 @end

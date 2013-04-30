@@ -121,12 +121,10 @@
     if(self.tileArray == nil){
         self.tileArray = [NSMutableArray array];
     }
-    Tile *tile = [Tile spriteWithFile: fileName];
-    tile.position = ccp(x,y);
+    Tile *tile = [[Tile alloc] init];
     tile.x = x;
     tile.y = y;
     [self.tileArray addObject:tile];
-    [self addChild:tile];
 }
 
 // on "init" you need to initialize your instance
@@ -219,6 +217,26 @@
         return [self path:tile.beforeTile:stack];
     }else{
         return stack;
+    }
+}
+
+-(void)draw{
+    [super draw];
+    if(self.tileArray){
+        for(Tile* tile in self.tileArray){
+            if(tile){
+                CGPoint p1,p2;
+                p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+OFFSET_X,(float)tile.beforeTile.y*CELL_HEIGHT+OFFSET_Y);
+                p2=CGPointMake((float)tile.x*CELL_WIDTH+OFFSET_X, (float)tile.y*CELL_HEIGHT+OFFSET_Y);
+                if(tile.isShortcut){
+                    ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
+                }else{
+                    ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
+                }
+                glLineWidth(10.0f);
+                ccDrawLine(p1, p2);
+            }
+        }
     }
 }
 

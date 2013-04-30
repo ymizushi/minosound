@@ -14,10 +14,12 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
-#define ROW 22
+#define ROW 14
 #define COLUMN 14
 #define CELL_WIDTH 20
 #define CELL_HEIGHT 20
+#define OFFSET_X  120
+#define OFFSET_Y  30
 
 // TilesLayer
 @interface TilesLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
