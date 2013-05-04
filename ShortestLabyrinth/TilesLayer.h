@@ -18,7 +18,7 @@
 #define COLUMN 14
 #define CELL_WIDTH 20
 #define CELL_HEIGHT 20
-#define OFFSET_X  120
+#define OFFSET_X  160
 #define OFFSET_Y  30
 
 // TilesLayer
@@ -35,7 +35,7 @@
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;
 
--(void) initTile:(NSString *)fileName Size:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;
+-(void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;
 -(void) initTiles;
 
 -(void) genTile:(Tile *)beforeTile;
@@ -61,5 +61,7 @@
 -(void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile;
 
 -(NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack;
+
+-(void)setButton1;
 
 @end

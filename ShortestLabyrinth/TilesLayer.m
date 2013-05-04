@@ -29,19 +29,43 @@
 	TilesLayer *layer = [TilesLayer node];
 	
 	// add layer as a child to scene
+
 	[scene addChild: layer];
-	
+
 	// return the scene
 	return scene;
+}
+
+-(void) genTiles{
+    if(self.tileArray == nil){
+        self.tileArray = [NSMutableArray array];
+    }
+    for(int y=0;y<COLUMN;y++){
+        for(int x=0;x<ROW;x++){
+            [self initTileSize:CELL_WIDTH :CELL_HEIGHT X:x Y:y];
+        }
+    }
 }
 
 -(void) initTiles{
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
-            [self initTile:@"tile.png" Size:CELL_WIDTH :CELL_HEIGHT X:x Y:y];
+            Tile* tile = [self getTileByX:x Y:y];
+            tile.beforeTile = nil;
+            tile.isSearched = NO;
+            tile.isShortcut = NO;
         }
     }
+
+    Tile* tile = self.tileArray[0];
+    tile.beforeTile = nil;
+    tile.isSearched = YES;
+    tile.isShortcut = YES;
+    [self scan:tile];
+    self.pathStack = [NSMutableArray array];
+    [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
 }
+
 
 -(Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y{
     if(x<0 || y <0 ){
@@ -52,6 +76,7 @@
     }
     return self.tileArray[y*ROW + x];
 }
+
 -(BOOL) checkX:(NSInteger)x Y:(NSInteger)y{
     if(x<0 || y<0){
         return NO;
@@ -117,15 +142,13 @@
     }
 }
 
--(void) initTile:(NSString *)fileName Size:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y{
-    if(self.tileArray == nil){
-        self.tileArray = [NSMutableArray array];
-    }
+-(void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y{
     Tile *tile = [[Tile alloc] init];
     tile.x = x;
     tile.y = y;
     [self.tileArray addObject:tile];
 }
+
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -135,23 +158,10 @@
     self.isTouchEnabled = YES;
 
 	if( (self=[super init]) ) {
+        [self genTiles];
         [self initTiles];
 
-        Tile* tile = self.tileArray[0];
-        tile.beforeTile = nil;
-        tile.isSearched = YES;
-        [self scan:tile];
-        self.pathStack = [NSMutableArray array];
-        [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
-
-        for(Tile* tile in self.tileArray){
-            if(tile.beforeTile == nil){
-                NSLog(@"current:%d:%d",tile.x,tile.y);
-            } else {
-                NSLog(@"before:%d:%d current:%d:%d",tile.beforeTile.x,tile.beforeTile.y,tile.x,tile.y);
-            }
-        }
-        [self SetButton1];
+        [self setButton1];
 
 
 	}
@@ -252,32 +262,20 @@
     }
 }
 
--(void)SetButton1{
-    //まずはそれぞれの画像を貼付けたスプライトを用意します。
-    CCSprite *spriteDeff = [CCSprite spriteWithFile:@"gen_btn.png"];
-    CCSprite *spritePush = [CCSprite spriteWithFile:@"gen_btn.png"];
-    CCSprite *spriteDis = [CCSprite spriteWithFile:@"gen_btn.png"];
+-(void)setButton1{
+    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(funcButtonPush:)];
+    item1.tag=11;
 
-    //通常状態、ボタン押下時、ボタン使用不可の画像と呼出し処理の設定
-    //※ボタンが押されたらself = Layerクラスの funcButtonPushという処理を実行する。
-    CCMenuItemSprite *item = [CCMenuItemSprite itemFromNormalSprite:spriteDeff selectedSprite: spritePush disabledSprite: spriteDis target: self selector:@selector(funcButtonPush:)];
-    //MenuItem (上で設定したボタン）をメニューとしてまとめて設定する。
-    //※nil　っていうのはお決まりのアイテムで、必ず最後に付け加えておく。
-    CCMenu *menu = [CCMenu menuWithItems: item , nil];
-    //設定したボタンを含むMenuをself = Layerに設置して完了。
-    [self addChild: menu];
+    CCMenu * menu  = [CCMenu menuWithItems:item1, nil];
+    [menu alignItemsHorizontallyWithPadding:20];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [menu setPosition:ccp(size.width/3, size.height/2)];
+    [self addChild:menu];
 }
 
 -(void) funcButtonPush: (id) sender
 {
-//    [self initTiles];
-//
-//    Tile* tile = self.tileArray[0];
-//    tile.beforeTile = nil;
-//    tile.isSearched = YES;
-//    [self scan:tile];
-//    self.pathStack = [NSMutableArray array];
-//    [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
+    [self initTiles];
 }
 
 

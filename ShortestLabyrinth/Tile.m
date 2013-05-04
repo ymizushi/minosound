@@ -12,8 +12,6 @@
 @synthesize beforeTile;
 @synthesize x;
 @synthesize y;
-@synthesize display_x;
-@synthesize display_y;
 @synthesize isSearched;
 @synthesize isShortcut;
 
