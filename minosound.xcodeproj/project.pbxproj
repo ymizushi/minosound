@@ -140,6 +140,11 @@
 		D14693171709F27B005968FC /* TilesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693161709F27B005968FC /* TilesLayer.m */; };
 		D146931A1709F27B005968FC /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D14693191709F27B005968FC /* IntroLayer.m */; };
 		D1469324170A02D9005968FC /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1469323170A02D9005968FC /* Tile.m */; };
+		D19701C01735569900731178 /* SimpleFMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D19701B71735569600731178 /* SimpleFMAppDelegate.m */; };
+		D19701C11735569900731178 /* SimpleFMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19701B81735569600731178 /* SimpleFMViewController.m */; };
+		D19701C21735569900731178 /* SimpleFM.m in Sources */ = {isa = PBXBuildFile; fileRef = D19701BA1735569700731178 /* SimpleFM.m */; };
+		D19701C31735569900731178 /* Envelope.m in Sources */ = {isa = PBXBuildFile; fileRef = D19701BD1735569800731178 /* Envelope.m */; };
+		D19701C41735569900731178 /* iPhoneCoreAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = D19701BF1735569900731178 /* iPhoneCoreAudio.m */; };
 		D1AD870917302E31004D7F71 /* gen_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = D1AD870817302E31004D7F71 /* gen_btn.png */; };
 		D1FA2B0A1723A3ED007F8211 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */; };
 		D1FA2B0B1723A3ED007F8211 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917C1709F277005968FC /* UIKit.framework */; };
@@ -431,6 +436,16 @@
 		D14693191709F27B005968FC /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IntroLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D1469322170A02D9005968FC /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		D1469323170A02D9005968FC /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		D19701B61735569500731178 /* SimpleFM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFM.h; sourceTree = "<group>"; };
+		D19701B71735569600731178 /* SimpleFMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFMAppDelegate.m; sourceTree = "<group>"; };
+		D19701B81735569600731178 /* SimpleFMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFMViewController.m; sourceTree = "<group>"; };
+		D19701B91735569600731178 /* SimpleFMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFMAppDelegate.h; sourceTree = "<group>"; };
+		D19701BA1735569700731178 /* SimpleFM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFM.m; sourceTree = "<group>"; };
+		D19701BB1735569700731178 /* SimpleFMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFMViewController.h; sourceTree = "<group>"; };
+		D19701BC1735569800731178 /* Envelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Envelope.h; sourceTree = "<group>"; };
+		D19701BD1735569800731178 /* Envelope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Envelope.m; sourceTree = "<group>"; };
+		D19701BE1735569800731178 /* iPhoneCoreAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneCoreAudio.h; sourceTree = "<group>"; };
+		D19701BF1735569900731178 /* iPhoneCoreAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneCoreAudio.m; sourceTree = "<group>"; };
 		D1AD870817302E31004D7F71 /* gen_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gen_btn.png; path = Resources/gen_btn.png; sourceTree = "<group>"; };
 		D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = minosoundLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -514,6 +529,16 @@
 		D14691841709F277005968FC /* minosound */ = {
 			isa = PBXGroup;
 			children = (
+				D19701B61735569500731178 /* SimpleFM.h */,
+				D19701B71735569600731178 /* SimpleFMAppDelegate.m */,
+				D19701B81735569600731178 /* SimpleFMViewController.m */,
+				D19701B91735569600731178 /* SimpleFMAppDelegate.h */,
+				D19701BA1735569700731178 /* SimpleFM.m */,
+				D19701BB1735569700731178 /* SimpleFMViewController.h */,
+				D19701BC1735569800731178 /* Envelope.h */,
+				D19701BD1735569800731178 /* Envelope.m */,
+				D19701BE1735569800731178 /* iPhoneCoreAudio.h */,
+				D19701BF1735569900731178 /* iPhoneCoreAudio.m */,
 				D14693121709F27B005968FC /* AppDelegate.h */,
 				D14693131709F27B005968FC /* AppDelegate.m */,
 				D14693151709F27B005968FC /* TilesLayer.h */,
@@ -1164,6 +1189,11 @@
 				D14693171709F27B005968FC /* TilesLayer.m in Sources */,
 				D146931A1709F27B005968FC /* IntroLayer.m in Sources */,
 				D1469324170A02D9005968FC /* Tile.m in Sources */,
+				D19701C01735569900731178 /* SimpleFMAppDelegate.m in Sources */,
+				D19701C11735569900731178 /* SimpleFMViewController.m in Sources */,
+				D19701C21735569900731178 /* SimpleFM.m in Sources */,
+				D19701C31735569900731178 /* Envelope.m in Sources */,
+				D19701C41735569900731178 /* iPhoneCoreAudio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

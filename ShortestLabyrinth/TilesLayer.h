@@ -14,6 +14,8 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
+#import "SimpleFM.h"
+
 #define ROW 14
 #define COLUMN 14
 #define CELL_WIDTH 20
@@ -30,6 +32,8 @@
     CCLabelTTF *levelLabel;
     float timer;
     NSInteger level;
+
+    SimpleFM* simpleFM;
 }
 @property (nonatomic, retain) NSMutableArray *tileArray;
 @property (nonatomic, retain) NSMutableArray *pathStack;
@@ -37,6 +41,7 @@
 @property (nonatomic, retain) CCLabelTTF *levelLabel;
 @property (nonatomic) float timer;
 @property (nonatomic) NSInteger level;
+@property (nonatomic, retain) SimpleFM *simpleFM;
 
 +(CCScene *) scene;
 -(void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;

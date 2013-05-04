@@ -176,6 +176,8 @@
         self.levelLabel.position = CGPointMake(90, 200);
         [self addChild:self.levelLabel];
 
+        self.simpleFM = [[SimpleFM alloc]init];
+
 	}
 	return self;
 }
@@ -213,6 +215,7 @@
     int offX = location.x;
     int offY = location.y;
     [self setMarkNearTileX:offX Y:offY];
+
 }
 
 -(CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -227,6 +230,7 @@
         float tile_y = (float)tile.y*CELL_HEIGHT+OFFSET_Y;
         if(tile_x - CELL_WIDTH <= x && x <= tile_x+CELL_WIDTH && tile_y - CELL_HEIGHT <= y && y <= tile_y+CELL_HEIGHT && tile.beforeTile.isMarked){
             tile.isMarked = YES;
+            [self.simpleFM play];
             if(tile.x == ROW-1 && tile.y == COLUMN-1){
                 [self stopTimer];
                 self.pathStack = [NSMutableArray array];
