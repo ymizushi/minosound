@@ -27,12 +27,16 @@
     NSMutableArray *tileArray;
     NSMutableArray *pathStack;
     CCLabelTTF *timerLabel;
+    CCLabelTTF *levelLabel;
     float timer;
+    NSInteger level;
 }
 @property (nonatomic, retain) NSMutableArray *tileArray;
 @property (nonatomic, retain) NSMutableArray *pathStack;
 @property (nonatomic, retain) CCLabelTTF *timerLabel;
+@property (nonatomic, retain) CCLabelTTF *levelLabel;
 @property (nonatomic) float timer;
+@property (nonatomic) NSInteger level;
 
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;

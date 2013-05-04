@@ -37,9 +37,7 @@
 }
 
 -(void) genTiles{
-    if(self.tileArray == nil){
-        self.tileArray = [NSMutableArray array];
-    }
+    self.tileArray = [NSMutableArray array];
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
             [self initTileSize:CELL_WIDTH :CELL_HEIGHT X:x Y:y];
@@ -170,6 +168,11 @@
         self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.01f",10.0f] fontName:@"Marker Felt" fontSize:36];
         self.timerLabel.position = CGPointMake(110, 270);
         [self addChild:self.timerLabel];
+
+        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
+        self.levelLabel.position = CGPointMake(90, 200);
+        [self addChild:self.levelLabel];
+
 	}
 	return self;
 }
@@ -313,8 +316,11 @@
     CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(funcButtonPush:)];
     item1.tag=11;
 
-    CCMenu * menu  = [CCMenu menuWithItems:item1, nil];
-    [menu alignItemsHorizontallyWithPadding:20];
+    CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(funcButtonPush2:)];
+    item2.tag=21;
+
+    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
+    [menu alignItemsVerticallyWithPadding:10];
     CGSize size = [[CCDirector sharedDirector] winSize];
     [menu setPosition:ccp(size.width/2+size.width/3, size.height/2)];
     [self addChild:menu];
@@ -324,5 +330,14 @@
 {
     [self initTiles];
     [self schedule:@selector(updateTimer) interval:0.1];
+}
+
+-(void) funcButtonPush2: (id) sender
+{
+    [self genTiles];
+    [self initTiles];
+    self.level += 1;
+    NSString *str = [[NSString alloc] initWithFormat:@"Level:%d", self.level];
+    [self.levelLabel setString: [NSString stringWithFormat:@"%@",str]];
 }
 @end
