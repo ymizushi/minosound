@@ -14,5 +14,6 @@
 @synthesize y;
 @synthesize isSearched;
 @synthesize isShortcut;
+@synthesize isMarked;
 
 @end

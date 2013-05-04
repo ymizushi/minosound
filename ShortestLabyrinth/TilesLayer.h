@@ -38,36 +38,18 @@
 @property (nonatomic) float timer;
 @property (nonatomic) NSInteger level;
 
-// returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;
-
 -(void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;
 -(void) initTiles;
-
--(void) genTile:(Tile *)beforeTile;
-
--(NSMutableArray*) surroudTiles:(Tile *)currentTile;
--(void) addTileTable:(Tile *)currentTile;
-
--(NSInteger) getIndexByX:(NSInteger)x Y:(NSInteger)y;
-
--(NSInteger) searchedTileCount:(NSMutableArray *)tileArray;
-
+-(void) genTiles;
 -(Tile*) getTileByX:(NSInteger)x Y:(NSInteger)y;
 -(BOOL) checkX:(NSInteger)x Y:(NSInteger)y;
--(Tile*) getBeforeTile:(Tile *)currentTile;
 -(NSMutableArray*) surroundTiles:(Tile *)currentTile;
 -(Tile*) choiceTile:(Tile *)currentTile;
 -(NSInteger) randomGet:(NSMutableArray *)array;
-
 -(void) scan:(Tile*)tile;
-
 -(void) draw:(NSMutableArray*)tileArray;
-
 -(void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile;
-
 -(NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack;
-
 -(void)setButton1;
-
 @end

@@ -18,7 +18,12 @@
 
 // TilesLayer implementation
 @implementation TilesLayer
-
+@synthesize tileArray;
+@synthesize pathStack;
+@synthesize timerLabel;
+@synthesize levelLabel;
+@synthesize timer;
+@synthesize level;
 // Helper class method that creates a Scene with the TilesLayer as the only child.
 +(CCScene *) scene
 {
@@ -63,8 +68,6 @@
     tile.isShortcut = YES;
     tile.isMarked = YES;
     [self scan:tile];
-    self.pathStack = [NSMutableArray array];
-    [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
 }
 
 
@@ -226,6 +229,8 @@
             tile.isMarked = YES;
             if(tile.x == ROW-1 && tile.y == COLUMN-1){
                 [self stopTimer];
+                self.pathStack = [NSMutableArray array];
+                [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
             }
             return YES;
         }
@@ -288,25 +293,15 @@
                 CGPoint p1,p2;
                 p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+OFFSET_X,(float)tile.beforeTile.y*CELL_HEIGHT+OFFSET_Y);
                 p2=CGPointMake((float)tile.x*CELL_WIDTH+OFFSET_X, (float)tile.y*CELL_HEIGHT+OFFSET_Y);
-                if(tile.isMarked){
-                    ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
-                }else if(tile.isShortcut){
+                if(tile.isShortcut){
                     ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
+                }else if(tile.isMarked){
+                    ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
                 }else{
                     ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
                 }
                 glLineWidth(CELL_WIDTH);
                 ccDrawLine(p1, p2);
-
-//                ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
-//
-//                CGPoint center = p2;
-//
-//                glLineWidth(2);
-//                for(int i=0;i<50;i++){
-//                    ccDrawCircle(center, 10,0, 50, NO);
-//                }
-
             }
         }
     }
@@ -339,5 +334,6 @@
     self.level += 1;
     NSString *str = [[NSString alloc] initWithFormat:@"Level:%d", self.level];
     [self.levelLabel setString: [NSString stringWithFormat:@"%@",str]];
+    [self schedule:@selector(updateTimer) interval:0.1];
 }
 @end
