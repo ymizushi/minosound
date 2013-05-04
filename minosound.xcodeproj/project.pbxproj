@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D1265A401711C1CF0062F2CB /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = D1265A3F1711C1CF0062F2CB /* tile.png */; };
 		D14691731709F277005968FC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691721709F277005968FC /* QuartzCore.framework */; };
 		D14691751709F277005968FC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691741709F277005968FC /* OpenGLES.framework */; };
 		D14691771709F277005968FC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691761709F277005968FC /* OpenAL.framework */; };
@@ -152,7 +151,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D1265A3F1711C1CF0062F2CB /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile.png; path = Resources/tile.png; sourceTree = "<group>"; };
 		D146916F1709F277005968FC /* minosound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minosound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14691721709F277005968FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D14691741709F277005968FC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -536,7 +534,6 @@
 			isa = PBXGroup;
 			children = (
 				D1AD870817302E31004D7F71 /* gen_btn.png */,
-				D1265A3F1711C1CF0062F2CB /* tile.png */,
 				D14691861709F277005968FC /* Default.png */,
 				D14691881709F277005968FC /* Default@2x.png */,
 				D146918A1709F277005968FC /* Default-568h@2x.png */,
@@ -1020,7 +1017,6 @@
 				D14691991709F278005968FC /* Icon@2x.png in Resources */,
 				D146919C1709F278005968FC /* iTunesArtwork in Resources */,
 				D14692F21709F27B005968FC /* ChangeLog in Resources */,
-				D1265A401711C1CF0062F2CB /* tile.png in Resources */,
 				D1AD870917302E31004D7F71 /* gen_btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1199,7 +1195,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yuta Mizushima (64CA57XCY2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1211,6 +1208,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1220,7 +1219,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yuta Mizushima (64CA57XCY2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -1230,6 +1230,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1239,6 +1241,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1251,6 +1255,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = minosound;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1259,6 +1265,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ShortestLabyrinth/Prefix.pch;
@@ -1270,6 +1278,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = minosound;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

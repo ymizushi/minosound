@@ -14,10 +14,10 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
-#define ROW 14
-#define COLUMN 14
-#define CELL_WIDTH 20
-#define CELL_HEIGHT 20
+#define ROW 28
+#define COLUMN 28
+#define CELL_WIDTH 10
+#define CELL_HEIGHT 10
 #define OFFSET_X  160
 #define OFFSET_Y  30
 
@@ -26,11 +26,9 @@
 {
     NSMutableArray *tileArray;
     NSMutableArray *pathStack;
-    CCLabelAtlas* gen_label;
 }
 @property (nonatomic, retain) NSMutableArray *tileArray;
 @property (nonatomic, retain) NSMutableArray *pathStack;
-@property (nonatomic, retain) CCLabelAtlas* gen_label;
 
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;

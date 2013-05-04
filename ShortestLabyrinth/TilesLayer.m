@@ -54,6 +54,7 @@
             tile.beforeTile = nil;
             tile.isSearched = NO;
             tile.isShortcut = NO;
+            tile.isMarked = NO;
         }
     }
 
@@ -61,6 +62,7 @@
     tile.beforeTile = nil;
     tile.isSearched = YES;
     tile.isShortcut = YES;
+    tile.isMarked = YES;
     [self scan:tile];
     self.pathStack = [NSMutableArray array];
     [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
@@ -155,9 +157,9 @@
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
-    self.isTouchEnabled = YES;
 
 	if( (self=[super init]) ) {
+        self.touchEnabled = YES;
         [self genTiles];
         [self initTiles];
 
@@ -177,25 +179,53 @@
     }
 }
 
--(void) registerWithTouchDispatcher
+//-(void) registerWithTouchDispatcher
+//{
+//    CCDirector *director = [CCDirector sharedDirector];
+//    [[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+//}
+
+-(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    CCDirector *director = [CCDirector sharedDirector];
-    [[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+    CGPoint location = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
+    int offX = location.x;
+    int offY = location.y;
+    [self setMarkNearTileX:offX Y:offY];
+
+//    NSLog(@"%d %d", offX, offY);
+//    CCLOG(@"Touch");
 }
 
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    return YES;
+
+-(CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch =[touches anyObject];
+    CGPoint location =[touch locationInView:[touch view]];
+    return [[CCDirector sharedDirector] convertToGL:location];
 }
 
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-	CGPoint location = [self convertTouchToNodeSpace: touch];
-    for(CCSprite* sprite in self.tileArray){
-        [sprite stopAllActions];
-        [sprite runAction: [CCMoveTo actionWithDuration:1 position:location]];
+-(BOOL)setMarkNearTileX:(NSInteger)x Y:(NSInteger) y {
+    for(Tile* tile in self.tileArray){
+        float tile_x = (float)tile.x*CELL_WIDTH+OFFSET_X;
+        float tile_y = (float)tile.y*CELL_HEIGHT+OFFSET_Y;
+        if(tile_x - CELL_WIDTH <= x && x <= tile_x+CELL_WIDTH && tile_y - CELL_HEIGHT <= y && y <= tile_y+CELL_HEIGHT && tile.beforeTile.isMarked){
+            tile.isMarked = YES;
+            return YES;
+        }
     }
-    NSLog(@"タッチを開始したよ");
+    return NO;
 }
 
+//タッチの移動
+-(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event];
+}
+
+//タッチの終了
+-(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event];
+}
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
@@ -240,7 +270,9 @@
                 CGPoint p1,p2;
                 p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+OFFSET_X,(float)tile.beforeTile.y*CELL_HEIGHT+OFFSET_Y);
                 p2=CGPointMake((float)tile.x*CELL_WIDTH+OFFSET_X, (float)tile.y*CELL_HEIGHT+OFFSET_Y);
-                if(tile.isShortcut){
+                if(tile.isMarked){
+                    ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
+                }else if(tile.isShortcut){
                     ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
                 }else{
                     ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
@@ -269,7 +301,7 @@
     CCMenu * menu  = [CCMenu menuWithItems:item1, nil];
     [menu alignItemsHorizontallyWithPadding:20];
     CGSize size = [[CCDirector sharedDirector] winSize];
-    [menu setPosition:ccp(size.width/3, size.height/2)];
+    [menu setPosition:ccp(size.width/2+size.width/3, size.height/2)];
     [self addChild:menu];
 }
 

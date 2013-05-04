@@ -12,12 +12,14 @@
     Tile* beforeTile;
     BOOL isSearched;
     BOOL isShortcut;
+    BOOL isMarked;
     NSInteger x;
     NSInteger y;
 }
 @property (nonatomic, retain)Tile* beforeTile;
 @property (nonatomic)BOOL isSearched;
 @property (nonatomic)BOOL isShortcut;
+@property (nonatomic)BOOL isMarked;
 @property (nonatomic)NSInteger x;
 @property (nonatomic)NSInteger y;
 
