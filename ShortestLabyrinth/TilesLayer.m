@@ -48,6 +48,7 @@
 }
 
 -(void) initTiles{
+    self.timer = 0.0;
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
             Tile* tile = [self getTileByX:x Y:y];
@@ -164,10 +165,31 @@
         [self initTiles];
 
         [self setButton1];
+        [self gameStart];
 
-
+        self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.01f",10.0f] fontName:@"Marker Felt" fontSize:36];
+        self.timerLabel.position = CGPointMake(110, 270);
+        [self addChild:self.timerLabel];
 	}
 	return self;
+}
+
+- (void)gameStart{
+    // タイマーの初期化
+    self.timer = 0.0;
+    // ｓタイマーを0.1秒間隔で回す
+    [self schedule:@selector(updateTimer) interval:0.1];
+}
+
+- (void)updateTimer{
+    self.timer += 0.1;
+    [self.timerLabel setString:[NSString stringWithFormat:@"%.01f",self.timer]];
+}
+
+- (void)stopTimer{
+    // タイマーを止める
+    [self unschedule:@selector(updateTimer)];
+    return;
 }
 
 - (void) nextFrame:(ccTime)dt {
@@ -179,23 +201,13 @@
     }
 }
 
-//-(void) registerWithTouchDispatcher
-//{
-//    CCDirector *director = [CCDirector sharedDirector];
-//    [[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-//}
-
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint location = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
     int offX = location.x;
     int offY = location.y;
     [self setMarkNearTileX:offX Y:offY];
-
-//    NSLog(@"%d %d", offX, offY);
-//    CCLOG(@"Touch");
 }
-
 
 -(CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch =[touches anyObject];
@@ -209,6 +221,9 @@
         float tile_y = (float)tile.y*CELL_HEIGHT+OFFSET_Y;
         if(tile_x - CELL_WIDTH <= x && x <= tile_x+CELL_WIDTH && tile_y - CELL_HEIGHT <= y && y <= tile_y+CELL_HEIGHT && tile.beforeTile.isMarked){
             tile.isMarked = YES;
+            if(tile.x == ROW-1 && tile.y == COLUMN-1){
+                [self stopTimer];
+            }
             return YES;
         }
     }
@@ -277,7 +292,7 @@
                 }else{
                     ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
                 }
-                glLineWidth(10.0f);
+                glLineWidth(CELL_WIDTH);
                 ccDrawLine(p1, p2);
 
 //                ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
@@ -308,7 +323,6 @@
 -(void) funcButtonPush: (id) sender
 {
     [self initTiles];
+    [self schedule:@selector(updateTimer) interval:0.1];
 }
-
-
 @end
