@@ -10,7 +10,7 @@
 // Import the interfaces
 #import "IntroLayer.h"
 #import "TilesLayer.h"
-
+#import "SimpleAudioEngine.h"
 
 #pragma mark - IntroLayer
 
@@ -32,6 +32,7 @@
 	// return the scene
 	return scene;
 }
+@synthesize enabledSound;
 
 // 
 -(id) init
@@ -53,14 +54,41 @@
 
 		// add the label as a child to this Layer
 		[self addChild: background];
+
+        CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(moveToNextTransision:)];
+        item1.tag=31;
+
+        CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(moveToSystemConfig:)];
+        item2.tag=41;
+
+        CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
+        [menu alignItemsVerticallyWithPadding:10];
+        [menu setPosition:ccp(size.width/2+size.width/3, size.height/2)];
+        [self addChild:menu];
 	}
 	
 	return self;
 }
 
+-(void) moveToNextTransision: (id) sender
+{
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TilesLayer scene] ]];
+}
+
+-(void) moveToSystemConfig: (id) sender
+{
+    self.enabledSound = !self.enabledSound;
+    SimpleAudioEngine* ae = [SimpleAudioEngine sharedEngine];
+    if(self.enabledSound){
+        [ae playBackgroundMusic:@"music.mp3" loop:YES];
+    }else{
+        [ae stopBackgroundMusic];
+    }
+}
+
 -(void) onEnter
 {
 	[super onEnter];
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TilesLayer scene] ]];
 }
+
 @end

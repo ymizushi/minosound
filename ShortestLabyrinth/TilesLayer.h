@@ -31,9 +31,12 @@
     CCLabelTTF *timerLabel;
     CCLabelTTF *levelLabel;
     float timer;
+    float color;
+    float diff;
     NSInteger level;
 
     SimpleFM* simpleFM;
+    NSDictionary *scaleMap;
 }
 @property (nonatomic, retain) NSMutableArray *tileArray;
 @property (nonatomic, retain) NSMutableArray *pathStack;
@@ -41,7 +44,10 @@
 @property (nonatomic, retain) CCLabelTTF *levelLabel;
 @property (nonatomic) float timer;
 @property (nonatomic) NSInteger level;
+@property (nonatomic) float color;
+@property (nonatomic) float diff;
 @property (nonatomic, retain) SimpleFM *simpleFM;
+@property (nonatomic, retain) NSDictionary *scaleMap;
 
 +(CCScene *) scene;
 -(void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;

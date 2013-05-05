@@ -15,5 +15,6 @@
 @synthesize isSearched;
 @synthesize isShortcut;
 @synthesize isMarked;
+@synthesize freq;
 
 @end

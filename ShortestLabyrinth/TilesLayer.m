@@ -13,6 +13,7 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 #import "CCSprite.h"
+#import "math.h"
 
 #pragma mark - TilesLayer
 
@@ -24,6 +25,7 @@
 @synthesize levelLabel;
 @synthesize timer;
 @synthesize level;
+@synthesize color;
 // Helper class method that creates a Scene with the TilesLayer as the only child.
 +(CCScene *) scene
 {
@@ -59,6 +61,7 @@
             tile.isSearched = NO;
             tile.isShortcut = NO;
             tile.isMarked = NO;
+            tile.freq = 0;
         }
     }
 
@@ -67,7 +70,9 @@
     tile.isSearched = YES;
     tile.isShortcut = YES;
     tile.isMarked = YES;
+    tile.freq = 0;
     [self scan:tile];
+    [self setPathFreq:self.tileArray[ROW*COLUMN-1]];
 }
 
 
@@ -161,8 +166,23 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 
 	if( (self=[super init]) ) {
+        self.scaleMap = @{
+                          @"A2"  :[NSNumber numberWithDouble:440.0f],
+//                          @"AS2" :[NSNumber numberWithDouble:466.163762f],
+                          @"B2"  :[NSNumber numberWithDouble:493.883301f],
+                          @"C2"  :[NSNumber numberWithDouble:523.251131f],
+//                          @"CS2" :[NSNumber numberWithDouble:554.365262f],
+                          @"D2"  :[NSNumber numberWithDouble:587.329536f],
+//                          @"DS2" :[NSNumber numberWithDouble:622.253967f],
+                          @"E2"  :[NSNumber numberWithDouble:659.255114f],
+                          @"F2"  :[NSNumber numberWithDouble:698.456463f],
+//                          @"FS2" :[NSNumber numberWithDouble:739.988845f],
+                          @"G2"  :[NSNumber numberWithDouble:783.990872f],
+//                          @"GS2" :[NSNumber numberWithDouble:830.609395f],
+                          };
         self.touchEnabled = YES;
         [self genTiles];
+
         [self initTiles];
 
         [self setButton1];
@@ -177,6 +197,7 @@
         [self addChild:self.levelLabel];
 
         self.simpleFM = [[SimpleFM alloc]init];
+        self.diff = 0.01;
 
 	}
 	return self;
@@ -229,12 +250,17 @@
         float tile_x = (float)tile.x*CELL_WIDTH+OFFSET_X;
         float tile_y = (float)tile.y*CELL_HEIGHT+OFFSET_Y;
         if(tile_x - CELL_WIDTH <= x && x <= tile_x+CELL_WIDTH && tile_y - CELL_HEIGHT <= y && y <= tile_y+CELL_HEIGHT && tile.beforeTile.isMarked){
+            if((!tile.isMarked) && tile.freq > 0){
+                [self.simpleFM setCarrierFreq:tile.freq];
+                [self.simpleFM play];
+            }
+
             tile.isMarked = YES;
-            [self.simpleFM play];
             if(tile.x == ROW-1 && tile.y == COLUMN-1){
                 [self stopTimer];
                 self.pathStack = [NSMutableArray array];
                 [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
+                [self playPathFreq];
             }
             return YES;
         }
@@ -289,8 +315,32 @@
     }
 }
 
+-(double)getRandomFreq{
+    NSArray *scaleArray = [self.scaleMap allValues];
+    NSInteger index = rand() % [scaleArray count];
+    return [[scaleArray objectAtIndex:index] doubleValue];
+}
+
+-(void)setPathFreq:(Tile*)tile{
+    if(tile.beforeTile){
+        tile.freq = [self getRandomFreq];
+        return [self setPathFreq:tile.beforeTile];
+    }else{
+        return;
+    }
+}
+
+-(void)playPathFreq{
+    for(Tile* tile in self.pathStack){
+        [self.simpleFM setCarrierFreq:tile.freq];
+        [self.simpleFM play];
+    }
+}
+
 -(void)draw{
     [super draw];
+    self.color += 0.01;
+
     if(self.tileArray){
         for(Tile* tile in self.tileArray){
             if(tile){
@@ -302,7 +352,7 @@
                 }else if(tile.isMarked){
                     ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
                 }else{
-                    ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
+                    ccDrawColor4F((cos(self.color)+1)/2, (sin(self.color)+1)/2, 0.5f, 1.0f);
                 }
                 glLineWidth(CELL_WIDTH);
                 ccDrawLine(p1, p2);
