@@ -46,7 +46,6 @@
 		
 		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
 			background = [CCSprite spriteWithFile:@"Default.png"];
-			background.rotation = 90;
 		} else {
 			background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
 		}
@@ -55,35 +54,22 @@
 		// add the label as a child to this Layer
 		[self addChild: background];
 
-        CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(moveToNextTransision:)];
+        [CCDirector sharedDirector].displayStats = NO;
+
+        CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"start.png" selectedImage:@"start_disabled.png" target:self selector:@selector(moveToNextTransision:)];
         item1.tag=31;
 
-        CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(moveToSystemConfig:)];
-        item2.tag=41;
-
-        CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
-        [menu alignItemsVerticallyWithPadding:10];
-        [menu setPosition:ccp(size.width/2+size.width/3, size.height/2)];
+        CCMenu * menu  = [CCMenu menuWithItems:item1,nil];
+        [menu alignItemsHorizontallyWithPadding:10];
+        [menu setPosition:ccp(size.width/2, size.height/2-size.height/3)];
         [self addChild:menu];
 	}
-	
 	return self;
 }
 
 -(void) moveToNextTransision: (id) sender
 {
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TilesLayer scene] ]];
-}
-
--(void) moveToSystemConfig: (id) sender
-{
-    self.enabledSound = !self.enabledSound;
-    SimpleAudioEngine* ae = [SimpleAudioEngine sharedEngine];
-    if(self.enabledSound){
-        [ae playBackgroundMusic:@"music.mp3" loop:YES];
-    }else{
-        [ae stopBackgroundMusic];
-    }
 }
 
 -(void) onEnter

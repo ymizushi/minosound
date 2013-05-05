@@ -37,6 +37,9 @@
 
     SimpleFM* simpleFM;
     NSDictionary *scaleMap;
+    BOOL enableSound;
+
+    NSInteger playPathIndex;
 }
 @property (nonatomic, retain) NSMutableArray *tileArray;
 @property (nonatomic, retain) NSMutableArray *pathStack;
@@ -48,6 +51,8 @@
 @property (nonatomic) float diff;
 @property (nonatomic, retain) SimpleFM *simpleFM;
 @property (nonatomic, retain) NSDictionary *scaleMap;
+@property (nonatomic) BOOL enableSound;
+@property (nonatomic) NSInteger playPathIndex;
 
 +(CCScene *) scene;
 -(void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;

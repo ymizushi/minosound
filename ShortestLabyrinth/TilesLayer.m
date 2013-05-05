@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "CCSprite.h"
 #import "math.h"
+#import "SimpleAudioEngine.h"
 
 #pragma mark - TilesLayer
 
@@ -26,6 +27,8 @@
 @synthesize timer;
 @synthesize level;
 @synthesize color;
+@synthesize enableSound;
+@synthesize playPathIndex;
 // Helper class method that creates a Scene with the TilesLayer as the only child.
 +(CCScene *) scene
 {
@@ -192,9 +195,9 @@
         self.timerLabel.position = CGPointMake(110, 270);
         [self addChild:self.timerLabel];
 
-        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
-        self.levelLabel.position = CGPointMake(90, 200);
-        [self addChild:self.levelLabel];
+//        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
+//        self.levelLabel.position = CGPointMake(90, 200);
+//        [self addChild:self.levelLabel];
 
         self.simpleFM = [[SimpleFM alloc]init];
         self.diff = 0.01;
@@ -214,6 +217,17 @@
     self.timer += 0.1;
     [self.timerLabel setString:[NSString stringWithFormat:@"%.01f",self.timer]];
 }
+
+- (void)updatePathSound{
+    if(self.playPathIndex >= [self.pathStack count]){
+        self.playPathIndex = 0;
+        [self unschedule:@selector(updatePathSound)];
+    }else{
+        [self playPathFreq:self.playPathIndex];
+    }
+    self.playPathIndex+=1;
+}
+
 
 - (void)stopTimer{
     // タイマーを止める
@@ -260,7 +274,7 @@
                 [self stopTimer];
                 self.pathStack = [NSMutableArray array];
                 [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
-                [self playPathFreq];
+                [self schedule:@selector(updatePathSound) interval:0.05];
             }
             return YES;
         }
@@ -330,11 +344,13 @@
     }
 }
 
--(void)playPathFreq{
-    for(Tile* tile in self.pathStack){
-        [self.simpleFM setCarrierFreq:tile.freq];
-        [self.simpleFM play];
+-(void)playPathFreq:(NSInteger)index{
+    if(index >= [self.pathStack count]){
+        return;
     }
+    Tile* tile = self.pathStack[index];
+    [self.simpleFM setCarrierFreq:tile.freq];
+    [self.simpleFM play];
 }
 
 -(void)draw{
@@ -350,9 +366,9 @@
                 if(tile.isShortcut){
                     ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
                 }else if(tile.isMarked){
-                    ccDrawColor4F(0.0f, 0.0f, 1.0f, 1.0f);
+                    ccDrawColor4F((cos(self.color)+1)/4, (sin(self.color)+1)/2, 0.0f, 1.0f);
                 }else{
-                    ccDrawColor4F((cos(self.color)+1)/2, (sin(self.color)+1)/2, 0.5f, 1.0f);
+                    ccDrawColor4F(0.0f, 0.0f, 0.5f, 1.0f);
                 }
                 glLineWidth(CELL_WIDTH);
                 ccDrawLine(p1, p2);
@@ -362,10 +378,10 @@
 }
 
 -(void)setButton1{
-    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(funcButtonPush:)];
+    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen_disabled.png" selectedImage:@"gen.png" target:self selector:@selector(genButtonPush:)];
     item1.tag=11;
 
-    CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"gen_btn.png" selectedImage:@"gen_btn.png" target:self selector:@selector(funcButtonPush2:)];
+    CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"music.png" selectedImage:@"music_disabled.png" target:self selector:@selector(enableMusic:)];
     item2.tag=21;
 
     CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
@@ -375,19 +391,30 @@
     [self addChild:menu];
 }
 
--(void) funcButtonPush: (id) sender
+-(void) genButtonPush: (id) sender
 {
     [self initTiles];
     [self schedule:@selector(updateTimer) interval:0.1];
 }
 
--(void) funcButtonPush2: (id) sender
+-(void) enableMusic: (id) sender
 {
-    [self genTiles];
-    [self initTiles];
-    self.level += 1;
-    NSString *str = [[NSString alloc] initWithFormat:@"Level:%d", self.level];
-    [self.levelLabel setString: [NSString stringWithFormat:@"%@",str]];
-    [self schedule:@selector(updateTimer) interval:0.1];
+    self.enableSound = !self.enableSound;
+    SimpleAudioEngine* ae = [SimpleAudioEngine sharedEngine];
+    if(self.enableSound){
+        [ae playBackgroundMusic:@"music.mp3" loop:YES];
+    }else{
+        [ae stopBackgroundMusic];
+    }
 }
+
+//-(void) levelUpButtonPush: (id) sender
+//{
+//    [self genTiles];
+//    [self initTiles];
+//    self.level += 1;
+//    NSString *str = [[NSString alloc] initWithFormat:@"Level:%d", self.level];
+//    [self.levelLabel setString: [NSString stringWithFormat:@"%@",str]];
+//    [self schedule:@selector(updateTimer) interval:0.1];
+//}
 @end
