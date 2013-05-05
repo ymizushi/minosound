@@ -274,7 +274,7 @@
                 [self stopTimer];
                 self.pathStack = [NSMutableArray array];
                 [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
-                [self schedule:@selector(updatePathSound) interval:0.05];
+                [self schedule:@selector(updatePathSound) interval:0.1];
             }
             return YES;
         }
@@ -378,7 +378,7 @@
 }
 
 -(void)setButton1{
-    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen_disabled.png" selectedImage:@"gen.png" target:self selector:@selector(genButtonPush:)];
+    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen.png" selectedImage:@"gen_disabled.png" target:self selector:@selector(genButtonPush:)];
     item1.tag=11;
 
     CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"music.png" selectedImage:@"music_disabled.png" target:self selector:@selector(enableMusic:)];
