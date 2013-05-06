@@ -160,13 +160,6 @@
 		D19701C41735569900731178 /* iPhoneCoreAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = D19701BF1735569900731178 /* iPhoneCoreAudio.m */; };
 		D19701C61735828400731178 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D19701C51735828400731178 /* music.mp3 */; };
 		D1AD870917302E31004D7F71 /* gen_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = D1AD870817302E31004D7F71 /* gen_btn.png */; };
-		D1FA2B0A1723A3ED007F8211 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */; };
-		D1FA2B0B1723A3ED007F8211 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917C1709F277005968FC /* UIKit.framework */; };
-		D1FA2B0C1723A3ED007F8211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917E1709F277005968FC /* Foundation.framework */; };
-		D1FA2B121723A3ED007F8211 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1FA2B101723A3ED007F8211 /* InfoPlist.strings */; };
-		D1FA2B151723A3ED007F8211 /* minosoundLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B141723A3ED007F8211 /* minosoundLogicTests.m */; };
-		D1FA2B1C1723B91F007F8211 /* TestTile.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B1B1723B91F007F8211 /* TestTile.m */; };
-		D1FA2B211723C0D0007F8211 /* TestTilesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FA2B201723C0D0007F8211 /* TestTilesLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -475,17 +468,7 @@
 		D19701BF1735569900731178 /* iPhoneCoreAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneCoreAudio.m; sourceTree = "<group>"; };
 		D19701C51735828400731178 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = music.mp3; path = Resources/music.mp3; sourceTree = "<group>"; };
 		D1AD870817302E31004D7F71 /* gen_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gen_btn.png; path = Resources/gen_btn.png; sourceTree = "<group>"; };
-		D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = minosoundLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D1FA2B0F1723A3ED007F8211 /* minosoundLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "minosoundLogicTests-Info.plist"; sourceTree = "<group>"; };
-		D1FA2B111723A3ED007F8211 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D1FA2B131723A3ED007F8211 /* minosoundLogicTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = minosoundLogicTests.h; sourceTree = "<group>"; };
-		D1FA2B141723A3ED007F8211 /* minosoundLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = minosoundLogicTests.m; sourceTree = "<group>"; };
-		D1FA2B161723A3ED007F8211 /* minosoundLogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "minosoundLogicTests-Prefix.pch"; sourceTree = "<group>"; };
-		D1FA2B1A1723B91F007F8211 /* TestTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTile.h; sourceTree = "<group>"; };
-		D1FA2B1B1723B91F007F8211 /* TestTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTile.m; sourceTree = "<group>"; };
-		D1FA2B1F1723C0D0007F8211 /* TestTilesLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTilesLayer.h; sourceTree = "<group>"; };
-		D1FA2B201723C0D0007F8211 /* TestTilesLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTilesLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -505,16 +488,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1FA2B041723A3EC007F8211 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1FA2B0A1723A3ED007F8211 /* SenTestingKit.framework in Frameworks */,
-				D1FA2B0B1723A3ED007F8211 /* UIKit.framework in Frameworks */,
-				D1FA2B0C1723A3ED007F8211 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -522,7 +495,6 @@
 			isa = PBXGroup;
 			children = (
 				D14691841709F277005968FC /* minosound */,
-				D1FA2B0D1723A3ED007F8211 /* minosoundLogicTests */,
 				D14691711709F277005968FC /* Frameworks */,
 				D14691701709F277005968FC /* Products */,
 			);
@@ -532,7 +504,6 @@
 			isa = PBXGroup;
 			children = (
 				D146916F1709F277005968FC /* minosound.app */,
-				D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -977,31 +948,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D1FA2B0D1723A3ED007F8211 /* minosoundLogicTests */ = {
-			isa = PBXGroup;
-			children = (
-				D1FA2B131723A3ED007F8211 /* minosoundLogicTests.h */,
-				D1FA2B141723A3ED007F8211 /* minosoundLogicTests.m */,
-				D1FA2B0E1723A3ED007F8211 /* Supporting Files */,
-				D1FA2B1A1723B91F007F8211 /* TestTile.h */,
-				D1FA2B1B1723B91F007F8211 /* TestTile.m */,
-				D1FA2B1F1723C0D0007F8211 /* TestTilesLayer.h */,
-				D1FA2B201723C0D0007F8211 /* TestTilesLayer.m */,
-			);
-			name = minosoundLogicTests;
-			path = SmartLabyrinthLogicTests;
-			sourceTree = "<group>";
-		};
-		D1FA2B0E1723A3ED007F8211 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D1FA2B0F1723A3ED007F8211 /* minosoundLogicTests-Info.plist */,
-				D1FA2B101723A3ED007F8211 /* InfoPlist.strings */,
-				D1FA2B161723A3ED007F8211 /* minosoundLogicTests-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1021,24 +967,6 @@
 			productName = ShortestLabyrinth;
 			productReference = D146916F1709F277005968FC /* minosound.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D1FA2B071723A3EC007F8211 /* minosoundLogicTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D1FA2B191723A3ED007F8211 /* Build configuration list for PBXNativeTarget "minosoundLogicTests" */;
-			buildPhases = (
-				D1FA2B031723A3EC007F8211 /* Sources */,
-				D1FA2B041723A3EC007F8211 /* Frameworks */,
-				D1FA2B051723A3EC007F8211 /* Resources */,
-				D1FA2B061723A3EC007F8211 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = minosoundLogicTests;
-			productName = SmartLabyrinthLogicTests;
-			productReference = D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */;
-			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -1062,7 +990,6 @@
 			projectRoot = "";
 			targets = (
 				D146916E1709F277005968FC /* minosound */,
-				D1FA2B071723A3EC007F8211 /* minosoundLogicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1102,31 +1029,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1FA2B051723A3EC007F8211 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1FA2B121723A3ED007F8211 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D1FA2B061723A3EC007F8211 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D146916B1709F277005968FC /* Sources */ = {
@@ -1253,28 +1156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1FA2B031723A3EC007F8211 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1FA2B151723A3ED007F8211 /* minosoundLogicTests.m in Sources */,
-				D1FA2B1C1723B91F007F8211 /* TestTile.m in Sources */,
-				D1FA2B211723C0D0007F8211 /* TestTilesLayer.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D1FA2B101723A3ED007F8211 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1FA2B111723A3ED007F8211 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D146931B1709F27B005968FC /* Debug */ = {
@@ -1293,8 +1175,8 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PROVISIONING_PROFILE = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "FED70E94-1BA8-4582-9E06-AD34544C871B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1315,7 +1197,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -1351,7 +1233,53 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yuta Mizushima (64CA57XCY2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ShortestLabyrinth/Prefix.pch;
+				HEADER_SEARCH_PATHS = "\"ShortestLabyrinth/libs/kazmath/include\"";
+				INFOPLIST_FILE = ShortestLabyrinth/Resources/Info.plist;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lsqlite3",
+					"-ObjC",
+				);
+				PRODUCT_NAME = minosound;
+				PROVISIONING_PROFILE = "FED70E94-1BA8-4582-9E06-AD34544C871B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D16B8AD31737170C00A24365 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yuta Mizushima (64CA57XCY2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NDEBUG,
+					"NS_BLOCK_ASSERTIONS=1",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Distribution;
+		};
+		D16B8AD41737170C00A24365 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1369,70 +1297,7 @@
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
-			name = Release;
-		};
-		D1FA2B171723A3ED007F8211 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmartLabyrinthLogicTests/minosoundLogicTests-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				HEADER_SEARCH_PATHS = "\"ShortestLabyrinth/libs/kazmath/include\"";
-				INFOPLIST_FILE = "SmartLabyrinthLogicTests/minosoundLogicTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = minosoundLogicTests;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		D1FA2B181723A3ED007F8211 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmartLabyrinthLogicTests/minosoundLogicTests-Prefix.pch";
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				HEADER_SEARCH_PATHS = "\"ShortestLabyrinth/libs/kazmath/include\"";
-				INFOPLIST_FILE = "SmartLabyrinthLogicTests/minosoundLogicTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = minosoundLogicTests;
-				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
+			name = Distribution;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1442,6 +1307,7 @@
 			buildConfigurations = (
 				D146931B1709F27B005968FC /* Debug */,
 				D146931C1709F27B005968FC /* Release */,
+				D16B8AD31737170C00A24365 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1451,15 +1317,7 @@
 			buildConfigurations = (
 				D146931E1709F27B005968FC /* Debug */,
 				D146931F1709F27B005968FC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D1FA2B191723A3ED007F8211 /* Build configuration list for PBXNativeTarget "minosoundLogicTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D1FA2B171723A3ED007F8211 /* Debug */,
-				D1FA2B181723A3ED007F8211 /* Release */,
+				D16B8AD41737170C00A24365 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
