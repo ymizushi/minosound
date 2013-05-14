@@ -1,8 +1,6 @@
 minosound
 ================================
 
-This repository is under construction.
-
 ## Requirements
 - Xcode.
 - LLVM.
@@ -22,11 +20,11 @@ This repository is under construction.
 - なぞると探索済みマークをつける
 - タイマー
 - スタート・ゴール
-- レベル機能
 - 最短経路で耳障りの良い音を自動生成してならす
 
 # 未実装
 - オンラインでランキング
+- レベル機能
 - インターフェースとかも格好いい感じにする
 
 # 注意事項
