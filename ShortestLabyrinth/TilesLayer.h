@@ -16,11 +16,11 @@
 
 #import "SimpleFM.h"
 
-#define ROW 14
-#define COLUMN 14
-#define CELL_WIDTH 20
-#define CELL_HEIGHT 20
-#define OFFSET_X  160
+#define ROW 10
+#define COLUMN 10
+#define CELL_WIDTH 28
+#define CELL_HEIGHT 28
+#define OFFSET_X  30
 #define OFFSET_Y  30
 
 // TilesLayer

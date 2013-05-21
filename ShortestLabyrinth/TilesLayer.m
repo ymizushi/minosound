@@ -190,9 +190,16 @@
 
         [self setButton1];
         [self gameStart];
+        UIDevice* currentDevice = [UIDevice currentDevice];
+        NSString* model = [currentDevice model];
+        NSLog(@"%@",model);
 
         self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.01f",10.0f] fontName:@"Marker Felt" fontSize:36];
-        self.timerLabel.position = CGPointMake(110, 270);
+
+        CGSize size = [[CCDirector sharedDirector] winSize];
+
+
+        self.timerLabel.position = CGPointMake(size.width-20, 20);
         [self addChild:self.timerLabel];
 
 //        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
@@ -259,10 +266,17 @@
     return [[CCDirector sharedDirector] convertToGL:location];
 }
 
+-(CGPoint)getOffsetPoint{
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    return CGPointMake((float)size.width/2-size.width/3, (float)20);
+}
+
 -(BOOL)setMarkNearTileX:(NSInteger)x Y:(NSInteger) y {
+    CGSize size = [[CCDirector sharedDirector] winSize];
+
     for(Tile* tile in self.tileArray){
-        float tile_x = (float)tile.x*CELL_WIDTH+OFFSET_X;
-        float tile_y = (float)tile.y*CELL_HEIGHT+OFFSET_Y;
+        float tile_x = (float)tile.x*CELL_WIDTH + OFFSET_X;
+        float tile_y = (float)tile.y*CELL_HEIGHT+ OFFSET_Y;
         if(tile_x - CELL_WIDTH <= x && x <= tile_x+CELL_WIDTH && tile_y - CELL_HEIGHT <= y && y <= tile_y+CELL_HEIGHT && tile.beforeTile.isMarked){
             if((!tile.isMarked) && tile.freq > 0){
                 [self.simpleFM setCarrierFreq:tile.freq];
@@ -358,10 +372,11 @@
     self.color += 0.01;
 
     if(self.tileArray){
+        CGSize size = [[CCDirector sharedDirector] winSize];
         for(Tile* tile in self.tileArray){
             if(tile){
                 CGPoint p1,p2;
-                p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+OFFSET_X,(float)tile.beforeTile.y*CELL_HEIGHT+OFFSET_Y);
+                p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+OFFSET_X, (float)tile.beforeTile.y*CELL_HEIGHT+OFFSET_Y);
                 p2=CGPointMake((float)tile.x*CELL_WIDTH+OFFSET_X, (float)tile.y*CELL_HEIGHT+OFFSET_Y);
                 if(tile.isShortcut){
                     ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
