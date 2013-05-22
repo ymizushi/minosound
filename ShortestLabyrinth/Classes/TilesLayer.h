@@ -18,7 +18,7 @@
 
 #define ROW    14
 #define COLUMN 14
-#define CELL_WIDTH 20
+#define CELL_WIDTH  20
 #define CELL_HEIGHT 20
 #define OFFSET_X  160
 #define OFFSET_Y  30
@@ -41,6 +41,7 @@
 
     NSInteger playPathIndex;
 }
+
 @property (nonatomic, retain) NSMutableArray *tileArray;
 @property (nonatomic, retain) NSMutableArray *pathStack;
 @property (nonatomic, retain) CCLabelTTF *timerLabel;

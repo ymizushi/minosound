@@ -75,7 +75,9 @@
         [self setButton1];
         [self gameStart];
         
-        self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.01f",10.0f] fontName:@"Marker Felt" fontSize:36];
+        self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.01f",10.0f]
+                                             fontName:@"Marker Felt"
+                                             fontSize:36];
         self.timerLabel.position = CGPointMake(110, 270);
         [self addChild:self.timerLabel];
         
@@ -125,6 +127,7 @@
     tile.isShortcut = YES;
     tile.isMarked = YES;
     tile.freq = 0;
+    
     [self scan:tile];
     [self setPathFreq:self.tileArray[ROW*COLUMN-1]];
 }
@@ -184,6 +187,26 @@
     }
 }
 
+#pragma mark - scan
+
+- (void)scan:(Tile *)tile
+{
+    NSInteger count = 0;
+    for(int i=0;i<[self.tileArray count];i++){
+        Tile* tile = self.tileArray[i];
+        if(tile.isSearched){
+            count++;
+        }
+    }
+    
+    if(count >= ROW*COLUMN){
+        return;
+    }
+    else {
+        return [self scan:[self choiceTile:tile]];
+    }
+}
+
 #pragma mark - Set Path
 
 -(void)setPathFreq:(Tile*)tile
@@ -219,6 +242,8 @@
     }
     return self.tileArray[y*ROW + x];
 }
+
+#pragma mark -
 
 -(BOOL) checkX:(NSInteger)x Y:(NSInteger)y{
     if(x<0 || y<0){
@@ -270,21 +295,6 @@
     return [self choiceTile:tile.beforeTile];
 }
 
--(void) scan:(Tile*)tile{
-    NSInteger count = 0;
-    for(int i=0;i<[self.tileArray count];i++){
-        Tile* tile = self.tileArray[i];
-        if(tile.isSearched){
-            count++;
-        }
-    }
-    if(count >= ROW*COLUMN){
-        return;
-    }else{
-        return [self scan:[self choiceTile:tile]];
-    }
-}
-
 - (void)updateTimer{
     self.timer += 0.1;
     [self.timerLabel setString:[NSString stringWithFormat:@"%.01f",self.timer]];
@@ -307,8 +317,9 @@
     return;
 }
 
-- (void) nextFrame:(ccTime)dt {
-    for(CCSprite* sprite in self.tileArray){
+- (void) nextFrame:(ccTime)dt
+{
+    for (CCSprite* sprite in self.tileArray) {
         sprite.position = ccp( sprite.position.x + 100*dt, sprite.position.y );
         if (sprite.position.x > 480+32) {
             sprite.position = ccp( -32, sprite.position.y );
