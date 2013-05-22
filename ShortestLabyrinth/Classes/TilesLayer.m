@@ -127,16 +127,22 @@
 
 -(void)setButton1
 {
-    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen.png" selectedImage:@"gen_disabled.png" target:self selector:@selector(genButtonPush:)];
-    item1.tag=11;
+    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen.png"
+                                                selectedImage:@"gen_disabled.png"
+                                                       target:self
+                                                     selector:@selector(genButtonPush:)];
+    item1.tag = 11;
     
-    CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"music.png" selectedImage:@"music_disabled.png" target:self selector:@selector(enableMusic:)];
-    item2.tag=21;
+    CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"music.png"
+                                                selectedImage:@"music_disabled.png"
+                                                       target:self
+                                                     selector:@selector(enableMusic:)];
+    item2.tag = 21;
     
     CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
     [menu alignItemsVerticallyWithPadding:10];
     CGSize size = [[CCDirector sharedDirector] winSize];
-    [menu setPosition:ccp(size.width/2+size.width/3, size.height/2)];
+    [menu setPosition:ccp(size.width/2+size.width/3 -320, size.height/2)];
     [self addChild:menu];
 }
 
