@@ -30,7 +30,9 @@
     NSMutableArray *pathStack;
     CCLabelTTF *timerLabel;
     CCLabelTTF *levelLabel;
-    float timer;
+    CCLabelTTF *startLabel;
+    CCLabelTTF *endLabel;
+    int timer;
     float color;
     float diff;
     NSInteger level;
@@ -46,7 +48,9 @@
 @property (nonatomic, retain) NSMutableArray *pathStack;
 @property (nonatomic, retain) CCLabelTTF *timerLabel;
 @property (nonatomic, retain) CCLabelTTF *levelLabel;
-@property (nonatomic) float timer;
+@property (nonatomic, retain) CCLabelTTF *startLabel;
+@property (nonatomic, retain) CCLabelTTF *endLabel;
+@property (nonatomic) int timer;
 @property (nonatomic) NSInteger level;
 @property (nonatomic) float color;
 @property (nonatomic) float diff;

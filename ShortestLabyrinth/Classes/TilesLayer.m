@@ -74,12 +74,34 @@
         
         [self setButton1];
         [self gameStart];
-        
-        self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.01f",10.0f]
+        CGSize size = [[CCDirector sharedDirector] winSize];
+
+        self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"0"]
                                              fontName:@"Marker Felt"
                                              fontSize:36];
         self.timerLabel.position = CGPointMake(110, 270);
+
+
+        self.startLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"S"]
+                                             fontName:@"Marker Felt"
+                                             fontSize:36];
+        self.startLabel.position = CGPointMake(130, 40);
+
+        self.endLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"E"]
+                                             fontName:@"Marker Felt"
+                                             fontSize:36];
+        self.endLabel.position = CGPointMake(size.width -30, size.height -30);
+
+        if (size.width == 568) {
+            // iPhone 5
+            self.endLabel.position = CGPointMake(size.width -120, size.height -30);
+        }
+
         [self addChild:self.timerLabel];
+        [self addChild:self.startLabel];
+        [self addChild:self.endLabel];
+
+
         
         //        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
         //        self.levelLabel.position = CGPointMake(90, 200);
@@ -109,7 +131,7 @@
 
 - (void)initTiles
 {
-    self.timer = 0.0;
+    self.timer = 0;
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
             Tile* tile = [self getTileByX:x Y:y];
@@ -163,9 +185,9 @@
 
 - (void)gameStart{
     // タイマーの初期化
-    self.timer = 0.0;
+    self.timer = 0;
     // ｓタイマーを0.1秒間隔で回す
-    [self schedule:@selector(updateTimer) interval:0.1];
+    [self schedule:@selector(updateTimer) interval:1];
 }
 
 #pragma mark - Push
@@ -173,7 +195,7 @@
 - (void)genButtonPush: (id) sender
 {
     [self initTiles];
-    [self schedule:@selector(updateTimer) interval:0.1];
+    [self schedule:@selector(updateTimer) interval:1];
 }
 
 - (void)enableMusic:(id)sender
@@ -296,8 +318,8 @@
 }
 
 - (void)updateTimer{
-    self.timer += 0.1;
-    [self.timerLabel setString:[NSString stringWithFormat:@"%.01f",self.timer]];
+    [self.timerLabel setString:[NSString stringWithFormat:@"%ds",self.timer]];
+    self.timer += 1;
 }
 
 - (void)updatePathSound{
