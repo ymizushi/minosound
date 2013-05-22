@@ -142,7 +142,15 @@
     CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
     [menu alignItemsVerticallyWithPadding:10];
     CGSize size = [[CCDirector sharedDirector] winSize];
-    [menu setPosition:ccp(size.width/2+size.width/3 -320, size.height/2)];
+    
+    NSInteger intPos = 320;
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    if (winSize.width == 568) {
+        // iPhone 5
+        intPos = 320+88;
+    }
+    
+    [menu setPosition:ccp(size.width/2+size.width/3 -intPos, size.height/2)];
     [self addChild:menu];
 }
 
