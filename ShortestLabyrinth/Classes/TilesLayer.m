@@ -29,8 +29,9 @@
 @synthesize color;
 @synthesize enableSound;
 @synthesize playPathIndex;
+
 // Helper class method that creates a Scene with the TilesLayer as the only child.
-+(CCScene *) scene
++ (CCScene *)scene
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
@@ -46,7 +47,53 @@
 	return scene;
 }
 
--(void) genTiles{
+- (id)init
+{
+	// always call "super" init
+	// Apple recommends to re-assign "self" with the "super's" return value
+    
+	if( (self=[super init]) ) {
+        self.scaleMap = @{
+                          @"A2"  :[NSNumber numberWithDouble:440.0f],
+                          //                          @"AS2" :[NSNumber numberWithDouble:466.163762f],
+                          @"B2"  :[NSNumber numberWithDouble:493.883301f],
+                          @"C2"  :[NSNumber numberWithDouble:523.251131f],
+                          //                          @"CS2" :[NSNumber numberWithDouble:554.365262f],
+                          @"D2"  :[NSNumber numberWithDouble:587.329536f],
+                          //                          @"DS2" :[NSNumber numberWithDouble:622.253967f],
+                          @"E2"  :[NSNumber numberWithDouble:659.255114f],
+                          @"F2"  :[NSNumber numberWithDouble:698.456463f],
+                          //                          @"FS2" :[NSNumber numberWithDouble:739.988845f],
+                          @"G2"  :[NSNumber numberWithDouble:783.990872f],
+                          //                          @"GS2" :[NSNumber numberWithDouble:830.609395f],
+                          };
+        self.touchEnabled = YES;
+        [self genTiles];
+        
+        [self initTiles];
+        
+        [self setButton1];
+        [self gameStart];
+        
+        self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.01f",10.0f] fontName:@"Marker Felt" fontSize:36];
+        self.timerLabel.position = CGPointMake(110, 270);
+        [self addChild:self.timerLabel];
+        
+        //        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
+        //        self.levelLabel.position = CGPointMake(90, 200);
+        //        [self addChild:self.levelLabel];
+        
+        self.simpleFM = [[SimpleFM alloc]init];
+        self.diff = 0.01;
+        
+	}
+	return self;
+}
+
+#pragma mark - init
+
+- (void)genTiles
+{
     self.tileArray = [NSMutableArray array];
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
@@ -78,6 +125,29 @@
     [self setPathFreq:self.tileArray[ROW*COLUMN-1]];
 }
 
+-(void)setButton1
+{
+    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen.png" selectedImage:@"gen_disabled.png" target:self selector:@selector(genButtonPush:)];
+    item1.tag=11;
+    
+    CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"music.png" selectedImage:@"music_disabled.png" target:self selector:@selector(enableMusic:)];
+    item2.tag=21;
+    
+    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
+    [menu alignItemsVerticallyWithPadding:10];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [menu setPosition:ccp(size.width/2+size.width/3, size.height/2)];
+    [self addChild:menu];
+}
+
+- (void)gameStart{
+    // タイマーの初期化
+    self.timer = 0.0;
+    // ｓタイマーを0.1秒間隔で回す
+    [self schedule:@selector(updateTimer) interval:0.1];
+}
+
+#pragma mark -
 
 -(Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y{
     if(x<0 || y <0 ){
@@ -159,58 +229,6 @@
     tile.x = x;
     tile.y = y;
     [self.tileArray addObject:tile];
-}
-
-
-// on "init" you need to initialize your instance
--(id) init
-{
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super's" return value
-
-	if( (self=[super init]) ) {
-        self.scaleMap = @{
-                          @"A2"  :[NSNumber numberWithDouble:440.0f],
-//                          @"AS2" :[NSNumber numberWithDouble:466.163762f],
-                          @"B2"  :[NSNumber numberWithDouble:493.883301f],
-                          @"C2"  :[NSNumber numberWithDouble:523.251131f],
-//                          @"CS2" :[NSNumber numberWithDouble:554.365262f],
-                          @"D2"  :[NSNumber numberWithDouble:587.329536f],
-//                          @"DS2" :[NSNumber numberWithDouble:622.253967f],
-                          @"E2"  :[NSNumber numberWithDouble:659.255114f],
-                          @"F2"  :[NSNumber numberWithDouble:698.456463f],
-//                          @"FS2" :[NSNumber numberWithDouble:739.988845f],
-                          @"G2"  :[NSNumber numberWithDouble:783.990872f],
-//                          @"GS2" :[NSNumber numberWithDouble:830.609395f],
-                          };
-        self.touchEnabled = YES;
-        [self genTiles];
-
-        [self initTiles];
-
-        [self setButton1];
-        [self gameStart];
-
-        self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.01f",10.0f] fontName:@"Marker Felt" fontSize:36];
-        self.timerLabel.position = CGPointMake(110, 270);
-        [self addChild:self.timerLabel];
-
-//        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
-//        self.levelLabel.position = CGPointMake(90, 200);
-//        [self addChild:self.levelLabel];
-
-        self.simpleFM = [[SimpleFM alloc]init];
-        self.diff = 0.01;
-
-	}
-	return self;
-}
-
-- (void)gameStart{
-    // タイマーの初期化
-    self.timer = 0.0;
-    // ｓタイマーを0.1秒間隔で回す
-    [self schedule:@selector(updateTimer) interval:0.1];
 }
 
 - (void)updateTimer{
@@ -375,20 +393,6 @@
             }
         }
     }
-}
-
--(void)setButton1{
-    CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen.png" selectedImage:@"gen_disabled.png" target:self selector:@selector(genButtonPush:)];
-    item1.tag=11;
-
-    CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"music.png" selectedImage:@"music_disabled.png" target:self selector:@selector(enableMusic:)];
-    item2.tag=21;
-
-    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
-    [menu alignItemsVerticallyWithPadding:10];
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    [menu setPosition:ccp(size.width/2+size.width/3, size.height/2)];
-    [self addChild:menu];
 }
 
 -(void) genButtonPush: (id) sender
