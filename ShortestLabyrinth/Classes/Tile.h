@@ -6,7 +6,6 @@
 //  Copyright (c) 2013年 水島 雄太. All rights reserved.
 //
 
-
 @interface Tile :NSObject
 {
     Tile* beforeTile;
@@ -17,6 +16,7 @@
     NSInteger y;
     double freq;
 }
+
 @property (nonatomic, retain)Tile* beforeTile;
 @property (nonatomic)BOOL isSearched;
 @property (nonatomic)BOOL isShortcut;

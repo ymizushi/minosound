@@ -97,12 +97,16 @@
     self.tileArray = [NSMutableArray array];
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
-            [self initTileSize:CELL_WIDTH :CELL_HEIGHT X:x Y:y];
+            [self initTileSize:CELL_WIDTH
+                        height:CELL_HEIGHT
+                             X:x
+                             Y:y];
         }
     }
 }
 
--(void) initTiles{
+- (void)initTiles
+{
     self.timer = 0.0;
     for(int y=0;y<COLUMN;y++){
         for(int x=0;x<ROW;x++){
@@ -161,9 +165,52 @@
     [self schedule:@selector(updateTimer) interval:0.1];
 }
 
+#pragma mark - Push
+
+- (void)genButtonPush: (id) sender
+{
+    [self initTiles];
+    [self schedule:@selector(updateTimer) interval:0.1];
+}
+
+- (void)enableMusic:(id)sender
+{
+    self.enableSound = !self.enableSound;
+    SimpleAudioEngine* ae = [SimpleAudioEngine sharedEngine];
+    if(self.enableSound){
+        [ae playBackgroundMusic:@"music.mp3" loop:YES];
+    }else{
+        [ae stopBackgroundMusic];
+    }
+}
+
+#pragma mark - Set Path
+
+-(void)setPathFreq:(Tile*)tile
+{
+    if(tile.beforeTile){
+        tile.freq = [self getRandomFreq];
+        return [self setPathFreq:tile.beforeTile];
+    }else{
+        return;
+    }
+}
+
 #pragma mark -
 
--(Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y{
+- (void)initTileSize:(NSInteger)width
+              height:(NSInteger)height
+                   X:(NSInteger)x
+                   Y:(NSInteger)y
+{
+    Tile *tile = [[Tile alloc] init];
+    tile.x = x;
+    tile.y = y;
+    [self.tileArray addObject:tile];
+}
+
+-(Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y
+{
     if(x<0 || y <0 ){
         return nil;
     }
@@ -236,13 +283,6 @@
     }else{
         return [self scan:[self choiceTile:tile]];
     }
-}
-
--(void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y{
-    Tile *tile = [[Tile alloc] init];
-    tile.x = x;
-    tile.y = y;
-    [self.tileArray addObject:tile];
 }
 
 - (void)updateTimer{
@@ -367,15 +407,6 @@
     return [[scaleArray objectAtIndex:index] doubleValue];
 }
 
--(void)setPathFreq:(Tile*)tile{
-    if(tile.beforeTile){
-        tile.freq = [self getRandomFreq];
-        return [self setPathFreq:tile.beforeTile];
-    }else{
-        return;
-    }
-}
-
 -(void)playPathFreq:(NSInteger)index{
     if(index >= [self.pathStack count]){
         return;
@@ -409,23 +440,6 @@
     }
 }
 
--(void) genButtonPush: (id) sender
-{
-    [self initTiles];
-    [self schedule:@selector(updateTimer) interval:0.1];
-}
-
--(void) enableMusic: (id) sender
-{
-    self.enableSound = !self.enableSound;
-    SimpleAudioEngine* ae = [SimpleAudioEngine sharedEngine];
-    if(self.enableSound){
-        [ae playBackgroundMusic:@"music.mp3" loop:YES];
-    }else{
-        [ae stopBackgroundMusic];
-    }
-}
-
 //-(void) levelUpButtonPush: (id) sender
 //{
 //    [self genTiles];
@@ -435,4 +449,5 @@
 //    [self.levelLabel setString: [NSString stringWithFormat:@"%@",str]];
 //    [self schedule:@selector(updateTimer) interval:0.1];
 //}
+
 @end

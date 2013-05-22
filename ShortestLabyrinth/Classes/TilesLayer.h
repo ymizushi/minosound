@@ -16,7 +16,7 @@
 
 #import "SimpleFM.h"
 
-#define ROW 14
+#define ROW    14
 #define COLUMN 14
 #define CELL_WIDTH 20
 #define CELL_HEIGHT 20
