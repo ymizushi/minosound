@@ -444,7 +444,18 @@
                 }else{
                     ccDrawColor4F(0.0f, 0.0f, 0.5f, 1.0f);
                 }
-                glLineWidth(CELL_WIDTH);
+                
+                
+                if ([UIScreen mainScreen].scale == 2) {
+                    // retina
+                    glLineWidth(CELL_WIDTH);
+                }
+                else {
+                    glLineWidth(CELL_WIDTH/2);
+                }
+                
+                
+                
                 ccDrawLine(p1, p2);
             }
         }
