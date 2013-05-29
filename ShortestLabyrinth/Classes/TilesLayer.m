@@ -101,8 +101,6 @@
         [self addChild:self.startLabel];
         [self addChild:self.endLabel];
 
-
-        
         //        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
         //        self.levelLabel.position = CGPointMake(90, 200);
         //        [self addChild:self.levelLabel];
@@ -310,6 +308,9 @@
     if([tiles count] > 0){
         int index = [self randomGet:tiles];
         Tile* choice = tiles[index];
+        if(choice.x == (ROW-1) && choice.y == (COLUMN-1) && ([tiles count] > 1)){
+            return [self choiceTile:tile];
+        }
         choice.beforeTile = tile;
         choice.isSearched = YES;
         return choice;
@@ -466,8 +467,6 @@
                 }else{
                     ccDrawColor4F(0.0f, 0.0f, 0.5f, 1.0f);
                 }
-                
-                
                 if ([UIScreen mainScreen].scale == 2) {
                     // retina
                     glLineWidth(CELL_WIDTH);
@@ -475,9 +474,6 @@
                 else {
                     glLineWidth(CELL_WIDTH/2);
                 }
-                
-                
-                
                 ccDrawLine(p1, p2);
             }
         }
