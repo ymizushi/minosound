@@ -536,13 +536,13 @@
 				D131F31B17C0E35D00C35F3A /* Repository */,
 				D131F31417C0D90700C35F3A /* Model */,
 				D131F30C17C0D43400C35F3A /* Api */,
-				AA510361174CF3ED008FAAFF /* AppDelegate.h */,
-				AA510362174CF3ED008FAAFF /* AppDelegate.m */,
 				AA51037D174CF467008FAAFF /* IntroLayer */,
 				AA510380174CF49E008FAAFF /* TilesLayer */,
 				AA51037C174CF450008FAAFF /* SimpleFM */,
 				AA51037F174CF49C008FAAFF /* iPhoneCoreAudio */,
 				AA51037E174CF499008FAAFF /* Envelope */,
+				AA510361174CF3ED008FAAFF /* AppDelegate.h */,
+				AA510362174CF3ED008FAAFF /* AppDelegate.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
