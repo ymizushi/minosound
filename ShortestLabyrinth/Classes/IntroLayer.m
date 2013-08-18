@@ -18,8 +18,7 @@
 @implementation IntroLayer
 
 // Helper class method that creates a Scene with the TilesLayer as the only child.
-+(CCScene *) scene
-{
++ (CCScene *) scene {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
@@ -32,11 +31,10 @@
 	// return the scene
 	return scene;
 }
+
 @synthesize enabledSound;
 
-// 
--(id) init
-{
+- (id) init {
 	if( (self=[super init])) {
 
 		// ask director for the window size
@@ -67,13 +65,11 @@
 	return self;
 }
 
--(void) moveToNextTransision: (id) sender
-{
+- (void) moveToNextTransision: (id) sender {
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TilesLayer scene] ]];
 }
 
--(void) onEnter
-{
+- (void) onEnter {
 	[super onEnter];
 }
 

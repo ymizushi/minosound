@@ -6,8 +6,7 @@
 //  Copyright (c) 2013年 水島 雄太. All rights reserved.
 //
 
-@interface Tile : NSObject
-{
+@interface Tile : NSObject {
     Tile* beforeTile;
     BOOL isSearched;
     BOOL isShortcut;

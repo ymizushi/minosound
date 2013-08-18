@@ -27,26 +27,21 @@
 #define OFFSET_Y  30
 
 // TilesLayer
-@interface TilesLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
-{
+@interface TilesLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate> {
     NSMutableArray *tileArray;
     NSMutableArray *pathStack;
     CCLabelTTF *timerLabel;
     CCLabelTTF *startLabel;
     CCLabelTTF *endLabel;
-    
     CCLabelTTF *levelLabel;
     CCLabelTTF *clearCountLabel;
-    
     int timer;
     float color;
     float diff;
     NSInteger level;
-
     SimpleFM* simpleFM;
     NSDictionary *scaleMap;
     BOOL enableSound;
-
     NSInteger playPathIndex;
 }
 
@@ -55,10 +50,8 @@
 @property (nonatomic, retain) CCLabelTTF *timerLabel;
 @property (nonatomic, retain) CCLabelTTF *startLabel;
 @property (nonatomic, retain) CCLabelTTF *endLabel;
-
 @property (nonatomic, retain) CCLabelTTF *levelLabel;
 @property (nonatomic, retain) CCLabelTTF *clearCountLabel;
-
 @property (nonatomic) int timer;
 @property (nonatomic) NSInteger level;
 @property (nonatomic) float color;
@@ -68,18 +61,19 @@
 @property (nonatomic) BOOL enableSound;
 @property (nonatomic) NSInteger playPathIndex;
 
-+(CCScene *) scene;
--(void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;
--(void) initTiles;
--(void) genTiles;
--(Tile*) getTileByX:(NSInteger)x Y:(NSInteger)y;
--(BOOL) checkX:(NSInteger)x Y:(NSInteger)y;
--(NSMutableArray*) surroundTiles:(Tile *)currentTile;
--(Tile*) choiceTile:(Tile *)currentTile;
--(NSInteger) randomGet:(NSMutableArray *)array;
--(void) scan:(Tile*)tile;
--(void) draw:(NSMutableArray*)tileArray;
--(void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile;
--(NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack;
--(void)setButton1;
++ (CCScene *) scene;
+- (void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;
+- (void) initTiles;
+- (void) genTiles;
+- (Tile*) getTileByX:(NSInteger)x Y:(NSInteger)y;
+- (BOOL) checkX:(NSInteger)x Y:(NSInteger)y;
+- (NSMutableArray*) surroundTiles:(Tile *)currentTile;
+- (Tile*) choiceTile:(Tile *)currentTile;
+- (NSInteger) randomGet:(NSMutableArray *)array;
+- (void) scan:(Tile*)tile;
+- (void) draw:(NSMutableArray*)tileArray;
+- (void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile;
+- (NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack;
+- (void)setButton1;
+
 @end

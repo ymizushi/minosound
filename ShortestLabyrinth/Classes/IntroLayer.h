@@ -11,8 +11,7 @@
 #import "cocos2d.h"
 
 // TilesLayer
-@interface IntroLayer : CCLayer
-{
+@interface IntroLayer : CCLayer {
     BOOL enabledSound;
 }
 @property (nonatomic)BOOL enabledSound;

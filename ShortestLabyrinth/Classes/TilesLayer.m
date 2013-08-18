@@ -6,7 +6,6 @@
 //  Copyright 水島 雄太 2013年. All rights reserved.
 //
 
-
 // Import the interfaces
 #import "TilesLayer.h"
 
@@ -17,22 +16,26 @@
 #import "SimpleAudioEngine.h"
 
 #pragma mark - TilesLayer
-
 // TilesLayer implementation
 @implementation TilesLayer
 @synthesize tileArray;
 @synthesize pathStack;
 @synthesize timerLabel;
+@synthesize startLabel;
 @synthesize levelLabel;
 @synthesize timer;
 @synthesize level;
 @synthesize color;
 @synthesize enableSound;
 @synthesize playPathIndex;
+@synthesize scaleMap;
+@synthesize endLabel;
+@synthesize diff;
+@synthesize simpleFM;
+@synthesize clearCountLabel;
 
 // Helper class method that creates a Scene with the TilesLayer as the only child.
-+ (CCScene *)scene
-{
++ (CCScene *)scene {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
@@ -47,8 +50,7 @@
 	return scene;
 }
 
-- (id)init
-{
+- (id)init {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
     
@@ -113,31 +115,25 @@
         
         self.simpleFM = [[SimpleFM alloc]init];
         self.diff = 0.01;
-        
 	}
 	return self;
 }
 
 #pragma mark - init
 
-- (void)genTiles
-{
+- (void)genTiles {
     self.tileArray = [NSMutableArray array];
-    for(int y=0;y<COLUMN;y++){
-        for(int x=0;x<ROW;x++){
-            [self initTileSize:CELL_WIDTH
-                        height:CELL_HEIGHT
-                             X:x
-                             Y:y];
+    for(int y=0;y<COLUMN;y++) {
+        for(int x=0;x<ROW;x++) {
+            [self initTileSize:CELL_WIDTH height:CELL_HEIGHT X:x Y:y];
         }
     }
 }
 
-- (void)initTiles
-{
+- (void)initTiles {
     self.timer = 0;
-    for(int y=0;y<COLUMN;y++){
-        for(int x=0;x<ROW;x++){
+    for(int y=0;y<COLUMN;y++) {
+        for(int x=0;x<ROW;x++) {
             Tile* tile = [self getTileByX:x Y:y];
             tile.beforeTile = nil;
             tile.isSearched = NO;
@@ -158,8 +154,7 @@
     [self setPathFreq:self.tileArray[ROW*COLUMN-1]];
 }
 
--(void)setButton1
-{
+- (void)setButton1 {
     CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"gen.png"
                                                 selectedImage:@"gen_disabled.png"
                                                        target:self
@@ -187,7 +182,7 @@
     [self addChild:menu];
 }
 
-- (void)gameStart{
+- (void)gameStart {
     // タイマーの初期化
     self.timer = 0;
     // ｓタイマーを0.1秒間隔で回す
@@ -195,9 +190,7 @@
 }
 
 #pragma mark - Push
-
-- (void)genButtonPush: (id) sender
-{
+- (void)genButtonPush: (id) sender {
     [self initTiles];
     [self schedule:@selector(updateTimer) interval:1];
     
@@ -205,8 +198,7 @@
     [user debugLog];
 }
 
-- (void)enableMusic:(id)sender
-{
+- (void)enableMusic:(id)sender {
     self.enableSound = !self.enableSound;
     SimpleAudioEngine* ae = [SimpleAudioEngine sharedEngine];
     if(self.enableSound){
@@ -217,18 +209,16 @@
 }
 
 #pragma mark - scan
-
-- (void)scan:(Tile *)tile
-{
+- (void)scan:(Tile *)tile {
     NSInteger count = 0;
-    for(int i=0;i<[self.tileArray count];i++){
+    for(int i=0;i<[self.tileArray count];i++) {
         Tile* tile = self.tileArray[i];
         if(tile.isSearched){
             count++;
         }
     }
     
-    if(count >= ROW*COLUMN){
+    if(count >= ROW*COLUMN) {
         return;
     }
     else {
@@ -237,44 +227,38 @@
 }
 
 #pragma mark - Set Path
-
--(void)setPathFreq:(Tile*)tile
-{
-    if(tile.beforeTile){
+- (void)setPathFreq:(Tile*)tile {
+    if(tile.beforeTile) {
         tile.freq = [self getRandomFreq];
         return [self setPathFreq:tile.beforeTile];
-    }else{
+    } else {
         return;
     }
 }
 
 #pragma mark -
-
 - (void)initTileSize:(NSInteger)width
               height:(NSInteger)height
                    X:(NSInteger)x
-                   Y:(NSInteger)y
-{
+                   Y:(NSInteger)y {
     Tile *tile = [[Tile alloc] init];
     tile.x = x;
     tile.y = y;
     [self.tileArray addObject:tile];
 }
 
--(Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y
-{
-    if(x<0 || y <0 ){
+- (Tile*)getTileByX:(NSInteger)x Y:(NSInteger)y {
+    if(x<0 || y <0 ) {
         return nil;
     }
-    if(x>= ROW || y >= COLUMN){
+    if(x>= ROW || y >= COLUMN) {
         return nil;
     }
     return self.tileArray[y*ROW + x];
 }
 
 #pragma mark -
-
--(BOOL) checkX:(NSInteger)x Y:(NSInteger)y{
+- (BOOL) checkX:(NSInteger)x Y:(NSInteger)y {
     if(x<0 || y<0){
         return NO;
     }
@@ -288,36 +272,36 @@
     return YES;
 }
 
--(NSMutableArray*)surroundTiles:(Tile *)tile{
+- (NSMutableArray*)surroundTiles:(Tile *)tile {
     NSMutableArray* mArray = [NSMutableArray array];
-    if([self checkX:tile.x Y:tile.y-1]){
+    if([self checkX:tile.x Y:tile.y-1]) {
         [mArray addObject:[self getTileByX:tile.x Y:tile.y-1]];
     }
-    if([self checkX:tile.x+1 Y:tile.y]){
+    if([self checkX:tile.x+1 Y:tile.y]) {
         [mArray addObject:[self getTileByX:tile.x+1 Y:tile.y]];
     }
-    if([self checkX:tile.x Y:tile.y+1]){
+    if([self checkX:tile.x Y:tile.y+1]) {
         [mArray addObject:[self getTileByX:tile.x Y:tile.y+1]];
     }
-    if([self checkX:tile.x-1 Y:tile.y]){
+    if([self checkX:tile.x-1 Y:tile.y]) {
         [mArray addObject:[self getTileByX:tile.x-1 Y:tile.y]];
     }
     return mArray;
 }
 
--(NSInteger)randomGet:(NSMutableArray*)array{
-    if(array ==nil || [array count] == 0){
+- (NSInteger)randomGet:(NSMutableArray*)array {
+    if(array ==nil || [array count] == 0) {
         return -1;
     }
     return arc4random() % [array count];
 }
 
--(Tile*)choiceTile:(Tile *)tile{
+- (Tile*)choiceTile:(Tile *)tile {
     NSMutableArray* tiles = [self surroundTiles:tile];
-    if([tiles count] > 0){
+    if([tiles count] > 0) {
         int index = [self randomGet:tiles];
         Tile* choice = tiles[index];
-        if(choice.x == (ROW-1) && choice.y == (COLUMN-1) && ([tiles count] > 1)){
+        if(choice.x == (ROW-1) && choice.y == (COLUMN-1) && ([tiles count] > 1)) {
             return [self choiceTile:tile];
         }
         choice.beforeTile = tile;
@@ -327,30 +311,28 @@
     return [self choiceTile:tile.beforeTile];
 }
 
-- (void)updateTimer{
+- (void)updateTimer {
     [self.timerLabel setString:[NSString stringWithFormat:@"%ds",self.timer]];
     self.timer += 1;
 }
 
-- (void)updatePathSound{
-    if(self.playPathIndex >= [self.pathStack count]){
+- (void)updatePathSound {
+    if(self.playPathIndex >= [self.pathStack count]) {
         self.playPathIndex = 0;
         [self unschedule:@selector(updatePathSound)];
-    }else{
+    } else {
         [self playPathFreq:self.playPathIndex];
     }
     self.playPathIndex+=1;
 }
 
-
-- (void)stopTimer{
+- (void)stopTimer {
     // タイマーを止める
     [self unschedule:@selector(updateTimer)];
     return;
 }
 
-- (void) nextFrame:(ccTime)dt
-{
+- (void) nextFrame:(ccTime)dt {
     for (CCSprite* sprite in self.tileArray) {
         sprite.position = ccp( sprite.position.x + 100*dt, sprite.position.y );
         if (sprite.position.x > 480+32) {
@@ -359,33 +341,31 @@
     }
 }
 
--(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     CGPoint location = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
     int offX = location.x;
     int offY = location.y;
     [self setMarkNearTileX:offX Y:offY];
-
 }
 
--(CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event{
+- (CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch =[touches anyObject];
     CGPoint location =[touch locationInView:[touch view]];
     return [[CCDirector sharedDirector] convertToGL:location];
 }
 
--(BOOL)setMarkNearTileX:(NSInteger)x Y:(NSInteger) y {
-    for(Tile* tile in self.tileArray){
+- (BOOL)setMarkNearTileX:(NSInteger)x Y:(NSInteger) y {
+    for(Tile* tile in self.tileArray) {
         float tile_x = (float)tile.x*CELL_WIDTH+OFFSET_X;
         float tile_y = (float)tile.y*CELL_HEIGHT+OFFSET_Y;
-        if(tile_x - CELL_WIDTH <= x && x <= tile_x+CELL_WIDTH && tile_y - CELL_HEIGHT <= y && y <= tile_y+CELL_HEIGHT && tile.beforeTile.isMarked){
+        if(tile_x - CELL_WIDTH <= x && x <= tile_x+CELL_WIDTH && tile_y - CELL_HEIGHT <= y && y <= tile_y+CELL_HEIGHT && tile.beforeTile.isMarked) {
             if((!tile.isMarked) && tile.freq > 0){
                 [self.simpleFM setCarrierFreq:tile.freq];
                 [self.simpleFM play];
             }
 
             tile.isMarked = YES;
-            if(tile.x == ROW-1 && tile.y == COLUMN-1){
+            if(tile.x == ROW-1 && tile.y == COLUMN-1) {
                 [self stopTimer];
                 self.pathStack = [NSMutableArray array];
                 [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
@@ -398,20 +378,17 @@
 }
 
 //タッチの移動
--(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     [self ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event];
 }
 
 //タッチの終了
--(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [self ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event];
 }
 
 // on "dealloc" you need to release all your retained objects
-- (void) dealloc
-{
+- (void)dealloc {
 	// in case you have something to dealloc, do it in this method
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
@@ -421,37 +398,34 @@
 }
 
 #pragma mark GameKit delegate
-
--(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
-{
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 
--(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
-{
+- (void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 
--(NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack{
-    if(tile.beforeTile){
+- (NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack {
+    if(tile.beforeTile) {
         [stack addObject:tile];
         tile.isShortcut = YES;
         return [self path:tile.beforeTile:stack];
-    }else{
+    } else {
         return stack;
     }
 }
 
--(double)getRandomFreq{
+- (double)getRandomFreq {
     NSArray *scaleArray = [self.scaleMap allValues];
     NSInteger index = rand() % [scaleArray count];
     return [[scaleArray objectAtIndex:index] doubleValue];
 }
 
--(void)playPathFreq:(NSInteger)index{
-    if(index >= [self.pathStack count]){
+- (void)playPathFreq:(NSInteger)index {
+    if(index >= [self.pathStack count]) {
         return;
     }
     Tile* tile = self.pathStack[index];
@@ -459,11 +433,11 @@
     [self.simpleFM play];
 }
 
--(void)draw {
+- (void)draw {
     [super draw];
     self.color += 0.01;
 
-    if(self.tileArray){
+    if(self.tileArray) {
         for(Tile* tile in self.tileArray) {
             if(tile) {
                 CGPoint p1, p2;
