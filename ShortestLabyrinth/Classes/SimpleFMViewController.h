@@ -3,6 +3,8 @@
 //  SimpleFM
 //
 //  Created by Norihisa Nagano
+//  Modified by Yuta Mizushima
+
 //
 
 #import <UIKit/UIKit.h>

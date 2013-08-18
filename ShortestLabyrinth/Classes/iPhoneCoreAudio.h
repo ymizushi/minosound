@@ -2,6 +2,7 @@
  *  iPhoneCoreAudio.h
  *
  *  Created by Norihisa Nagano
+ *  Modified by Yuta Mizushima
  *
  */
 

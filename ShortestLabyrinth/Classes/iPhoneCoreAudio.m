@@ -2,6 +2,7 @@
  *  iPhoneCoreAudio.c
  *
  *  Created by nagano on 09/07/20.
+ *  Modified by Yuta Mizushima
  *
  */
 
