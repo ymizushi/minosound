@@ -91,6 +91,15 @@
                                              fontName:@"Marker Felt"
                                              fontSize:36];
         self.endLabel.position = CGPointMake(size.width -30, size.height -30);
+        
+        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d", self.level] fontName:@"Marker Felt" fontSize:12];
+        self.levelLabel.position = CGPointMake(120, 240);
+        [self addChild:self.levelLabel];
+        
+        NSInteger clearCount = 3;
+        self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Clear:%d", clearCount] fontName:@"Marker Felt" fontSize:12];
+        self.clearCountLabel.position = CGPointMake(120, 200);
+        [self addChild:self.clearCountLabel];
 
         if (size.width == 568) {
             // iPhone 5
@@ -101,9 +110,6 @@
         [self addChild:self.startLabel];
         [self addChild:self.endLabel];
 
-        //        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d",1] fontName:@"Marker Felt" fontSize:36];
-        //        self.levelLabel.position = CGPointMake(90, 200);
-        //        [self addChild:self.levelLabel];
         
         self.simpleFM = [[SimpleFM alloc]init];
         self.diff = 0.01;
@@ -450,21 +456,21 @@
     [self.simpleFM play];
 }
 
--(void)draw{
+-(void)draw {
     [super draw];
     self.color += 0.01;
 
     if(self.tileArray){
-        for(Tile* tile in self.tileArray){
-            if(tile){
-                CGPoint p1,p2;
+        for(Tile* tile in self.tileArray) {
+            if(tile) {
+                CGPoint p1, p2;
                 p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+OFFSET_X,(float)tile.beforeTile.y*CELL_HEIGHT+OFFSET_Y);
                 p2=CGPointMake((float)tile.x*CELL_WIDTH+OFFSET_X, (float)tile.y*CELL_HEIGHT+OFFSET_Y);
-                if(tile.isShortcut){
+                if(tile.isShortcut) {
                     ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
-                }else if(tile.isMarked){
+                } else if(tile.isMarked) {
                     ccDrawColor4F((cos(self.color)+1)/4, (sin(self.color)+1)/2, 0.0f, 1.0f);
-                }else{
+                } else {
                     ccDrawColor4F(0.0f, 0.0f, 0.5f, 1.0f);
                 }
                 if ([UIScreen mainScreen].scale == 2) {
