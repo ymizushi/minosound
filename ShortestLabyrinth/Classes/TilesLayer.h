@@ -16,6 +16,8 @@
 
 #import "SimpleFM.h"
 
+#import "UserApi.h"
+
 #define ROW    14
 #define COLUMN 14
 #define CELL_WIDTH  20

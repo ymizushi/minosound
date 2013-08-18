@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) NSInteger level;
 @property (nonatomic, readonly) NSInteger clear_count;
 @property (nonatomic, readonly) NSDate* created_at;
+- (id)init;
 @end
 
 

@@ -9,5 +9,8 @@
 #import "User.h"
 
 @implementation User
-
+- (id)init {
+	[super init];
+	return self;
+}
 @end
