@@ -18,6 +18,8 @@
 		AA51037B174CF3ED008FAAFF /* TilesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA510372174CF3ED008FAAFF /* TilesLayer.m */; };
 		D131F30F17C0D4AC00C35F3A /* UserApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D131F30E17C0D4AC00C35F3A /* UserApi.m */; };
 		D131F31217C0D4E800C35F3A /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = D131F31117C0D4E800C35F3A /* Api.m */; };
+		D131F31A17C0D95500C35F3A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D131F31917C0D95500C35F3A /* User.m */; };
+		D131F31E17C0E38400C35F3A /* UserRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D131F31D17C0E38400C35F3A /* UserRepository.m */; };
 		D14691731709F277005968FC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691721709F277005968FC /* QuartzCore.framework */; };
 		D14691751709F277005968FC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691741709F277005968FC /* OpenGLES.framework */; };
 		D14691771709F277005968FC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691761709F277005968FC /* OpenAL.framework */; };
@@ -194,6 +196,10 @@
 		D131F30E17C0D4AC00C35F3A /* UserApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserApi.m; sourceTree = "<group>"; };
 		D131F31017C0D4E800C35F3A /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
 		D131F31117C0D4E800C35F3A /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.m; sourceTree = "<group>"; };
+		D131F31817C0D95500C35F3A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		D131F31917C0D95500C35F3A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		D131F31C17C0E38400C35F3A /* UserRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRepository.h; sourceTree = "<group>"; };
+		D131F31D17C0E38400C35F3A /* UserRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRepository.m; sourceTree = "<group>"; };
 		D146916F1709F277005968FC /* minosound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minosound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14691721709F277005968FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D14691741709F277005968FC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -527,6 +533,8 @@
 		AA510360174CF3ED008FAAFF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D131F31B17C0E35D00C35F3A /* Repository */,
+				D131F31417C0D90700C35F3A /* Model */,
 				D131F30C17C0D43400C35F3A /* Api */,
 				AA510361174CF3ED008FAAFF /* AppDelegate.h */,
 				AA510362174CF3ED008FAAFF /* AppDelegate.m */,
@@ -599,6 +607,24 @@
 				D131F31117C0D4E800C35F3A /* Api.m */,
 			);
 			name = Api;
+			sourceTree = "<group>";
+		};
+		D131F31417C0D90700C35F3A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D131F31817C0D95500C35F3A /* User.h */,
+				D131F31917C0D95500C35F3A /* User.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D131F31B17C0E35D00C35F3A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D131F31C17C0E38400C35F3A /* UserRepository.h */,
+				D131F31D17C0E38400C35F3A /* UserRepository.m */,
+			);
+			name = Repository;
 			sourceTree = "<group>";
 		};
 		D14691661709F277005968FC = {
@@ -1318,6 +1344,8 @@
 				AA51037B174CF3ED008FAAFF /* TilesLayer.m in Sources */,
 				D131F30F17C0D4AC00C35F3A /* UserApi.m in Sources */,
 				D131F31217C0D4E800C35F3A /* Api.m in Sources */,
+				D131F31A17C0D95500C35F3A /* User.m in Sources */,
+				D131F31E17C0E38400C35F3A /* UserRepository.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
