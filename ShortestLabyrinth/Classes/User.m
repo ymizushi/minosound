@@ -13,4 +13,14 @@
 	[super init];
 	return self;
 }
+
+- (void)initUser:(NSDictionary*)userDict {
+    self.user_id = userDict[@"id"];
+    self.name = userDict[@"name"];
+    self.device_token = userDict[@"device_token"];
+    self.level = userDict[@"level"];
+    self.clear_count = userDict[@"clear_count"];
+    self.created_at = userDict[@"created_at"];
+}
+
 @end

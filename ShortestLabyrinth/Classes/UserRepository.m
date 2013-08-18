@@ -7,7 +7,10 @@
 //
 
 #import "UserRepository.h"
+#import "UserApi.h"
 
 @implementation UserRepository
-
++ getUser:(NSString*)user_id {
+    NSDictionary* jsonUser = [UserApi getJsonUser:user_id];
+}
 @end

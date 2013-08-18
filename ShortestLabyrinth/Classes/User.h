@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface User : NSObject
-@property (nonatomic, readonly) NSInteger user_id;
-@property (nonatomic, readonly) NSString* name;
-@property (nonatomic, readonly) NSString* device_token;
-@property (nonatomic, readonly) NSInteger level;
-@property (nonatomic, readonly) NSInteger clear_count;
-@property (nonatomic, readonly) NSDate* created_at;
+@property (nonatomic) NSInteger user_id;
+@property (nonatomic, retain) NSString* name;
+@property (nonatomic, retain) NSString* device_token;
+@property (nonatomic) NSInteger level;
+@property (nonatomic) NSInteger clear_count;
+@property (nonatomic, retain) NSDate* created_at;
+
 - (id)init;
+- (void)initUser:(NSDictionary*)jsonUser;
 @end
 
 

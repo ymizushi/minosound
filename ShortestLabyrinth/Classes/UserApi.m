@@ -7,19 +7,17 @@
 //
 
 #import "UserApi.h"
+#import "UrlUtil.h"
 
 @implementation UserApi
 
-+ (User*)getUser:(NSInteger)user_id {
-    NSString *apiUrlJson = @"http://localhost:5000/users/id/1";
-    NSLog(@"WebAPIのURL：%@",apiUrlJson );
++ (NSDictionary*)getJsonUser:(NSInteger)user_id {
+    NSString *apiUrlJson = [UrlUtil genUrl:@"users/id/1"];
     NSURL *httpDataUrl2 = [NSURL URLWithString:apiUrlJson];
     NSURLRequest *request = [NSURLRequest requestWithURL:httpDataUrl2];
     NSData *json_data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"jsonObject:%@", jsonObject);
-    User* user = [User new];
-    return user;
+    return jsonObject;
 }
 
 @end

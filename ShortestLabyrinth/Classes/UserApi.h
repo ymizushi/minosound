@@ -12,5 +12,5 @@
 #import "User.h"
 
 @interface UserApi : Api
-+ (User*)getUser: (NSInteger) user_id;
++ (NSDictionary*)getJsonUser: (NSInteger)user_id;
 @end
