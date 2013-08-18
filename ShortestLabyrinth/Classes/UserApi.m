@@ -18,6 +18,8 @@
     NSData *json_data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:json_data options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"jsonObject:%@", jsonObject);
+    User* user = [User new];
+    return user;
 }
 
 @end

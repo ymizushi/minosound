@@ -16,8 +16,6 @@
 #import "math.h"
 #import "SimpleAudioEngine.h"
 
-#ipmort "UserApi.h"
-
 #pragma mark - TilesLayer
 
 // TilesLayer implementation
@@ -203,7 +201,7 @@
     [self initTiles];
     [self schedule:@selector(updateTimer) interval:1];
     
-    [UserApi getUser];
+    [UserApi getUser:1];
 }
 
 - (void)enableMusic:(id)sender
