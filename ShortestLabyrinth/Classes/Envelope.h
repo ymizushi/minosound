@@ -20,11 +20,11 @@
 
 @property float duration;
 
--(id)initWithDuration:(float)dur sampleRate:(float)sampleRate max:(float)max_;
--(float)valueForFrame:(UInt32)frame;
--(void)toTheTop;
+- (id)initWithDuration:(float)dur sampleRate:(float)sampleRate max:(float)max_;
+- (float)valueForFrame:(UInt32)frame;
+- (void)toTheTop;
+- (float)max;
+- (CGPoint*)points;
+- (UInt32)totalFrames;
 
--(float)max;
--(CGPoint*)points;
--(UInt32)totalFrames;
 @end

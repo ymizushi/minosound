@@ -10,7 +10,7 @@
 
 @implementation SimpleFMViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder{
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if(self != nil){
         simpleFM = [[SimpleFM alloc]init];
@@ -18,31 +18,31 @@
     return self;
 }
 
--(IBAction)play:(id)sender{
+- (IBAction)play:(id)sender {
     [simpleFM play];
 }
 
--(IBAction)stop:(id)sender{
+- (IBAction)stop:(id)sender {
     [simpleFM stop];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     [self updateAllValues];
 }
 
--(void)updateAllValues{
+- (void)updateAllValues {
     simpleFM.carrierFreq = carrierFreqSlider.value = [carrierFreqField.text doubleValue];
     simpleFM.harmonicityRatio = modulatorFreqSlider.value = [modulatorFreqField.text doubleValue];
     simpleFM.modulatorIndex = modulatorAmpSlider.value = [modulatorAmpField.text doubleValue];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     [self updateAllValues];
     return YES;
 }
 
-- (void)viewDidLoad{
+- (void)viewDidLoad {
     carrierFreqSlider.value = simpleFM.carrierFreq;
     modulatorFreqSlider.value = simpleFM.harmonicityRatio;
     modulatorAmpSlider.value = simpleFM.modulatorIndex;
@@ -54,17 +54,17 @@
     [self updateAllValues];
 }
 
--(IBAction)carrierFreqAction:(UISlider*)sender{
+- (IBAction)carrierFreqAction:(UISlider*)sender {
     simpleFM.carrierFreq = sender.value;
     carrierFreqField.text = [NSString stringWithFormat:@"%.3f",sender.value];
 }
 
--(IBAction)modulatorFreqAction:(UISlider*)sender{
+- (IBAction)modulatorFreqAction:(UISlider*)sender {
     simpleFM.harmonicityRatio = sender.value;
     modulatorFreqField.text = [NSString stringWithFormat:@"%.3f",sender.value];
 }
 
--(IBAction)modulatorAmpAction:(UISlider*)sender{
+- (IBAction)modulatorAmpAction:(UISlider*)sender {
     simpleFM.modulatorIndex = sender.value;
     modulatorAmpField.text = [NSString stringWithFormat:@"%.3f",sender.value];
 }
@@ -73,5 +73,4 @@
     [simpleFM release];
     [super dealloc];
 }
-
 @end

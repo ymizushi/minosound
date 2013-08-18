@@ -12,7 +12,6 @@
 #import "iPhoneCoreAudio.h"
 #import "Envelope.h"
 
-
 typedef struct FMInfo {
     double carrierFreq; //キャリア周波数
     double harmonicityRatio; //C:M比
@@ -29,7 +28,6 @@ typedef struct FMInfo {
     BOOL isDone; //総フレーム数再生したかどうかを表すフラグ
 }FMInfo;
 
-
 @interface SimpleFM : NSObject {
     FMInfo fmInfo;    
     AudioUnit audioUnit;
@@ -40,9 +38,9 @@ typedef struct FMInfo {
 @property double harmonicityRatio;
 @property double modulatorIndex;
 
--(void)start;
+- (void)start;
+- (void)play;
+- (void)stop;
+- (void)prepareAudioUnit;
 
--(void)play;
--(void)stop;
--(void)prepareAudioUnit;
 @end

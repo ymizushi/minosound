@@ -20,12 +20,13 @@
     IBOutlet UISlider *modulatorAmpSlider;
 }
 
--(IBAction)carrierFreqAction:(UISlider*)sender;
--(IBAction)modulatorFreqAction:(UISlider*)sender;
--(IBAction)modulatorAmpAction:(UISlider*)sender;
+- (IBAction)carrierFreqAction:(UISlider*)sender;
+- (IBAction)modulatorFreqAction:(UISlider*)sender;
+- (IBAction)modulatorAmpAction:(UISlider*)sender;
 
--(void)updateAllValues;
+- (void)updateAllValues;
 
--(IBAction)play:(id)sender;
--(IBAction)stop:(id)sender;
+- (IBAction)play:(id)sender;
+- (IBAction)stop:(id)sender;
+
 @end

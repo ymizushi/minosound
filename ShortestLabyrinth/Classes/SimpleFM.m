@@ -8,7 +8,6 @@
 
 #import "SimpleFM.h"
 
-
 @implementation SimpleFM
 
 @synthesize carrierFreq;
@@ -20,14 +19,14 @@ static OSStatus renderCallback(void*                       inRefCon,
                                const AudioTimeStamp*       inTimeStamp,
                                UInt32                      inBusNumber,
                                UInt32                      inNumberFrames,
-                               AudioBufferList*            ioData){
+                               AudioBufferList*            ioData) {
     FMInfo *def = (FMInfo*)inRefCon;
     Envelope *ampEnv = def->ampEnv;
     Envelope *ratioEnv = def->ratioEnv;
     
     //再生済みの場合は、0で埋めてreturn;
     AudioUnitSampleType *output = ioData->mBuffers[0].mData;
-    if(def->isDone){
+    if(def->isDone) {
         memset(output, 0, sizeof(AudioUnitSampleType) * inNumberFrames);
         return noErr;
     }
@@ -47,12 +46,12 @@ static OSStatus renderCallback(void*                       inRefCon,
     double modulatorFreq = carrierFreq * harmonicityRatio;
     double modfreq = modulatorFreq * 2.0 * M_PI / sampleRate;
     
-    for(int i = 0; i< inNumberFrames; i++){
+    for(int i = 0; i< inNumberFrames; i++) {
         //totalFrames分再生したら、0で埋める
-        if(currentFrame >= totalFrames){
+        if(currentFrame >= totalFrames) {
             def->isDone = YES;
             *output++ = 0;
-        }else{
+        } else {
             //先にモジュレーターの波形を計算
             double modWave = sin(modulatorPhase);
             
@@ -84,39 +83,37 @@ static OSStatus renderCallback(void*                       inRefCon,
     return noErr;
 }
 
-- (id)init{
+- (id)init {
     self = [super init];
     if (self != nil)[self prepareAudioUnit];
     return self;
 }
 
-
--(void)setCarrierFreq:(double)carrierFreq{
+- (void)setCarrierFreq:(double)carrierFreq {
     fmInfo.carrierFreq = carrierFreq;
 }
 
--(void)setHarmonicityRatio:(double)harmonicityRatio{
+- (void)setHarmonicityRatio:(double)harmonicityRatio {
     fmInfo.harmonicityRatio = harmonicityRatio;
 }
 
--(void)setModulatorIndex:(double)modulatorIndex{
+- (void)setModulatorIndex:(double)modulatorIndex {
     fmInfo.modulatorIndex = modulatorIndex;
 }
 
-
--(double)carrierFreq{
+- (double)carrierFreq {
     return fmInfo.carrierFreq;
 }
 
--(double)harmonicityRatio{
+- (double)harmonicityRatio {
     return fmInfo.harmonicityRatio;
 }
 
--(double)modulatorIndex{
+- (double)modulatorIndex {
     return fmInfo.modulatorIndex;
 }
 
-- (void)prepareAudioUnit{
+- (void)prepareAudioUnit {
     AudioComponentDescription cd;
     cd.componentType = kAudioUnitType_Output;
     cd.componentSubType = kAudioUnitSubType_RemoteIO;
@@ -171,7 +168,7 @@ static OSStatus renderCallback(void*                       inRefCon,
     [self start]; //処理を開始しておく
 }
 
--(void)play{
+- (void)play {
     //Envelopeクラスの現在の位置（x軸）を0にする
     [fmInfo.ampEnv toTheTop];
     [fmInfo.ratioEnv toTheTop];
@@ -179,17 +176,17 @@ static OSStatus renderCallback(void*                       inRefCon,
     fmInfo.currentFrame = 0;
 }
 
--(void)start{
+- (void)start {
     if(!isPlaying)AudioOutputUnitStart(audioUnit);
     isPlaying = YES;
 }
 
--(void)stop{
+- (void)stop {
     if(isPlaying)AudioOutputUnitStop(audioUnit);
     isPlaying = NO;
 }
 
--(void)dealloc{
+- (void)dealloc {
     [self stop];
     [fmInfo.ampEnv release];
     [fmInfo.ratioEnv release];

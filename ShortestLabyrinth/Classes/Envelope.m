@@ -12,7 +12,7 @@
 
 @synthesize duration;
 
--(id)initWithDuration:(float)dur sampleRate:(float)sampleRate_ max:(float)max_{
+- (id)initWithDuration:(float)dur sampleRate:(float)sampleRate_ max:(float)max_ {
     self = [super init];
     if (self != nil) {
         sampleRate = sampleRate_;
@@ -23,7 +23,7 @@
 		//初期値の設定
 		UInt32 xunit = totalFrames / (ENV_NUMBER_OF_POINT - 1);
         float yunit = max / ENV_NUMBER_OF_POINT;
-        for(int i = 0; i < ENV_NUMBER_OF_POINT; i++){
+        for(int i = 0; i < ENV_NUMBER_OF_POINT; i++) {
             points[i] = CGPointMake(xunit * i, max - (yunit * i));
         }
         points[ENV_NUMBER_OF_POINT - 1].x = totalFrames;
@@ -34,16 +34,16 @@
     return self;
 }
 
--(float)max{
+- (float)max {
     return max;
 }
 
--(void)toTheTop{
+- (void)toTheTop {
     currentIndex = 0;
 }
 
--(void)setDuration:(float)dur{
-    if(dur < 0.05){
+- (void)setDuration:(float)dur {
+    if(dur < 0.05) {
         dur = 0.05;
     }
     
@@ -52,13 +52,13 @@
     totalFrames = sampleRate * duration;
     
     float unit = (float)totalFrames / totalFrame_;
-    for(int i = 0; i < ENV_NUMBER_OF_POINT; i++){
+    for(int i = 0; i < ENV_NUMBER_OF_POINT; i++) {
         points[i].x = (UInt32)(points[i].x * unit);
     }
 }
 
--(float)valueForFrame:(UInt32)frame{
-    if(frame >= points[ENV_NUMBER_OF_POINT - 1].x){
+- (float)valueForFrame:(UInt32)frame {
+    if(frame >= points[ENV_NUMBER_OF_POINT - 1].x) {
         return 0;
     }
     
@@ -76,11 +76,11 @@
 }
 
 
--(CGPoint*)points{
+- (CGPoint*)points {
     return points;
 }
 
--(UInt32)totalFrames{
+- (UInt32)totalFrames {
     return totalFrames;
 }
 
