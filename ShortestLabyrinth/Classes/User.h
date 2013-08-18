@@ -17,7 +17,8 @@
 @property (nonatomic, retain) NSDate* created_at;
 
 - (id)init;
-- (void)initUser:(NSDictionary*)jsonUser;
+- (void)initData:(NSDictionary*)userDict;
+- (void)debugLog;
 @end
 
 

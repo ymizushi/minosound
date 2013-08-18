@@ -16,7 +16,8 @@
 
 #import "SimpleFM.h"
 
-#import "UserApi.h"
+#import "UserRepository.h"
+#import "User.h"
 
 #define ROW    14
 #define COLUMN 14
