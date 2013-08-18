@@ -16,6 +16,8 @@
 		AA510379174CF3ED008FAAFF /* SimpleFMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51036E174CF3ED008FAAFF /* SimpleFMViewController.m */; };
 		AA51037A174CF3ED008FAAFF /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = AA510370174CF3ED008FAAFF /* Tile.m */; };
 		AA51037B174CF3ED008FAAFF /* TilesLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA510372174CF3ED008FAAFF /* TilesLayer.m */; };
+		D131F30F17C0D4AC00C35F3A /* UserApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D131F30E17C0D4AC00C35F3A /* UserApi.m */; };
+		D131F31217C0D4E800C35F3A /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = D131F31117C0D4E800C35F3A /* Api.m */; };
 		D14691731709F277005968FC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691721709F277005968FC /* QuartzCore.framework */; };
 		D14691751709F277005968FC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691741709F277005968FC /* OpenGLES.framework */; };
 		D14691771709F277005968FC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14691761709F277005968FC /* OpenAL.framework */; };
@@ -188,6 +190,10 @@
 		AA510370174CF3ED008FAAFF /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 		AA510371174CF3ED008FAAFF /* TilesLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TilesLayer.h; sourceTree = "<group>"; };
 		AA510372174CF3ED008FAAFF /* TilesLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TilesLayer.m; sourceTree = "<group>"; };
+		D131F30D17C0D4AC00C35F3A /* UserApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserApi.h; sourceTree = "<group>"; };
+		D131F30E17C0D4AC00C35F3A /* UserApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserApi.m; sourceTree = "<group>"; };
+		D131F31017C0D4E800C35F3A /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
+		D131F31117C0D4E800C35F3A /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.m; sourceTree = "<group>"; };
 		D146916F1709F277005968FC /* minosound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minosound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14691721709F277005968FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D14691741709F277005968FC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -521,6 +527,7 @@
 		AA510360174CF3ED008FAAFF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D131F30C17C0D43400C35F3A /* Api */,
 				AA510361174CF3ED008FAAFF /* AppDelegate.h */,
 				AA510362174CF3ED008FAAFF /* AppDelegate.m */,
 				AA51037D174CF467008FAAFF /* IntroLayer */,
@@ -581,6 +588,17 @@
 				AA510370174CF3ED008FAAFF /* Tile.m */,
 			);
 			name = TilesLayer;
+			sourceTree = "<group>";
+		};
+		D131F30C17C0D43400C35F3A /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				D131F30D17C0D4AC00C35F3A /* UserApi.h */,
+				D131F30E17C0D4AC00C35F3A /* UserApi.m */,
+				D131F31017C0D4E800C35F3A /* Api.h */,
+				D131F31117C0D4E800C35F3A /* Api.m */,
+			);
+			name = Api;
 			sourceTree = "<group>";
 		};
 		D14691661709F277005968FC = {
@@ -1298,6 +1316,8 @@
 				AA510379174CF3ED008FAAFF /* SimpleFMViewController.m in Sources */,
 				AA51037A174CF3ED008FAAFF /* Tile.m in Sources */,
 				AA51037B174CF3ED008FAAFF /* TilesLayer.m in Sources */,
+				D131F30F17C0D4AC00C35F3A /* UserApi.m in Sources */,
+				D131F31217C0D4E800C35F3A /* Api.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
