@@ -1,10 +1,9 @@
 //
 //  TilesLayer.m
 //  ShortestLabyrinth
-//
+
 //  Created by 水島 雄太 on 2013/04/02.
 //  Copyright 水島 雄太 2013年. All rights reserved.
-//
 
 // Import the interfaces
 #import "TilesLayer.h"
