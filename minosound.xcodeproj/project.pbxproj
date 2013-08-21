@@ -164,6 +164,7 @@
 		D16B8AD21736726800A24365 /* gen_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = D16B8AD01736726800A24365 /* gen_disabled.png */; };
 		D19701C61735828400731178 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D19701C51735828400731178 /* music.mp3 */; };
 		D1AD870917302E31004D7F71 /* gen_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = D1AD870817302E31004D7F71 /* gen_btn.png */; };
+		D1B9BF6817C531990061C86C /* HelpLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B9BF6717C531990061C86C /* HelpLayer.m */; };
 		D1CF231917C0F70E00AF9FCF /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CF231817C0F70E00AF9FCF /* Config.m */; };
 		D1CF231D17C0FBDA00AF9FCF /* UrlUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CF231C17C0FBDA00AF9FCF /* UrlUtil.m */; };
 		D1FA2B0A1723A3ED007F8211 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */; };
@@ -489,6 +490,8 @@
 		D16B8AD01736726800A24365 /* gen_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gen_disabled.png; path = Resources/gen_disabled.png; sourceTree = "<group>"; };
 		D19701C51735828400731178 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = music.mp3; path = Resources/music.mp3; sourceTree = "<group>"; };
 		D1AD870817302E31004D7F71 /* gen_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gen_btn.png; path = Resources/gen_btn.png; sourceTree = "<group>"; };
+		D1B9BF6617C531990061C86C /* HelpLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpLayer.h; sourceTree = "<group>"; };
+		D1B9BF6717C531990061C86C /* HelpLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpLayer.m; sourceTree = "<group>"; };
 		D1CF231717C0F70E00AF9FCF /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		D1CF231817C0F70E00AF9FCF /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		D1CF231B17C0FBDA00AF9FCF /* UrlUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlUtil.h; sourceTree = "<group>"; };
@@ -545,6 +548,7 @@
 				D131F30C17C0D43400C35F3A /* Api */,
 				AA51037D174CF467008FAAFF /* IntroLayer */,
 				AA510380174CF49E008FAAFF /* TilesLayer */,
+				D1B9BF6517C5312C0061C86C /* HelpLayer */,
 				AA51037C174CF450008FAAFF /* SimpleFM */,
 				AA51037F174CF49C008FAAFF /* iPhoneCoreAudio */,
 				AA51037E174CF499008FAAFF /* Envelope */,
@@ -1078,6 +1082,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D1B9BF6517C5312C0061C86C /* HelpLayer */ = {
+			isa = PBXGroup;
+			children = (
+				D1B9BF6617C531990061C86C /* HelpLayer.h */,
+				D1B9BF6717C531990061C86C /* HelpLayer.m */,
+			);
+			name = HelpLayer;
+			sourceTree = "<group>";
+		};
 		D1CF231A17C0FBAE00AF9FCF /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1366,6 +1379,7 @@
 				D131F31E17C0E38400C35F3A /* UserRepository.m in Sources */,
 				D1CF231917C0F70E00AF9FCF /* Config.m in Sources */,
 				D1CF231D17C0FBDA00AF9FCF /* UrlUtil.m in Sources */,
+				D1B9BF6817C531990061C86C /* HelpLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
