@@ -79,40 +79,36 @@
 }
 
 - (void)initLabels {
-        CGSize size = [[CCDirector sharedDirector] winSize];
+    self.startLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"スタート"]
+                                         fontName:@"Thonburi-Bold"
+                                         fontSize:20];
+    self.startLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+20);
+    [self addChild:self.startLabel];
+    
+    self.endLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"ゴール"]
+                                       fontName:@"Thonburi-Bold"
+                                       fontSize:20];
+    self.endLabel.position = CGPointMake([self getOriginX]+290, [self getOriginY]+320);
+    [self addChild:self.endLabel];
+    
     self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"0"]
-                                             fontName:@"Marker Felt"
-                                             fontSize:36];
-        self.timerLabel.position = CGPointMake(270, 110);
-
-
-        self.startLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"S"]
-                                             fontName:@"Marker Felt"
-                                             fontSize:36];
-        self.startLabel.position = CGPointMake(40, 130);
-
-        self.endLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"E"]
-                                             fontName:@"Marker Felt"
-                                             fontSize:36];
-        self.endLabel.position = CGPointMake(size.width -30, size.height -30);
-        
-        self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d", self.level] fontName:@"Marker Felt" fontSize:12];
-        self.levelLabel.position = CGPointMake(240, 120);
-        [self addChild:self.levelLabel];
-        
-        NSInteger clearCount = 3;
-        self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Clear:%d", clearCount] fontName:@"Marker Felt" fontSize:12];
-        self.clearCountLabel.position = CGPointMake(200, 120);
-        [self addChild:self.clearCountLabel];
-
-        if (size.width == 568) {
-            // iPhone 5
-            self.endLabel.position = CGPointMake(size.width -30, size.height -120);
-        }
-
-        [self addChild:self.timerLabel];
-        [self addChild:self.startLabel];
-        [self addChild:self.endLabel];
+                                         fontName:@"Thonburi-Bold"
+                                         fontSize:18];
+    self.timerLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+320);
+    [self addChild:self.timerLabel];
+    
+    self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Level:%d", self.level] fontName:@"Thonburi-Bold" fontSize:18];
+    self.levelLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+340);
+    [self addChild:self.levelLabel];
+    
+    self.nameLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", @"ymizushi"] fontName:@"Thonburi-Bold" fontSize:25];
+    self.nameLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+360);
+    [self addChild:self.nameLabel];
+    
+    NSInteger clearCount = 3;
+    self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Clear:%d", clearCount] fontName:@"Thonburi-Bold" fontSize:18];
+    self.clearCountLabel.position = CGPointMake([self getOriginX]+290, [self getOriginY]+360);
+    [self addChild:self.clearCountLabel];
 }
 
 - (void)genTiles {
@@ -162,17 +158,8 @@
     item2.tag = 21;
     
     CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
-    [menu alignItemsVerticallyWithPadding:10];
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    
-    NSInteger intPos = 320;
-    CGSize winSize = [CCDirector sharedDirector].winSize;
-    if (winSize.width == 568) {
-        // iPhone 5
-        intPos = 320+88;
-    }
-    
-    [menu setPosition:ccp(size.width/2+size.width/3 -intPos, size.height/2)];
+    [menu alignItemsHorizontallyWithPadding:10];
+    [menu setPosition:ccp([self getOriginX]+165, [self getOriginY]-20)];
     [self addChild:menu];
 }
 
@@ -350,8 +337,8 @@
 
 - (BOOL)setMarkNearTileX:(NSInteger)x Y:(NSInteger) y {
     for(Tile* tile in self.tileArray) {
-        float tile_x = (float)tile.x*CELL_WIDTH+OFFSET_X;
-        float tile_y = (float)tile.y*CELL_HEIGHT+OFFSET_Y;
+        float tile_x = (float)tile.x*CELL_WIDTH+[self getOffsetX];
+        float tile_y = (float)tile.y*CELL_HEIGHT+[self getOffsetY];
         if(tile_x - CELL_WIDTH <= x && x <= tile_x+CELL_WIDTH && tile_y - CELL_HEIGHT <= y && y <= tile_y+CELL_HEIGHT && tile.beforeTile.isMarked) {
             if((!tile.isMarked) && tile.freq > 0){
                 [self.simpleFM setCarrierFreq:tile.freq];
@@ -435,8 +422,8 @@
         for(Tile* tile in self.tileArray) {
             if(tile) {
                 CGPoint p1, p2;
-                p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+OFFSET_X,(float)tile.beforeTile.y*CELL_HEIGHT+OFFSET_Y);
-                p2=CGPointMake((float)tile.x*CELL_WIDTH+OFFSET_X, (float)tile.y*CELL_HEIGHT+OFFSET_Y);
+                p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+[self getOffsetX],(float)tile.beforeTile.y*CELL_HEIGHT+[self getOffsetY]);
+                p2=CGPointMake((float)tile.x*CELL_WIDTH+[self getOffsetX], (float)tile.y*CELL_HEIGHT+[self getOffsetY]);
                 if(tile.isShortcut) {
                     ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
                 } else if(tile.isMarked) {
@@ -455,6 +442,22 @@
             }
         }
     }
+}
+
+- (NSInteger)getOriginX {
+    return 0;
+}
+
+- (NSInteger)getOriginY {
+    return 50;
+}
+
+- (NSInteger)getOffsetX {
+    return [self getOriginX]+35;
+}
+
+- (NSInteger)getOffsetY {
+    return [self getOriginY]+40;
 }
 
 //-(void) levelUpButtonPush: (id) sender

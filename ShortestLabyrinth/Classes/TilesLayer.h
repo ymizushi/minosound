@@ -34,6 +34,7 @@
     CCLabelTTF *endLabel;
     CCLabelTTF *levelLabel;
     CCLabelTTF *clearCountLabel;
+    CCLabelTTF *nameLabel;
     int timer;
     float color;
     float diff;
@@ -51,6 +52,7 @@
 @property (nonatomic, retain) CCLabelTTF *endLabel;
 @property (nonatomic, retain) CCLabelTTF *levelLabel;
 @property (nonatomic, retain) CCLabelTTF *clearCountLabel;
+@property (nonatomic, retain) CCLabelTTF *nameLabel;
 @property (nonatomic) int timer;
 @property (nonatomic) NSInteger level;
 @property (nonatomic) float color;
