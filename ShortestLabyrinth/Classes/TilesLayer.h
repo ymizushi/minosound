@@ -23,10 +23,9 @@
 #define COLUMN 14
 #define CELL_WIDTH  20
 #define CELL_HEIGHT 20
-#define OFFSET_X  160
-#define OFFSET_Y  30
+#define OFFSET_X  30
+#define OFFSET_Y  160
 
-// TilesLayer
 @interface TilesLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate> {
     NSMutableArray *tileArray;
     NSMutableArray *pathStack;

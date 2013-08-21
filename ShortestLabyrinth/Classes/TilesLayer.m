@@ -43,7 +43,6 @@
 	TilesLayer *layer = [TilesLayer node];
 	
 	// add layer as a child to scene
-
 	[scene addChild: layer];
 
 	// return the scene
@@ -53,41 +52,45 @@
 - (id)init {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
-    
-	if( (self=[super init]) ) {
+	if((self=[super init])) {
         self.scaleMap = @{
-                          @"A2"  :[NSNumber numberWithDouble:440.0f],
-                          //                          @"AS2" :[NSNumber numberWithDouble:466.163762f],
-                          @"B2"  :[NSNumber numberWithDouble:493.883301f],
-                          @"C2"  :[NSNumber numberWithDouble:523.251131f],
-                          //                          @"CS2" :[NSNumber numberWithDouble:554.365262f],
-                          @"D2"  :[NSNumber numberWithDouble:587.329536f],
-                          //                          @"DS2" :[NSNumber numberWithDouble:622.253967f],
-                          @"E2"  :[NSNumber numberWithDouble:659.255114f],
-                          @"F2"  :[NSNumber numberWithDouble:698.456463f],
-                          //                          @"FS2" :[NSNumber numberWithDouble:739.988845f],
-                          @"G2"  :[NSNumber numberWithDouble:783.990872f],
-                          //                          @"GS2" :[NSNumber numberWithDouble:830.609395f],
-                          };
+            @"A2"  :[NSNumber numberWithDouble:440.0f],
+            // @"AS2" :[NSNumber numberWithDouble:466.163762f],
+            @"B2"  :[NSNumber numberWithDouble:493.883301f],
+            @"C2"  :[NSNumber numberWithDouble:523.251131f],
+            // @"CS2" :[NSNumber numberWithDouble:554.365262f],
+            @"D2"  :[NSNumber numberWithDouble:587.329536f],
+            // @"DS2" :[NSNumber numberWithDouble:622.253967f],
+            @"E2"  :[NSNumber numberWithDouble:659.255114f],
+            @"F2"  :[NSNumber numberWithDouble:698.456463f],
+            // @"FS2" :[NSNumber numberWithDouble:739.988845f],
+            @"G2"  :[NSNumber numberWithDouble:783.990872f],
+            // @"GS2" :[NSNumber numberWithDouble:830.609395f],
+        };
         self.touchEnabled = YES;
         [self genTiles];
-        
         [self initTiles];
-        
         [self setButton1];
+        [self initLabels];
         [self gameStart];
-        CGSize size = [[CCDirector sharedDirector] winSize];
+        self.simpleFM = [[SimpleFM alloc]init];
+        self.diff = 0.01;
+	}
+	return self;
+}
 
-        self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"0"]
+- (void)initLabels {
+        CGSize size = [[CCDirector sharedDirector] winSize];
+    self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"0"]
                                              fontName:@"Marker Felt"
                                              fontSize:36];
-        self.timerLabel.position = CGPointMake(110, 270);
+        self.timerLabel.position = CGPointMake(270, 110);
 
 
         self.startLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"S"]
                                              fontName:@"Marker Felt"
                                              fontSize:36];
-        self.startLabel.position = CGPointMake(130, 40);
+        self.startLabel.position = CGPointMake(40, 130);
 
         self.endLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"E"]
                                              fontName:@"Marker Felt"
@@ -95,31 +98,23 @@
         self.endLabel.position = CGPointMake(size.width -30, size.height -30);
         
         self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lavel:%d", self.level] fontName:@"Marker Felt" fontSize:12];
-        self.levelLabel.position = CGPointMake(120, 240);
+        self.levelLabel.position = CGPointMake(240, 120);
         [self addChild:self.levelLabel];
         
         NSInteger clearCount = 3;
         self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Clear:%d", clearCount] fontName:@"Marker Felt" fontSize:12];
-        self.clearCountLabel.position = CGPointMake(120, 200);
+        self.clearCountLabel.position = CGPointMake(200, 120);
         [self addChild:self.clearCountLabel];
 
         if (size.width == 568) {
             // iPhone 5
-            self.endLabel.position = CGPointMake(size.width -120, size.height -30);
+            self.endLabel.position = CGPointMake(size.width -30, size.height -120);
         }
 
         [self addChild:self.timerLabel];
         [self addChild:self.startLabel];
         [self addChild:self.endLabel];
-
-        
-        self.simpleFM = [[SimpleFM alloc]init];
-        self.diff = 0.01;
-	}
-	return self;
 }
-
-#pragma mark - init
 
 - (void)genTiles {
     self.tileArray = [NSMutableArray array];
