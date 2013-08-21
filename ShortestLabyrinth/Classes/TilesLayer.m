@@ -13,6 +13,7 @@
 #import "CCSprite.h"
 #import "math.h"
 #import "SimpleAudioEngine.h"
+#import "HelpLayer.h"
 
 #pragma mark - TilesLayer
 // TilesLayer implementation
@@ -157,7 +158,14 @@
                                                      selector:@selector(enableMusic:)];
     item2.tag = 21;
     
-    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,nil];
+    CCMenuItem * item3 = [CCMenuItemImage itemWithNormalImage:@"music.png"
+                                                selectedImage:@"music_disabled.png"
+                                                       target:self
+                                                     selector:@selector(moveToNextTransision:)];
+    item3.tag = 31;
+    
+    
+    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,item3,nil];
     [menu alignItemsHorizontallyWithPadding:10];
     [menu setPosition:ccp([self getOriginX]+165, [self getOriginY]-20)];
     [self addChild:menu];
@@ -313,7 +321,7 @@
     return;
 }
 
-- (void) nextFrame:(ccTime)dt {
+- (void)nextFrame:(ccTime)dt {
     for (CCSprite* sprite in self.tileArray) {
         sprite.position = ccp( sprite.position.x + 100*dt, sprite.position.y );
         if (sprite.position.x > 480+32) {
@@ -458,6 +466,14 @@
 
 - (NSInteger)getOffsetY {
     return [self getOriginY]+40;
+}
+
+- (void) moveToNextTransision: (id) sender {
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelpLayer scene] ]];
+}
+
+- (void) onEnter {
+	[super onEnter];
 }
 
 //-(void) levelUpButtonPush: (id) sender
