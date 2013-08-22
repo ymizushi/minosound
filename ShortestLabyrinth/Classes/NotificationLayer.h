@@ -6,8 +6,11 @@
 //  Copyright (c) 2013年 水島 雄太. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <GameKit/GameKit.h>
+#import "CCTouchDispatcher.h"
 
-@interface NotificationLayer : NSObject
+#import "cocos2d.h"
+
+@interface NotificationLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 
 @end
