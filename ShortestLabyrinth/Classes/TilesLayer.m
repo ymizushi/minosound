@@ -7,6 +7,7 @@
 
 // Import the interfaces
 #import "TilesLayer.h"
+#import "IntroLayer.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -158,12 +159,11 @@
                                                      selector:@selector(enableMusic:)];
     item2.tag = 21;
     
-    CCMenuItem * item3 = [CCMenuItemImage itemWithNormalImage:@"music.png"
-                                                selectedImage:@"music_disabled.png"
+    CCMenuItem * item3 = [CCMenuItemImage itemWithNormalImage:@"intro.png"
+                                                selectedImage:@"intro_disabled.png"
                                                        target:self
-                                                     selector:@selector(moveToNextTransision:)];
+                                                     selector:@selector(moveToIntro:)];
     item3.tag = 31;
-    
     
     CCMenu * menu  = [CCMenu menuWithItems:item1,item2,item3,nil];
     [menu alignItemsHorizontallyWithPadding:10];
@@ -468,8 +468,8 @@
     return [self getOriginY]+40;
 }
 
-- (void) moveToNextTransision: (id) sender {
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelpLayer scene] ]];
+- (void) moveToIntro: (id) sender {
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[IntroLayer scene] ]];
 }
 
 - (void) onEnter {

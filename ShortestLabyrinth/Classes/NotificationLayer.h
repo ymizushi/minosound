@@ -13,4 +13,5 @@
 
 @interface NotificationLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 
++ (CCScene *) scene;
 @end

@@ -9,11 +9,11 @@
 
 #import "IntroLayer.h"
 #import "TilesLayer.h"
+#import "NotificationLayer.h"
 #import "HelpLayer.h"
 #import "SimpleAudioEngine.h"
 
 #pragma mark - IntroLayer
-
 @implementation IntroLayer
 
 // Helper class method that creates a Scene with the TilesLayer as the only child.
@@ -47,19 +47,23 @@
 
         [CCDirector sharedDirector].displayStats = NO;
         
-        CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"start.png" selectedImage:@"start_disabled.png" target:self selector:@selector(moveToNextTransision:)];
-        item1.tag=31;
-
-        CCMenu * menu  = [CCMenu menuWithItems:item1,nil];
-        [menu alignItemsHorizontallyWithPadding:10];
+        CCMenuItem * startItem = [CCMenuItemImage itemWithNormalImage:@"start.png" selectedImage:@"start_disabled.png" target:self selector:@selector(moveToGame:)];
+        CCMenuItem * notificationItem = [CCMenuItemImage itemWithNormalImage:@"help.png" selectedImage:@"help_disabled.png" target:self selector:@selector(moveTonNotification:)];
+        CCMenuItem * helpItem = [CCMenuItemImage itemWithNormalImage:@"help.png" selectedImage:@"help_disabled.png" target:self selector:@selector(moveToHelp:)];
+        CCMenu * menu  = [CCMenu menuWithItems:startItem,notificationItem,helpItem,nil];
+        [menu alignItemsVerticallyWithPadding:10];
         [menu setPosition:ccp(size.width/2, size.height/2-size.height/3)];
         [self addChild:menu];
 	}
 	return self;
 }
 
-- (void) moveToNextTransision:(id)sender {
+- (void) moveToGame:(id)sender {
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TilesLayer scene] ]];
+}
+
+- (void) moveTonNotification:(id)sender {
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[NotificationLayer scene] ]];
 }
 
 - (void) moveToHelp:(id)sender {
