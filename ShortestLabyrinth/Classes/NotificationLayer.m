@@ -43,6 +43,47 @@
 
 - (id)init {
 	if((self=[super init])) {
+        //Viewの生成(してもしなくてもいいですが)
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+        //WebViewの生成(viewの大きさと同じにしてあります)
+        UIWebView *webview = [[UIWebView alloc] initWithFrame:view.frame];
+        
+        //delegateの使い方はお好みで
+        webview.delegate = (id)self;
+        
+        //参照先URLの設定
+        NSURL *url = [NSURL URLWithString:@"http://www.eui-jp.org"];
+        //お決まりの構文
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        //読み込み開始
+        [webview loadRequest:request];
+        //ここもお好みで(画面サイズにページを合わせるか)
+        webview.scalesPageToFit = YES;
+        
+        //viewの上にwebviewを乗っける
+        [view addSubview:webview];
+        
+        //cocos2dの上に乗っける
+        [[[CCDirector sharedDirector] view] addSubview:view];
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 		CGSize size = [[CCDirector sharedDirector] winSize];
 
         [CCDirector sharedDirector].displayStats = NO;
