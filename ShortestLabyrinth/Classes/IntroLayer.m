@@ -63,7 +63,7 @@
 }
 
 - (void) moveTonNotification:(id)sender {
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[NotificationLayer scene] ]];
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.0 scene:[NotificationLayer scene] ]];
 }
 
 - (void) moveToHelp:(id)sender {
