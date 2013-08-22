@@ -7,14 +7,13 @@
 //
 
 
-// Import the interfaces
 #import "IntroLayer.h"
 #import "TilesLayer.h"
+#import "HelpLayer.h"
 #import "SimpleAudioEngine.h"
 
 #pragma mark - IntroLayer
 
-// TilesLayer implementation
 @implementation IntroLayer
 
 // Helper class method that creates a Scene with the TilesLayer as the only child.
@@ -36,24 +35,18 @@
 
 - (id) init {
 	if( (self=[super init])) {
-
-		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
-
 		CCSprite *background;
-		
 		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
 			background = [CCSprite spriteWithFile:@"Default.png"];
 		} else {
 			background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
 		}
 		background.position = ccp(size.width/2, size.height/2);
-
-		// add the label as a child to this Layer
 		[self addChild: background];
 
         [CCDirector sharedDirector].displayStats = NO;
-
+        
         CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"start.png" selectedImage:@"start_disabled.png" target:self selector:@selector(moveToNextTransision:)];
         item1.tag=31;
 
@@ -65,8 +58,12 @@
 	return self;
 }
 
-- (void) moveToNextTransision: (id) sender {
+- (void) moveToNextTransision:(id)sender {
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TilesLayer scene] ]];
+}
+
+- (void) moveToHelp:(id)sender {
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelpLayer scene] ]];
 }
 
 - (void) onEnter {

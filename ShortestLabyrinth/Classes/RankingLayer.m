@@ -40,7 +40,6 @@
 	return scene;
 }
 
-
 - (id)init {
 	if((self=[super init])) {
 		CGSize size = [[CCDirector sharedDirector] winSize];

@@ -14,4 +14,5 @@
 @interface HelpLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 
     
++(CCScene *) scene;
 @end

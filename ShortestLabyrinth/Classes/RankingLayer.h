@@ -12,4 +12,5 @@
 
 @interface RankingLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 
++(CCScene *) scene;
 @end
