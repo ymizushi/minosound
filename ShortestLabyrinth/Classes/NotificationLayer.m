@@ -8,6 +8,7 @@
 
 #import "NotificationLayer.h"
 
+#import "Config.h"
 #import "IntroLayer.h"
 #import "AppDelegate.h"
 #import "CCSprite.h"
@@ -26,7 +27,7 @@
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 
-- (void) moveToNextTransision: (id) sender {
+- (void) moveToIntro: (id) sender {
     [self.notificationView removeFromSuperview];
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[IntroLayer scene] ]];
 }
@@ -48,40 +49,23 @@
 
         [CCDirector sharedDirector].displayStats = NO;
 
-        CCMenuItem * item1 = [CCMenuItemImage itemWithNormalImage:@"start.png" selectedImage:@"start_disabled.png" target:self selector:@selector(moveToNextTransision:)];
-        item1.tag=31;
+        CCMenuItem * backItem = [CCMenuItemImage itemWithNormalImage:@"back.png" selectedImage:@"back_disabled.png" target:self selector:@selector(moveToIntro:)];
 
-        CCMenu * menu  = [CCMenu menuWithItems:item1,nil];
+        CCMenu *menu  = [CCMenu menuWithItems:backItem, nil];
         [menu alignItemsHorizontallyWithPadding:10];
         [menu setPosition:ccp(size.width/2, size.height/2-size.height/3)];
         [self addChild:menu];
         
-        
-        //Viewの生成(してもしなくてもいいですが)
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        //WebViewの生成(viewの大きさと同じにしてあります)
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height-200)];
         UIWebView *webview = [[UIWebView alloc] initWithFrame:view.frame];
-        
-        //delegateの使い方はお好みで
         webview.delegate = (id)self;
-        
-        //参照先URLの設定
-        NSURL *url = [NSURL URLWithString:@"http://www.eui-jp.org"];
-        //お決まりの構文
+        NSURL *url = [NSURL URLWithString:[Config getBaseUrl]];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        //読み込み開始
         [webview loadRequest:request];
-        //ここもお好みで(画面サイズにページを合わせるか)
         webview.scalesPageToFit = YES;
-        
-        //viewの上にwebviewを乗っける
-        [view addSubview:webview];
         self.notificationView = webview;
-        //cocos2dの上に乗っける
+        [view addSubview:self.notificationView];
         [[[CCDirector sharedDirector] view] addSubview:view];
-        
-        
-        
 	}
 	return self;
 }

@@ -6,7 +6,6 @@
 //  Copyright 水島 雄太 2013年. All rights reserved.
 //
 
-
 #import "IntroLayer.h"
 #import "TilesLayer.h"
 #import "NotificationLayer.h"
@@ -31,8 +30,6 @@
 	return scene;
 }
 
-@synthesize enabledSound;
-
 - (id) init {
 	if( (self=[super init])) {
 		CGSize size = [[CCDirector sharedDirector] winSize];
@@ -48,7 +45,7 @@
         [CCDirector sharedDirector].displayStats = NO;
         
         CCMenuItem * startItem = [CCMenuItemImage itemWithNormalImage:@"start.png" selectedImage:@"start_disabled.png" target:self selector:@selector(moveToGame:)];
-        CCMenuItem * notificationItem = [CCMenuItemImage itemWithNormalImage:@"help.png" selectedImage:@"help_disabled.png" target:self selector:@selector(moveTonNotification:)];
+        CCMenuItem * notificationItem = [CCMenuItemImage itemWithNormalImage:@"notification.png" selectedImage:@"notification_disabled.png" target:self selector:@selector(moveTonNotification:)];
         CCMenuItem * helpItem = [CCMenuItemImage itemWithNormalImage:@"help.png" selectedImage:@"help_disabled.png" target:self selector:@selector(moveToHelp:)];
         CCMenu * menu  = [CCMenu menuWithItems:startItem,notificationItem,helpItem,nil];
         [menu alignItemsVerticallyWithPadding:10];

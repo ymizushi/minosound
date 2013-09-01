@@ -12,9 +12,7 @@
 
 // TilesLayer
 @interface IntroLayer : CCLayer {
-    BOOL enabledSound;
 }
-@property (nonatomic)BOOL enabledSound;
 
 // returns a CCScene that contains the TilesLayer as the only child
 +(CCScene *) scene;
