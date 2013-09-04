@@ -11,8 +11,10 @@
 
 @implementation UserApi
 
-+ (NSDictionary*)getJsonUser:(NSInteger)user_id {
-    NSString *apiUrlJson = [UrlUtil genUrl:@"users/id/1"];
++ (NSDictionary*)getJsonUser:(NSInteger)userId {
+    NSString* userIdStr = [NSString stringWithFormat:@"%d", userId];
+    NSArray* params = @[@"/users/", userIdStr];
+    NSString *apiUrlJson = [UrlUtil genUrl:params];
     NSURL *httpDataUrl2 = [NSURL URLWithString:apiUrlJson];
     NSURLRequest *request = [NSURLRequest requestWithURL:httpDataUrl2];
     NSData *json_data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];

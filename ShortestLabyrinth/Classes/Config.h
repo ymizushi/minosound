@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define BASE_URL @""
-#define DEBUG_BASE_URL @"http://localhost:5000/"
+#define DEBUG_BASE_URL @"http://localhost:5000"
 
 @interface Config : NSObject
 + (NSString*)getBaseUrl;

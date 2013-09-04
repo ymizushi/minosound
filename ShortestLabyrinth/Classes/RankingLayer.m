@@ -45,7 +45,6 @@
 		CGSize size = [[CCDirector sharedDirector] winSize];
         [CCDirector sharedDirector].displayStats = NO;
         CCMenuItem *item1 = [CCMenuItemImage itemWithNormalImage:@"start.png" selectedImage:@"start_disabled.png" target:self selector:@selector(moveToNextTransision:)];
-        item1.tag=31;
         CCMenu *menu = [CCMenu menuWithItems:item1,nil];
         [menu alignItemsHorizontallyWithPadding:10];
         [menu setPosition:ccp(size.width/2, size.height/2-size.height/3)];

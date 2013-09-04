@@ -151,19 +151,16 @@
                                                 selectedImage:@"gen_disabled.png"
                                                        target:self
                                                      selector:@selector(genButtonPush:)];
-    item1.tag = 11;
     
     CCMenuItem * item2 = [CCMenuItemImage itemWithNormalImage:@"music.png"
                                                 selectedImage:@"music_disabled.png"
                                                        target:self
                                                      selector:@selector(enableMusic:)];
-    item2.tag = 21;
     
     CCMenuItem * item3 = [CCMenuItemImage itemWithNormalImage:@"back.png"
                                                 selectedImage:@"back_disabled.png"
                                                        target:self
                                                      selector:@selector(moveToIntro:)];
-    item3.tag = 31;
     
     CCMenu * menu  = [CCMenu menuWithItems:item1,item2,item3,nil];
     [menu alignItemsHorizontallyWithPadding:10];
@@ -183,8 +180,8 @@
     [self initTiles];
     [self schedule:@selector(updateTimer) interval:1];
     
-//    User* user = [UserRepository getUser:1];
-//    [user debugLog];
+    User* user = [UserRepository getUser:2];
+    [user debugLog];
 }
 
 - (void)enableMusic:(id)sender {

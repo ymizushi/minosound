@@ -10,5 +10,5 @@
 #import "Config.h"
 
 @interface UrlUtil : NSObject
-+ genUrl:(NSString*)paramString;
++ genUrl:(NSArray*)params;
 @end

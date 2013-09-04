@@ -10,8 +10,11 @@
 #import "UrlUtil.h"
 
 @implementation UrlUtil
-+ genUrl:(NSString*)paramString {
-    NSString *str = [NSString stringWithFormat:@"%@%@",[Config getBaseUrl],paramString];
-    return str;
++ genUrl:(NSArray*)params {
+    NSString* urlStr = [Config getBaseUrl];
+    for(NSString* paramStr in params){
+        urlStr = [urlStr stringByAppendingString:paramStr];
+    }
+    return urlStr;
 }
 @end

@@ -24,7 +24,7 @@
 }
 
 - (void)debugLog {
-    NSLog(@"fields:%@", self.name);
+    NSLog(@"fields:%d", self.user_id);
 }
 
 @end

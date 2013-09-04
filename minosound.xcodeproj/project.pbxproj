@@ -613,8 +613,8 @@
 		AA51037E174CF499008FAAFF /* Envelope */ = {
 			isa = PBXGroup;
 			children = (
-				AA510364174CF3ED008FAAFF /* Envelope.m */,
 				AA510363174CF3ED008FAAFF /* Envelope.h */,
+				AA510364174CF3ED008FAAFF /* Envelope.m */,
 			);
 			name = Envelope;
 			sourceTree = "<group>";

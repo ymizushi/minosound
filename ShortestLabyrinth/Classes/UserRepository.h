@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface UserRepository : NSObject
-+ getUser:(NSString*)userId;
++ getUser:(NSInteger)userId;
 @end
