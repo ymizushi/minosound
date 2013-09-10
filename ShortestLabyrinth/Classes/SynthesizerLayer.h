@@ -10,8 +10,11 @@
 #import "CCTouchDispatcher.h"
 
 #import "cocos2d.h"
+#import "SimpleFM.h"
 
 @interface SynthesizerLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate> {
 }
+@property (nonatomic, retain) SimpleFM *synthesizer;
+
 + (CCScene *) scene;
 @end

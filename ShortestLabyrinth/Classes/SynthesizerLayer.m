@@ -12,6 +12,9 @@
 #import "AppDelegate.h"
 #import "CCSprite.h"
 @implementation SynthesizerLayer
+
+@synthesize synthesizer;
+
 #pragma mark GameKit delegate
 - (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
@@ -31,15 +34,41 @@
 }
 
 
+
+- (CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch =[touches anyObject];
+    CGPoint location =[touch locationInView:[touch view]];
+    return [[CCDirector sharedDirector] convertToGL:location];
+}
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    self.startTouchPoint = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
+//    if(self.touchState == BEFORE_STATE) {
+//        [self drawControlPanelX:self.startTouchPoint.x Y:self.startTouchPoint.y];
+//    }
+}
+
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint location = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
+    [self.synthesizer setCarrierFreq:location.x];
+    [self.synthesizer play];
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+}
+
 - (id)init {
 	if((self=[super init])) {
 		CGSize size = [[CCDirector sharedDirector] winSize];
         [CCDirector sharedDirector].displayStats = NO;
+        self.touchEnabled = YES;
         CCMenuItem * backItem = [CCMenuItemImage itemWithNormalImage:@"back.png" selectedImage:@"back_disabled.png" target:self selector:@selector(moveToIntro:)];
         CCMenu * menu  = [CCMenu menuWithItems:backItem,nil];
         [menu alignItemsHorizontallyWithPadding:10];
         [menu setPosition:ccp(size.width/2, size.height/2-size.height/3)];
         [self addChild:menu];
+        
+        self.synthesizer = [SimpleFM new];
 	}
 	return self;
 }
