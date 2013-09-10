@@ -15,7 +15,9 @@
 }
 
 - (void)initData:(NSDictionary*)userDict {
+    NSLog(@"userDict:%@",userDict);
     self.user_id = userDict[@"id"];
+    NSLog(@"userid:%@",self.user_id);
     self.name = userDict[@"name"];
     self.device_token = userDict[@"device_token"];
     self.level = userDict[@"level"];
@@ -24,7 +26,7 @@
 }
 
 - (void)debugLog {
-    NSLog(@"fields:%d", self.user_id);
+    NSLog(@"fields:%d , %@ ,%@ ,%d , %d ,%@ end", self.user_id, self.name, self.device_token, self.level, self.clear_count, self.created_at);
 }
 
 @end

@@ -186,8 +186,8 @@
     [self initTiles];
     [self schedule:@selector(updateTimer) interval:1];
     
-    //User* user = [UserRepository getUser:2];
-    //[user debugLog];
+    User* user = [UserRepository getUser:3];
+    [user debugLog];
 }
 
 - (void)enableMusic:(id)sender {
