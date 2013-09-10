@@ -8,6 +8,7 @@
 // Import the interfaces
 #import "TilesLayer.h"
 #import "IntroLayer.h"
+#import "SynthesizerLayer.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -162,7 +163,12 @@
                                                        target:self
                                                      selector:@selector(moveToIntro:)];
     
-    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,item3,nil];
+    CCMenuItem * item4 = [CCMenuItemImage itemWithNormalImage:@"back.png"
+                                                selectedImage:@"back_disabled.png"
+                                                       target:self
+                                                     selector:@selector(moveToSynthesizer:)];
+    
+    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,item3,item4,nil];
     [menu alignItemsHorizontallyWithPadding:10];
     [menu setPosition:ccp([self getOriginX]+165, [self getOriginY]-20)];
     [self addChild:menu];
@@ -180,8 +186,8 @@
     [self initTiles];
     [self schedule:@selector(updateTimer) interval:1];
     
-    User* user = [UserRepository getUser:2];
-    [user debugLog];
+    //User* user = [UserRepository getUser:2];
+    //[user debugLog];
 }
 
 - (void)enableMusic:(id)sender {
@@ -468,6 +474,11 @@
 - (void) moveToIntro: (id) sender {
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[IntroLayer scene] ]];
 }
+
+- (void) moveToSynthesizer: (id) sender {
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[SynthesizerLayer scene] ]];
+}
+
 
 - (void) onEnter {
 	[super onEnter];

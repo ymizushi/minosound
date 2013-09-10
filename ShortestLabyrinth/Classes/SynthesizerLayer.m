@@ -8,7 +8,7 @@
 
 #import "SynthesizerLayer.h"
 
-#import "IntroLayer.h"
+#import "TilesLayer.h"
 #import "AppDelegate.h"
 #import "CCSprite.h"
 @implementation SynthesizerLayer
@@ -45,7 +45,7 @@
 }
 
 - (void) moveToIntro: (id) sender {
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[IntroLayer scene]]];
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TilesLayer scene]]];
 }
 
 - (void) onEnter {
