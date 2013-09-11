@@ -15,6 +15,7 @@
 @interface SynthesizerLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate> {
 }
 @property (nonatomic, retain) SimpleFM *synthesizer;
+@property (nonatomic) BOOL touching;
 
 + (CCScene *) scene;
 @end

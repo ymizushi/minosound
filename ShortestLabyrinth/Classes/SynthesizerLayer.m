@@ -42,15 +42,13 @@
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    self.startTouchPoint = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
-//    if(self.touchState == BEFORE_STATE) {
-//        [self drawControlPanelX:self.startTouchPoint.x Y:self.startTouchPoint.y];
-//    }
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     CGPoint location = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
     [self.synthesizer setCarrierFreq:location.x];
+    [self.synthesizer setHarmonicityRatio:8.410+location.y/600.0];
+    [self.synthesizer setModulatorIndex:location.x];
     [self.synthesizer play];
 }
 

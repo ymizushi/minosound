@@ -575,9 +575,7 @@
 				D131F30C17C0D43400C35F3A /* Api */,
 				D131F31B17C0E35D00C35F3A /* Repository */,
 				D131F31417C0D90700C35F3A /* Model */,
-				AA51037F174CF49C008FAAFF /* iPhoneCoreAudio */,
 				AA51037C174CF450008FAAFF /* SimpleFM */,
-				AA51037E174CF499008FAAFF /* Envelope */,
 				AA51037D174CF467008FAAFF /* IntroLayer */,
 				D1AFC1E817C664580014BA9E /* NotificationLayer */,
 				D1B9BF6517C5312C0061C86C /* HelpLayer */,
@@ -601,6 +599,10 @@
 				AA51036C174CF3ED008FAAFF /* SimpleFMAppDelegate.m */,
 				AA51036D174CF3ED008FAAFF /* SimpleFMViewController.h */,
 				AA51036E174CF3ED008FAAFF /* SimpleFMViewController.m */,
+				AA510363174CF3ED008FAAFF /* Envelope.h */,
+				AA510364174CF3ED008FAAFF /* Envelope.m */,
+				AA510367174CF3ED008FAAFF /* iPhoneCoreAudio.h */,
+				AA510368174CF3ED008FAAFF /* iPhoneCoreAudio.m */,
 			);
 			name = SimpleFM;
 			sourceTree = "<group>";
@@ -612,24 +614,6 @@
 				AA510366174CF3ED008FAAFF /* IntroLayer.m */,
 			);
 			name = IntroLayer;
-			sourceTree = "<group>";
-		};
-		AA51037E174CF499008FAAFF /* Envelope */ = {
-			isa = PBXGroup;
-			children = (
-				AA510363174CF3ED008FAAFF /* Envelope.h */,
-				AA510364174CF3ED008FAAFF /* Envelope.m */,
-			);
-			name = Envelope;
-			sourceTree = "<group>";
-		};
-		AA51037F174CF49C008FAAFF /* iPhoneCoreAudio */ = {
-			isa = PBXGroup;
-			children = (
-				AA510367174CF3ED008FAAFF /* iPhoneCoreAudio.h */,
-				AA510368174CF3ED008FAAFF /* iPhoneCoreAudio.m */,
-			);
-			name = iPhoneCoreAudio;
 			sourceTree = "<group>";
 		};
 		AA510380174CF49E008FAAFF /* TilesLayer */ = {
