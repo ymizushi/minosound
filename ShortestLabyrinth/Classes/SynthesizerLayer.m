@@ -48,7 +48,7 @@
     CGPoint location = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
     [self.synthesizer setCarrierFreq:location.x];
     [self.synthesizer setHarmonicityRatio:8.410+location.y/600.0];
-    [self.synthesizer setModulatorIndex:location.x];
+    [self.synthesizer setModulatorIndex:7.797+location.x/600.0];
     [self.synthesizer play];
 }
 
@@ -60,6 +60,7 @@
 		CGSize size = [[CCDirector sharedDirector] winSize];
         [CCDirector sharedDirector].displayStats = NO;
         self.touchEnabled = YES;
+        self.accelerometerEnabled = YES;
         CCMenuItem * backItem = [CCMenuItemImage itemWithNormalImage:@"back.png" selectedImage:@"back_disabled.png" target:self selector:@selector(moveToIntro:)];
         CCMenu * menu  = [CCMenu menuWithItems:backItem,nil];
         [menu alignItemsHorizontallyWithPadding:10];
@@ -67,8 +68,30 @@
         [self addChild:menu];
         
         self.synthesizer = [SimpleFM new];
+        
+        
+        if (!self.locationManager) {
+            self.locationManager = [[CLLocationManager alloc] init];
+            self.locationManager.delegate = self;
+        }
+        self.locationManager.distanceFilter = 100;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        [self.locationManager startUpdatingLocation];
+        
+        // start heading update
+        [self.locationManager startUpdatingHeading];
+        
+//        [self schedule:@selector(playSound) interval:0.01];
 	}
 	return self;
+}
+
+- (void)playSound {
+    [self.synthesizer play];
+}
+
+- (void)accelerometer:(UIAccelerometer *)acel didAccelerate:(UIAcceleration *)acceleration {
+    [self.synthesizer setHarmonicityRatio:8.410+acceleration.x];
 }
 
 - (void) moveToIntro: (id) sender {
