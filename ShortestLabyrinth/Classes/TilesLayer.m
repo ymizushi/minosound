@@ -86,35 +86,41 @@
 }
 
 - (void)initLabels {
-    self.startLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"スタート"]
-                                         fontName:@"Thonburi-Bold"
+    self.startLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"START"]
+                                         fontName:@"HelveticaNeue-UltraLight"
                                          fontSize:20];
     self.startLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+20);
+    self.startLabel.color = ccc3(0,0,0);
     [self addChild:self.startLabel];
     
-    self.endLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"ゴール"]
-                                       fontName:@"Thonburi-Bold"
+    self.endLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"GOAL"]
+                                       fontName:@"HelveticaNeue-UltraLight"
                                        fontSize:20];
+    self.endLabel.color = ccc3(0,0,0);
     self.endLabel.position = CGPointMake([self getOriginX]+290, [self getOriginY]+320);
     [self addChild:self.endLabel];
     
     self.timerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"0"]
-                                         fontName:@"Thonburi-Bold"
+                                         fontName:@"HelveticaNeue-UltraLight"
                                          fontSize:18];
+    self.timerLabel.color = ccc3(0,0,0);
     self.timerLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+320);
     [self addChild:self.timerLabel];
     
-    self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Level:%d", self.level] fontName:@"Thonburi-Bold" fontSize:18];
+    self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"LEVEL:%d", self.level] fontName:@"HelveticaNeue-UltraLight" fontSize:18];
+    self.levelLabel.color = ccc3(0,0,0);
     self.levelLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+340);
     [self addChild:self.levelLabel];
     
-    self.nameLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", @"ymizushi"] fontName:@"Thonburi-Bold" fontSize:25];
-    self.nameLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+360);
+    self.nameLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", @"ymizushi"] fontName:@"HelveticaNeue-UltraLight" fontSize:25];
+    self.nameLabel.color = ccc3(0,0,0);
+    self.nameLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+400);
     [self addChild:self.nameLabel];
     
     NSInteger clearCount = 3;
-    self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Clear:%d", clearCount] fontName:@"Thonburi-Bold" fontSize:18];
-    self.clearCountLabel.position = CGPointMake([self getOriginX]+290, [self getOriginY]+360);
+    self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"CLEAR:%d", clearCount] fontName:@"HelveticaNeue-UltraLight" fontSize:18];
+    self.clearCountLabel.color = ccc3(0,0,0);
+    self.clearCountLabel.position = CGPointMake([self getOriginX]+250, [self getOriginY]+360);
     [self addChild:self.clearCountLabel];
 }
 
@@ -444,7 +450,7 @@
                 } else if(tile.isMarked) {
                     ccDrawColor4F((cos(self.color)+1)/4, (sin(self.color)+1)/2, 0.0f, 1.0f);
                 } else {
-                    ccDrawColor4F(0.0f, 0.0f, 0.5f, 1.0f);
+                    ccDrawColor4F(0.3f, 0.3f, 0.3f, 1.0f);
                 }
                 if ([UIScreen mainScreen].scale == 2) {
                     // retina
@@ -460,11 +466,11 @@
 }
 
 - (NSInteger)getOriginX {
-    return 0;
+    return OFFSET_X;
 }
 
 - (NSInteger)getOriginY {
-    return 50;
+    return OFFSET_Y;
 }
 
 - (NSInteger)getOffsetX {
