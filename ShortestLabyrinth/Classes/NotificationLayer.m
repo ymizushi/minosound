@@ -38,6 +38,8 @@
 
 + (CCScene *)scene {
 	CCScene *scene = [CCScene node];
+    CCLayerColor *colorLayer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
+    [scene addChild:colorLayer];
 	NotificationLayer *layer = [NotificationLayer node];
 	[scene addChild: layer];
 	return scene;

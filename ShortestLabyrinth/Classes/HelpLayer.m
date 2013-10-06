@@ -28,6 +28,8 @@
 
 + (CCScene *)scene {
 	CCScene *scene = [CCScene node];
+    CCLayerColor *colorLayer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
+    [scene addChild:colorLayer];
 	HelpLayer *layer = [HelpLayer node];
 	[scene addChild: layer];
 	return scene;

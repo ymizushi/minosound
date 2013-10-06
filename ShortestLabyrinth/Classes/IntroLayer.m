@@ -34,8 +34,12 @@
 	if( (self=[super init])) {
 		CGSize size = [[CCDirector sharedDirector] winSize];
 		CCSprite *background;
+        
+        CCLayerColor *background_color = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
+        [self addChild:background_color];
+        
 		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
-			background = [CCSprite spriteWithFile:@"Default.png"];
+			background = [CCSprite spriteWithFile:@"Default-568h@2x.png"];
 		} else {
 			background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
 		}

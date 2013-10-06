@@ -181,6 +181,7 @@
 		D1B9BF6817C531990061C86C /* HelpLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B9BF6717C531990061C86C /* HelpLayer.m */; };
 		D1CF231917C0F70E00AF9FCF /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CF231817C0F70E00AF9FCF /* Config.m */; };
 		D1CF231D17C0FBDA00AF9FCF /* UrlUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CF231C17C0FBDA00AF9FCF /* UrlUtil.m */; };
+		D1DBC1551801909B001409ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1DBC1541801909B001409ED /* Images.xcassets */; };
 		D1FA2B0A1723A3ED007F8211 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */; };
 		D1FA2B0B1723A3ED007F8211 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917C1709F277005968FC /* UIKit.framework */; };
 		D1FA2B0C1723A3ED007F8211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146917E1709F277005968FC /* Foundation.framework */; };
@@ -527,6 +528,7 @@
 		D1CF231817C0F70E00AF9FCF /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		D1CF231B17C0FBDA00AF9FCF /* UrlUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlUtil.h; sourceTree = "<group>"; };
 		D1CF231C17C0FBDA00AF9FCF /* UrlUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlUtil.m; sourceTree = "<group>"; };
+		D1DBC1541801909B001409ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = minosound/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		D1FA2B081723A3EC007F8211 /* minosoundLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = minosoundLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FA2B091723A3EC007F8211 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D1FA2B0F1723A3ED007F8211 /* minosoundLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "minosoundLogicTests-Info.plist"; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 				AA510360174CF3ED008FAAFF /* Classes */,
 				D14691851709F277005968FC /* Resources */,
 				D146919D1709F278005968FC /* libs */,
+				D1DBC1541801909B001409ED /* Images.xcassets */,
 				D146930E1709F27B005968FC /* Supporting Files */,
 			);
 			name = minosound;
@@ -1267,6 +1270,7 @@
 				D1AD870917302E31004D7F71 /* gen_btn.png in Resources */,
 				D19701C61735828400731178 /* music.mp3 in Resources */,
 				D16B8ABC17365FAA00A24365 /* sound.png in Resources */,
+				D1DBC1551801909B001409ED /* Images.xcassets in Resources */,
 				D16B8ABD17365FAA00A24365 /* sound_disabled.png in Resources */,
 				D16B8ABE17365FAA00A24365 /* level_minus.png in Resources */,
 				D16B8ABF17365FAA00A24365 /* level_minus_disabled.png in Resources */,
@@ -1527,6 +1531,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -1552,6 +1558,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;

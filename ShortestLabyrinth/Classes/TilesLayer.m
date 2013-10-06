@@ -45,6 +45,10 @@
 	TilesLayer *layer = [TilesLayer node];
 	
 	// add layer as a child to scene
+    CCLayerColor *colorLayer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
+    [scene addChild:colorLayer];
+   
+    
 	[scene addChild: layer];
 
 	// return the scene
