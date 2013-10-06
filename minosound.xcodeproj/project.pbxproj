@@ -1535,6 +1535,7 @@
 				GCC_PREFIX_HEADER = ShortestLabyrinth/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"ShortestLabyrinth/libs/kazmath/include\"";
 				INFOPLIST_FILE = ShortestLabyrinth/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
@@ -1558,6 +1559,7 @@
 				GCC_PREFIX_HEADER = ShortestLabyrinth/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"ShortestLabyrinth/libs/kazmath/include\"";
 				INFOPLIST_FILE = ShortestLabyrinth/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",

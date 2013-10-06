@@ -33,8 +33,6 @@
 	return scene;
 }
 
-
-
 - (CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch =[touches anyObject];
     CGPoint location =[touch locationInView:[touch view]];
