@@ -61,7 +61,7 @@
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height-200)];
         UIWebView *webview = [[UIWebView alloc] initWithFrame:view.frame];
         webview.delegate = (id)self;
-        NSURL *url = [NSURL URLWithString:[Config getBaseUrl]];
+        NSURL *url = [NSURL URLWithString:[Config getNotificationsUrl]];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         [webview loadRequest:request];
         webview.scalesPageToFit = YES;

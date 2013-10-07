@@ -11,7 +11,12 @@
 @implementation Config
 
 + (NSString *)getBaseUrl {
-    return DEBUG_BASE_URL;
+    return BASE_URL;
 }
+
++ (NSString *)getNotificationsUrl {
+    return [BASE_URL stringByAppendingString:NOTIFICATIONS_URL];
+}
+
 
 @end

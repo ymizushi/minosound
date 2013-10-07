@@ -405,7 +405,7 @@
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 
-- (void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
@@ -489,7 +489,6 @@
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[SynthesizerLayer scene] ]];
 }
 
-
 - (void) onEnter {
 	[super onEnter];
 }
@@ -503,5 +502,4 @@
 //    [self.levelLabel setString: [NSString stringWithFormat:@"%@",str]];
 //    [self schedule:@selector(updateTimer) interval:0.1];
 //}
-
 @end
