@@ -28,10 +28,15 @@
 
 + (CCScene *)scene {
 	CCScene *scene = [CCScene node];
-    CCLayerColor *colorLayer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
-    [scene addChild:colorLayer];
-	HelpLayer *layer = [HelpLayer node];
-	[scene addChild: layer];
+    
+    CCLayerColor *layer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
+    CCSprite* sprite;
+    sprite = [CCSprite spriteWithFile:@"help_back.png"];
+    [layer addChild: sprite];
+    [scene addChild:layer];
+    
+	HelpLayer *helpLayer = [HelpLayer node];
+	[scene addChild: helpLayer];
 	return scene;
 }
 

@@ -172,15 +172,14 @@
                                                 selectedImage:@"back_disabled.png"
                                                        target:self
                                                      selector:@selector(moveToIntro:)];
+//    CCMenuItem * item4 = [CCMenuItemImage itemWithNormalImage:@"back.png"
+//                                                selectedImage:@"back_disabled.png"
+//                                                       target:self
+//                                                     selector:@selector(moveToSynthesizer:)];
     
-    CCMenuItem * item4 = [CCMenuItemImage itemWithNormalImage:@"back.png"
-                                                selectedImage:@"back_disabled.png"
-                                                       target:self
-                                                     selector:@selector(moveToSynthesizer:)];
-    
-    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,item3,item4,nil];
-    [menu alignItemsHorizontallyWithPadding:10];
-    [menu setPosition:ccp([self getOriginX]+165, [self getOriginY]-20)];
+    CCMenu * menu  = [CCMenu menuWithItems:item1,item2,item3,nil];
+    [menu alignItemsHorizontallyWithPadding:0];
+    [menu setPosition:ccp([self getOriginX]+155, [self getOriginY]-20)];
     [self addChild:menu];
 }
 
