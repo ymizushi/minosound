@@ -436,7 +436,9 @@
 
 - (void)draw {
     [super draw];
+    glLineWidth(CELL_WIDTH);
     self.color += 0.01;
+    ccColor4F startColorVar = {0.0f, 0.0f, 0.0f, 1.0f};
 
     if(self.tileArray) {
         for(Tile* tile in self.tileArray) {
@@ -449,20 +451,33 @@
                 } else if(tile.isMarked) {
                     ccDrawColor4F((cos(self.color)+1)/4, (sin(self.color)+1)/2, 0.0f, 1.0f);
                 } else {
-                    ccDrawColor4F(0.3f, 0.3f, 0.3f, 1.0f);
-                }
-                if ([UIScreen mainScreen].scale == 2) {
-                    // retina
-                    glLineWidth(CELL_WIDTH);
-                }
-                else {
-                    glLineWidth(CELL_WIDTH/2);
+                    ccDrawColor4F(0.3f, 0.3f, 0.3f, 0.4f);
                 }
                 ccDrawLine(p1, p2);
             }
         }
+        
+        
+        if(self.tileArray) {
+            for(Tile* tile in self.tileArray) {
+                if(tile) {
+                    CGPoint p1, p2;
+                    p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+[self getOffsetX],(float)tile.beforeTile.y*CELL_HEIGHT+[self getOffsetY]);
+                    p2=CGPointMake((float)tile.x*CELL_WIDTH+[self getOffsetX], (float)tile.y*CELL_HEIGHT+[self getOffsetY]);
+
+                    CGPoint start = CGPointMake(p1.x-CELL_WIDTH/4+1, p1.y-CELL_HEIGHT/4+1);
+                    CGPoint end = CGPointMake(p1.x+CELL_WIDTH/4-1, p1.y+CELL_HEIGHT/4-1);
+                    
+                    ccDrawSolidRect(start, end, startColorVar);
+                }
+            }
+        }
+        
+        
     }
 }
+
+
 
 - (NSInteger)getOriginX {
     return OFFSET_X;
