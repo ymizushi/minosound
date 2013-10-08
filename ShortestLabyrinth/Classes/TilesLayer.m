@@ -114,13 +114,13 @@
     
     self.nameLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", @"ymizushi"] fontName:@"HelveticaNeue-UltraLight" fontSize:25];
     self.nameLabel.color = ccc3(0,0,0);
-    self.nameLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+400);
+    self.nameLabel.position = CGPointMake([self getOriginX]+275, [self getOriginY]+360);
     [self addChild:self.nameLabel];
     
     NSInteger clearCount = 3;
     self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"CLEAR:%d", clearCount] fontName:@"HelveticaNeue-UltraLight" fontSize:18];
     self.clearCountLabel.color = ccc3(0,0,0);
-    self.clearCountLabel.position = CGPointMake([self getOriginX]+250, [self getOriginY]+360);
+    self.clearCountLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+360);
     [self addChild:self.clearCountLabel];
 }
 
@@ -465,8 +465,8 @@
                     p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+[self getOffsetX],(float)tile.beforeTile.y*CELL_HEIGHT+[self getOffsetY]);
                     p2=CGPointMake((float)tile.x*CELL_WIDTH+[self getOffsetX], (float)tile.y*CELL_HEIGHT+[self getOffsetY]);
 
-                    CGPoint start = CGPointMake(p1.x-CELL_WIDTH/4+1, p1.y-CELL_HEIGHT/4+1);
-                    CGPoint end = CGPointMake(p1.x+CELL_WIDTH/4-1, p1.y+CELL_HEIGHT/4-1);
+                    CGPoint start = CGPointMake(p1.x-CELL_WIDTH/4, p1.y-CELL_HEIGHT/4);
+                    CGPoint end = CGPointMake(p1.x+CELL_WIDTH/4, p1.y+CELL_HEIGHT/4);
                     
                     ccDrawSolidRect(start, end, startColorVar);
                 }

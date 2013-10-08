@@ -9,6 +9,10 @@ minosound
 2013/05/28 App Storeにてリリース.
 現在機能追加・修正中です
 
+## Screenshot
+![screenshot1](https://github.com/ymizushi/minosound/blob/master/screenshot_1.png?raw=true)
+![screenshot2](https://github.com/ymizushi/minosound/blob/master/screenshot_2.png?raw=true)
+
 # 実装済
 - 迷路自動生成
 - 最短経路探索
