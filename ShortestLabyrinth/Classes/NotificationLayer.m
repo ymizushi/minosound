@@ -58,10 +58,10 @@
         [menu setPosition:ccp(size.width/2, size.height/2-size.height/3)];
         [self addChild:menu];
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height-200)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 20, size.width, size.height-200)];
         UIWebView *webview = [[UIWebView alloc] initWithFrame:view.frame];
         webview.scalesPageToFit = NO;
-        
+        [[[webview subviews] lastObject] setScrollEnabled:NO];
         
         webview.delegate = (id)self;
         NSURL *url = [NSURL URLWithString:[Config getNotificationsUrl]];

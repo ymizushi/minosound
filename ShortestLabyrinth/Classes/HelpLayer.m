@@ -27,13 +27,15 @@
 }
 
 + (CCScene *)scene {
+    CGSize size = [[CCDirector sharedDirector] winSize];
 	CCScene *scene = [CCScene node];
-    
     CCLayerColor *layer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
     CCSprite* sprite;
     sprite = [CCSprite spriteWithFile:@"help_back.png"];
-    [layer addChild: sprite];
+    sprite.position = CGPointMake(size.width/2, size.height/2);
+
     [scene addChild:layer];
+    [scene addChild: sprite];
     
 	HelpLayer *helpLayer = [HelpLayer node];
 	[scene addChild: helpLayer];

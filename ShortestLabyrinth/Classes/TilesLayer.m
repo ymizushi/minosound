@@ -107,21 +107,21 @@
     self.timerLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+320);
     [self addChild:self.timerLabel];
     
-    self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"LEVEL:%d", self.level] fontName:@"HelveticaNeue-UltraLight" fontSize:18];
-    self.levelLabel.color = ccc3(0,0,0);
-    self.levelLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+340);
-    [self addChild:self.levelLabel];
-    
-    self.nameLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", @"ymizushi"] fontName:@"HelveticaNeue-UltraLight" fontSize:25];
-    self.nameLabel.color = ccc3(0,0,0);
-    self.nameLabel.position = CGPointMake([self getOriginX]+275, [self getOriginY]+360);
-    [self addChild:self.nameLabel];
-    
-    NSInteger clearCount = 3;
-    self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"CLEAR:%d", clearCount] fontName:@"HelveticaNeue-UltraLight" fontSize:18];
-    self.clearCountLabel.color = ccc3(0,0,0);
-    self.clearCountLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+360);
-    [self addChild:self.clearCountLabel];
+//    self.levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"LEVEL:%d", self.level] fontName:@"HelveticaNeue-UltraLight" fontSize:18];
+//    self.levelLabel.color = ccc3(0,0,0);
+//    self.levelLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+340);
+//    [self addChild:self.levelLabel];
+//    
+//    self.nameLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@", @"ymizushi"] fontName:@"HelveticaNeue-UltraLight" fontSize:25];
+//    self.nameLabel.color = ccc3(0,0,0);
+//    self.nameLabel.position = CGPointMake([self getOriginX]+275, [self getOriginY]+360);
+//    [self addChild:self.nameLabel];
+//    
+//    NSInteger clearCount = 3;
+//    self.clearCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"CLEAR:%d", clearCount] fontName:@"HelveticaNeue-UltraLight" fontSize:18];
+//    self.clearCountLabel.color = ccc3(0,0,0);
+//    self.clearCountLabel.position = CGPointMake([self getOriginX]+50, [self getOriginY]+360);
+//    [self addChild:self.clearCountLabel];
 }
 
 - (void)genTiles {
