@@ -449,7 +449,7 @@
                 if(tile.isShortcut) {
                     ccDrawColor4F(1.0f, 0.0f, 0.0f, 1.0f);
                 } else if(tile.isMarked) {
-                    ccDrawColor4F((cos(self.color)+1)/4, (sin(self.color)+1)/2, 0.0f, 1.0f);
+                    ccDrawColor4F(1-(cos(self.color)+1)/8, 1-(sin(self.color)+1)/8, 0.0f, 1.0f);
                 } else {
                     ccDrawColor4F(0.3f, 0.3f, 0.3f, 0.4f);
                 }
@@ -465,8 +465,8 @@
                     p1=CGPointMake((float)tile.beforeTile.x*CELL_WIDTH+[self getOffsetX],(float)tile.beforeTile.y*CELL_HEIGHT+[self getOffsetY]);
                     p2=CGPointMake((float)tile.x*CELL_WIDTH+[self getOffsetX], (float)tile.y*CELL_HEIGHT+[self getOffsetY]);
 
-                    CGPoint start = CGPointMake(p1.x-CELL_WIDTH/4, p1.y-CELL_HEIGHT/4);
-                    CGPoint end = CGPointMake(p1.x+CELL_WIDTH/4, p1.y+CELL_HEIGHT/4);
+                    CGPoint start = CGPointMake(p1.x-CELL_WIDTH/4+1, p1.y-CELL_HEIGHT/4+1);
+                    CGPoint end = CGPointMake(p1.x+CELL_WIDTH/4-1, p1.y+CELL_HEIGHT/4-1);
                     
                     ccDrawSolidRect(start, end, startColorVar);
                 }
