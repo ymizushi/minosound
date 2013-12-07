@@ -3,30 +3,31 @@
 //  SimpleFM
 //
 //  Created by Norihisa Nagano
-//  Modified by Yuta Mizushima
 //
 
 #import "SimpleFM.h"
+
 
 @implementation SimpleFM
 
 @synthesize carrierFreq;
 @synthesize harmonicityRatio;
 @synthesize modulatorIndex;
+@synthesize duration;
 
 static OSStatus renderCallback(void*                       inRefCon,
                                AudioUnitRenderActionFlags* ioActionFlags,
                                const AudioTimeStamp*       inTimeStamp,
                                UInt32                      inBusNumber,
                                UInt32                      inNumberFrames,
-                               AudioBufferList*            ioData) {
+                               AudioBufferList*            ioData){
     FMInfo *def = (FMInfo*)inRefCon;
     Envelope *ampEnv = def->ampEnv;
     Envelope *ratioEnv = def->ratioEnv;
     
     //再生済みの場合は、0で埋めてreturn;
     AudioUnitSampleType *output = ioData->mBuffers[0].mData;
-    if(def->isDone) {
+    if(def->isDone){
         memset(output, 0, sizeof(AudioUnitSampleType) * inNumberFrames);
         return noErr;
     }
@@ -40,18 +41,19 @@ static OSStatus renderCallback(void*                       inRefCon,
     double modulatorPhase = def->modulatorPhase;
     
     UInt32 currentFrame = def->currentFrame;
-    UInt32 totalFrames = def->totalFrames;
+    //総フレーム数
+    UInt32 totalFrames = [ampEnv totalFrames];
     
     //キャリア周波数 * C:M比 = モジュレーター周波数
     double modulatorFreq = carrierFreq * harmonicityRatio;
     double modfreq = modulatorFreq * 2.0 * M_PI / sampleRate;
     
-    for(int i = 0; i< inNumberFrames; i++) {
+    for(int i = 0; i< inNumberFrames; i++){
         //totalFrames分再生したら、0で埋める
-        if(currentFrame >= totalFrames) {
+        if(currentFrame >= totalFrames){
             def->isDone = YES;
             *output++ = 0;
-        } else {
+        }else{
             //先にモジュレーターの波形を計算
             double modWave = sin(modulatorPhase);
             
@@ -83,37 +85,55 @@ static OSStatus renderCallback(void*                       inRefCon,
     return noErr;
 }
 
-- (id)init {
+- (id)init{
     self = [super init];
     if (self != nil)[self prepareAudioUnit];
     return self;
 }
 
-- (void)setCarrierFreq:(double)carrierFreq {
+
+-(void)setCarrierFreq:(double)carrierFreq{
     fmInfo.carrierFreq = carrierFreq;
 }
 
-- (void)setHarmonicityRatio:(double)harmonicityRatio {
+-(void)setHarmonicityRatio:(double)harmonicityRatio{
     fmInfo.harmonicityRatio = harmonicityRatio;
 }
 
-- (void)setModulatorIndex:(double)modulatorIndex {
+-(void)setModulatorIndex:(double)modulatorIndex{
     fmInfo.modulatorIndex = modulatorIndex;
 }
 
-- (double)carrierFreq {
+-(void)setDuration:(double)duration{
+    fmInfo.ampEnv.duration = duration;
+    fmInfo.ratioEnv.duration = duration;
+}
+
+-(double)carrierFreq{
     return fmInfo.carrierFreq;
 }
 
-- (double)harmonicityRatio {
+-(double)harmonicityRatio{
     return fmInfo.harmonicityRatio;
 }
 
-- (double)modulatorIndex {
+-(double)modulatorIndex{
     return fmInfo.modulatorIndex;
 }
 
-- (void)prepareAudioUnit {
+-(double)duration{
+    return fmInfo.ampEnv.duration;
+}
+
+-(Envelope*)ratioEnvelope{
+    return fmInfo.ratioEnv;
+}
+
+-(Envelope*)ampEnvelope{
+    return fmInfo.ampEnv;
+}
+
+- (void)prepareAudioUnit{
     AudioComponentDescription cd;
     cd.componentType = kAudioUnitType_Output;
     cd.componentSubType = kAudioUnitSubType_RemoteIO;
@@ -130,13 +150,13 @@ static OSStatus renderCallback(void*                       inRefCon,
     callbackStruct.inputProc = renderCallback;
     callbackStruct.inputProcRefCon = &fmInfo;
     
-    AudioUnitSetProperty(audioUnit, 
-                         kAudioUnitProperty_SetRenderCallback, 
+    AudioUnitSetProperty(audioUnit,
+                         kAudioUnitProperty_SetRenderCallback,
                          kAudioUnitScope_Input,
                          0,
                          &callbackStruct,
                          sizeof(AURenderCallbackStruct));
-        
+    
     AudioStreamBasicDescription audioFormat = AUCanonicalASBD(44100.0, 1);
     AudioUnitSetProperty(audioUnit,
                          kAudioUnitProperty_StreamFormat,
@@ -149,26 +169,24 @@ static OSStatus renderCallback(void*                       inRefCon,
     fmInfo.phase = 0.0;
     fmInfo.modulatorPhase = 0.0;
     
-    fmInfo.carrierFreq = 2597.701;
-    fmInfo.harmonicityRatio = 8.410;
-    fmInfo.modulatorIndex = 7.797;
+    fmInfo.carrierFreq = 3333.33;
+    fmInfo.harmonicityRatio = 11.11;
+    fmInfo.modulatorIndex = 13.0;
     
     //音量のエンベローブ
-    fmInfo.ampEnv = [[Envelope alloc]initWithDuration:0.233
-                                           sampleRate:44100 
+    fmInfo.ampEnv = [[Envelope alloc]initWithDuration:0.5
+                                           sampleRate:44100
                                                   max:1.0];
-    //変調指数のエンベローブ    
-    fmInfo.ratioEnv = [[Envelope alloc]initWithDuration:0.233 
-                                             sampleRate:44100 
+    //変調指数のエンベローブ
+    fmInfo.ratioEnv = [[Envelope alloc]initWithDuration:0.5
+                                             sampleRate:44100
                                                     max:1.0];
-    
-    fmInfo.totalFrames = [fmInfo.ratioEnv totalFrames];
     
     fmInfo.isDone = YES;
     [self start]; //処理を開始しておく
 }
 
-- (void)play {
+-(void)play{
     //Envelopeクラスの現在の位置（x軸）を0にする
     [fmInfo.ampEnv toTheTop];
     [fmInfo.ratioEnv toTheTop];
@@ -176,17 +194,17 @@ static OSStatus renderCallback(void*                       inRefCon,
     fmInfo.currentFrame = 0;
 }
 
-- (void)start {
+-(void)start{
     if(!isPlaying)AudioOutputUnitStart(audioUnit);
     isPlaying = YES;
 }
 
-- (void)stop {
+-(void)stop{
     if(isPlaying)AudioOutputUnitStop(audioUnit);
     isPlaying = NO;
 }
 
-- (void)dealloc {
+-(void)dealloc{
     [self stop];
     [fmInfo.ampEnv release];
     [fmInfo.ratioEnv release];

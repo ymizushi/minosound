@@ -3,7 +3,6 @@
 //  SimpleFM
 //
 //  Created by Norihisa Nagano
-//  Modified by Yuta Mizushima
 //
 
 #import <Foundation/Foundation.h>
@@ -24,12 +23,12 @@ typedef struct FMInfo {
     Envelope *ampEnv; //音量のエンベローブ
     Envelope *ratioEnv; //変調指数のエンベローブ
     UInt32 currentFrame; //現在のフレーム
-    UInt32 totalFrames;  //総フレーム数
-    BOOL isDone; //総フレーム数再生したかどうかを表すフラグ
+    BOOL isDone; //エンベローブの総フレーム数再生したかどうかを表すフラグ
 }FMInfo;
 
+
 @interface SimpleFM : NSObject {
-    FMInfo fmInfo;    
+    FMInfo fmInfo;
     AudioUnit audioUnit;
     BOOL isPlaying;
 }
@@ -37,10 +36,14 @@ typedef struct FMInfo {
 @property double carrierFreq;
 @property double harmonicityRatio;
 @property double modulatorIndex;
+@property double duration;
 
-- (void)start;
-- (void)play;
-- (void)stop;
-- (void)prepareAudioUnit;
+-(void)start;
 
+-(Envelope*)ratioEnvelope;
+-(Envelope*)ampEnvelope;
+
+-(void)play;
+-(void)stop;
+-(void)prepareAudioUnit;
 @end
