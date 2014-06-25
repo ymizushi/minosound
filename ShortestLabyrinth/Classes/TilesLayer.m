@@ -370,7 +370,7 @@
                 [self stopTimer];
                 self.pathStack = [NSMutableArray array];
                 [self path:self.tileArray[ROW*COLUMN-1] :self.pathStack];
-                [self schedule:@selector(updatePathSound) interval:0.1];
+                [self schedule:@selector(updatePathSound) interval:1.0];
             }
             return YES;
         }
@@ -431,6 +431,8 @@
     }
     Tile* tile = self.pathStack[index];
     [self.simpleFM setCarrierFreq:tile.freq];
+    [self.simpleFM setDuration:5.0];
+    
     [self.simpleFM play];
 }
 

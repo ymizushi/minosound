@@ -4,29 +4,16 @@ minosound
 迷宮を自動生成して迷路を解いていくと音楽が奏でられるアプリです
 
 2013/05/28 App Storeにてリリース.
+2014/5月頃にDeveloper Programの更新を行わなかったため、ストアから削除されました。
 
-ymizushiがiPhone5を解約し、Nexus5(Android)に移行したため、このレポジトリは以降更新されない可能性が高いです.
+ymizushiがiPhone5を解約し、Nexus5(Android)に移行したため、このレポジトリは以降更新されないと思います。
 
 現在音楽系の創作プラットフォームを開発中です.
-
 ymizushiの次回作にご期待ください.
 
 ## Screenshot
 ![screenshot1](https://github.com/ymizushi/minosound/blob/master/screenshot_1.png?raw=true)
 ![screenshot2](https://github.com/ymizushi/minosound/blob/master/screenshot_2.png?raw=true)
-
-# 実装済
-- 迷路自動生成
-- 最短経路探索
-- なぞると探索済みマークをつける
-- タイマー
-- スタート・ゴール
-- 最短経路で耳障りの良い音を自動生成してならす
-
-# 未実装
-- オンラインでランキング
-- レベル機能
-- インターフェースとかも格好いい感じにする
 
 # 注意事項
 FM合成部分については、
