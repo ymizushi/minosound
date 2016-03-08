@@ -34,7 +34,6 @@
     CCLabelTTF *endLabel;
     CCLabelTTF *levelLabel;
     CCLabelTTF *clearCountLabel;
-    CCLabelTTF *nameLabel;
     int timer;
     float color;
     float diff;
@@ -63,7 +62,6 @@
 @property (nonatomic) NSInteger playPathIndex;
 
 + (CCScene *) scene;
-- (void) initTileSize:(NSInteger)width :(NSInteger)height X:(NSInteger)x Y:(NSInteger)y;
 - (void) initTiles;
 - (void) genTiles;
 - (Tile*) getTileByX:(NSInteger)x Y:(NSInteger)y;
@@ -72,8 +70,6 @@
 - (Tile*) choiceTile:(Tile *)currentTile;
 - (NSInteger) randomGet:(NSMutableArray *)array;
 - (void) scan:(Tile*)tile;
-- (void) draw:(NSMutableArray*)tileArray;
-- (void) drawTileToTile:(Tile*)beforeTile :(Tile*)tile;
 - (NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack;
 - (void)setButton1;
 

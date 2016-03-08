@@ -12,12 +12,12 @@ AudioStreamBasicDescription AUCanonicalASBD(Float64 sampleRate, UInt32 channel) 
     AudioStreamBasicDescription audioFormat;
     audioFormat.mSampleRate       = sampleRate;
     audioFormat.mFormatID         = kAudioFormatLinearPCM;
-    audioFormat.mFormatFlags      = kAudioFormatFlagsAudioUnitCanonical;
+    audioFormat.mFormatFlags      = kAudioFormatFlagIsFloat | kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved;
     audioFormat.mChannelsPerFrame = channel;
-    audioFormat.mBytesPerPacket   = sizeof(AudioUnitSampleType);
-    audioFormat.mBytesPerFrame    = sizeof(AudioUnitSampleType);
+    audioFormat.mBytesPerPacket   = sizeof(SInt32);
+    audioFormat.mBytesPerFrame    = sizeof(SInt32);
     audioFormat.mFramesPerPacket  = 1;
-    audioFormat.mBitsPerChannel   = 8 * sizeof(AudioUnitSampleType);
+    audioFormat.mBitsPerChannel   = 8 * sizeof(SInt32);
     audioFormat.mReserved         = 0;
     return audioFormat;
 }
@@ -27,12 +27,12 @@ AudioStreamBasicDescription CanonicalASBD(Float64 sampleRate, UInt32 channel) {
     AudioStreamBasicDescription audioFormat;
     audioFormat.mSampleRate       = sampleRate;
     audioFormat.mFormatID         = kAudioFormatLinearPCM;
-    audioFormat.mFormatFlags      = kAudioFormatFlagsCanonical;
+    audioFormat.mFormatFlags      = kAudioFormatFlagIsFloat | kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved;
     audioFormat.mChannelsPerFrame = channel;
-    audioFormat.mBytesPerPacket   = sizeof(AudioSampleType);
-    audioFormat.mBytesPerFrame    = sizeof(AudioSampleType);
+    audioFormat.mBytesPerPacket   = sizeof(SInt32);
+    audioFormat.mBytesPerFrame    = sizeof(SInt32);
     audioFormat.mFramesPerPacket  = 1;
-    audioFormat.mBitsPerChannel   = 8 * sizeof(AudioSampleType);
+    audioFormat.mBitsPerChannel   = 8 * sizeof(SInt32);
     audioFormat.mReserved         = 0;
     return audioFormat;
 }

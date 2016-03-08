@@ -1,11 +1,3 @@
-//
-//  Tile.h
-//  ShortestLabyrinth
-//
-//  Created by 水島 雄太 on 2013/04/02.
-//  Copyright (c) 2013年 水島 雄太. All rights reserved.
-//
-
 @interface Tile : NSObject {
     Tile* beforeTile;
     BOOL isSearched;

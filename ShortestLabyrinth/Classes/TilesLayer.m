@@ -300,7 +300,7 @@
 - (Tile*)choiceTile:(Tile *)tile {
     NSMutableArray* tiles = [self surroundTiles:tile];
     if([tiles count] > 0) {
-        int index = [self randomGet:tiles];
+        NSInteger index = [self randomGet:tiles];
         Tile* choice = tiles[index];
         if(choice.x == (ROW-1) && choice.y == (COLUMN-1) && ([tiles count] > 1)) {
             return [self choiceTile:tile];
@@ -401,12 +401,12 @@
 #pragma mark GameKit delegate
 - (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+    [[app navController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	[[app navController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSMutableArray*)path:(Tile*)tile :(NSMutableArray*)stack {
@@ -509,13 +509,4 @@
 	[super onEnter];
 }
 
-//-(void) levelUpButtonPush: (id) sender
-//{
-//    [self genTiles];
-//    [self initTiles];
-//    self.level += 1;
-//    NSString *str = [[NSString alloc] initWithFormat:@"Level:%d", self.level];
-//    [self.levelLabel setString: [NSString stringWithFormat:@"%@",str]];
-//    [self schedule:@selector(updateTimer) interval:0.1];
-//}
 @end

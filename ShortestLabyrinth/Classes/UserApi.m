@@ -1,10 +1,4 @@
-//
-//  UserApi.m
-//  minosound
-//
-//  Created by Yuta Mizushima on 2013/08/18.
-//  Copyright (c) 2013年 水島 雄太. All rights reserved.
-//
+
 
 #import "UserApi.h"
 #import "UrlUtil.h"
@@ -12,7 +6,7 @@
 @implementation UserApi
 
 + (NSDictionary*)getJsonUser:(NSInteger)userId {
-    NSString* userIdStr = [NSString stringWithFormat:@"%d", userId];
+    NSString* userIdStr = [NSString stringWithFormat:@"%ld", userId];
     NSArray* params = @[@"/users/", userIdStr];
     NSString *apiUrlJson = [UrlUtil genUrl:params];
     NSURL *httpDataUrl2 = [NSURL URLWithString:apiUrlJson];
@@ -23,7 +17,7 @@
 }
 
 + (NSDictionary*)update:(NSInteger)userId :(NSDictionary*)params {
-    NSString* userIdStr = [NSString stringWithFormat:@"%d", userId];
+    NSString* userIdStr = [NSString stringWithFormat:@"%ld", userId];
     NSString *apiUrlJson = [UrlUtil genUrl:@[@"/users/", userIdStr]];
     NSURL *httpDataUrl2 = [NSURL URLWithString:apiUrlJson];
     

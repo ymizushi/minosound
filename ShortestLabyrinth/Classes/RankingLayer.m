@@ -1,11 +1,3 @@
-//
-//  RankingLayer.m
-//  minosound
-//
-//  Created by Yuta Mizushima on 2013/08/23.
-//  Copyright (c) 2013年 水島 雄太. All rights reserved.
-//
-
 #import "RankingLayer.h"
 
 #import "TilesLayer.h"
@@ -17,12 +9,12 @@
 #pragma mark GameKit delegate
 - (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	[[app navController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	[[app navController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) moveToNextTransision: (id) sender {

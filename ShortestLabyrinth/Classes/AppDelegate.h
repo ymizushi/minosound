@@ -1,11 +1,3 @@
-//
-//  AppDelegate.h
-//  ShortestLabyrinth
-//
-//  Created by 水島 雄太 on 2013/04/02.
-//  Copyright 水島 雄太 2013年. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
 

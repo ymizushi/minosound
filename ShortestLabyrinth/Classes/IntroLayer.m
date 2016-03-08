@@ -1,11 +1,3 @@
-//
-//  IntroLayer.m
-//  ShortestLabyrinth
-//
-//  Created by 水島 雄太 on 2013/04/02.
-//  Copyright 水島 雄太 2013年. All rights reserved.
-//
-
 #import "IntroLayer.h"
 #import "TilesLayer.h"
 #import "NotificationLayer.h"
