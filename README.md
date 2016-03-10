@@ -14,7 +14,7 @@ This repository maybe will not be maintained because I change my smartphone os f
 ![screenshot1](https://github.com/ymizushi/minosound/blob/master/screenshot_1.png?raw=true)
 ![screenshot2](https://github.com/ymizushi/minosound/blob/master/screenshot_2.png?raw=true)
 
-# 注意事項
+# Notes
 The implementation of FM synthesis engine is based on the sample code of "iPhone Core Audio Programming" published by SoftBank Creative
 the lisence readme.txt is as below.
 
